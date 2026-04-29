@@ -118,7 +118,7 @@ const productCategories = [
 
 export default function ProductsCatalogSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<typeof productCategories[0] | null>(null);
 
   const featuredProducts = productCategories.filter(p => p.featured);
 
@@ -129,7 +129,17 @@ export default function ProductsCatalogSection() {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setSelectedCategory(null);
+    setSelectedProduct(null);
+    document.body.style.overflow = "unset";
+  };
+
+  const openProductDetail = (product: typeof productCategories[0]) => {
+    setSelectedProduct(product);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeProductDetail = () => {
+    setSelectedProduct(null);
     document.body.style.overflow = "unset";
   };
 
@@ -167,7 +177,8 @@ export default function ProductsCatalogSection() {
             {featuredProducts.map((product) => (
               <div
                 key={product.id}
-                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-blue-200"
+                onClick={() => openProductDetail(product)}
+                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-blue-200 cursor-pointer"
               >
                 {/* Image */}
                 <div className="relative h-64 overflow-hidden">
@@ -184,6 +195,14 @@ export default function ProductsCatalogSection() {
                     <span className="px-3 py-1 bg-blue-600 text-white rounded-full text-xs font-bold shadow-lg">
                       Featured
                     </span>
+                  </div>
+
+                  {/* View Details Overlay */}
+                  <div className="absolute inset-0 bg-blue-600/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="text-center text-white">
+                      <Package className="w-12 h-12 mx-auto mb-2" />
+                      <p className="font-bold">View Details</p>
+                    </div>
                   </div>
                 </div>
 
@@ -273,7 +292,11 @@ export default function ProductsCatalogSection() {
                 {productCategories.map((product) => (
                   <div
                     key={product.id}
-                    className="group bg-slate-50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-200 hover:border-blue-300"
+                    onClick={() => {
+                      closeModal();
+                      openProductDetail(product);
+                    }}
+                    className="group bg-slate-50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-200 hover:border-blue-300 cursor-pointer"
                   >
                     {/* Image */}
                     <div className="relative h-48 overflow-hidden">
@@ -292,11 +315,19 @@ export default function ProductsCatalogSection() {
                           </span>
                         </div>
                       )}
+
+                      {/* View Details Overlay */}
+                      <div className="absolute inset-0 bg-blue-600/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="text-center text-white">
+                          <Package className="w-10 h-10 mx-auto mb-2" />
+                          <p className="font-bold text-sm">View Details</p>
+                        </div>
+                      </div>
                     </div>
 
                     {/* Content */}
                     <div className="p-5">
-                      <h4 className="text-lg font-bold text-slate-900 mb-2">
+                      <h4 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
                         {product.name}
                       </h4>
                       <p className="text-slate-600 text-sm mb-4">
@@ -362,6 +393,187 @@ export default function ProductsCatalogSection() {
           </div>
         </div>
       )}
+
+      {/* Product Detail Modal - E-commerce Style */}
+      {selectedProduct && (
+        <div className="fixed inset-0 z-[10001] flex items-center justify-center p-4 bg-slate-900/95 backdrop-blur-sm animate-fadeIn">
+          <div className="relative w-full max-w-6xl max-h-[90vh] bg-white rounded-3xl shadow-2xl overflow-hidden animate-slideUp">
+            {/* Close Button */}
+            <button
+              onClick={closeProductDetail}
+              className="absolute top-6 right-6 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-slate-900/80 hover:bg-slate-900 text-white transition-all duration-200 hover:scale-110 backdrop-blur-sm"
+              aria-label="Close"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            <div className="overflow-y-auto max-h-[90vh]">
+              {/* Hero Image Section */}
+              <div className="relative h-96 overflow-hidden">
+                <img
+                  src={selectedProduct.image}
+                  alt={selectedProduct.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent"></div>
+                
+                {/* Product Title Overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-8">
+                  <div className="max-w-4xl mx-auto">
+                    {selectedProduct.featured && (
+                      <span className="inline-block px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-bold mb-4 shadow-lg">
+                        ⭐ Featured Product
+                      </span>
+                    )}
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
+                      {selectedProduct.name}
+                    </h2>
+                    <p className="text-xl text-white/90">
+                      {selectedProduct.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Product Details Content */}
+              <div className="p-8 md:p-12">
+                <div className="max-w-4xl mx-auto">
+                  {/* Key Info Cards */}
+                  <div className="grid md:grid-cols-3 gap-6 mb-12">
+                    <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-200">
+                      <div className="text-sm font-semibold text-blue-600 mb-2 uppercase tracking-wide">
+                        Minimum Order
+                      </div>
+                      <div className="text-3xl font-bold text-blue-900">
+                        {selectedProduct.minOrder}
+                      </div>
+                    </div>
+                    <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6 border border-purple-200">
+                      <div className="text-sm font-semibold text-purple-600 mb-2 uppercase tracking-wide">
+                        Product Types
+                      </div>
+                      <div className="text-3xl font-bold text-purple-900">
+                        {selectedProduct.products.length}+
+                      </div>
+                    </div>
+                    <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 border border-green-200">
+                      <div className="text-sm font-semibold text-green-600 mb-2 uppercase tracking-wide">
+                        Lead Time
+                      </div>
+                      <div className="text-3xl font-bold text-green-900">
+                        30-45 Days
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Available Products */}
+                  <div className="mb-12">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                      <Package className="w-7 h-7 text-blue-600" />
+                      Available Product Types
+                    </h3>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {selectedProduct.products.map((item, idx) => (
+                        <div
+                          key={idx}
+                          className="group flex items-center gap-3 p-4 bg-slate-50 hover:bg-blue-50 rounded-xl border border-slate-200 hover:border-blue-300 transition-all duration-300"
+                        >
+                          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold shadow-lg group-hover:scale-110 transition-transform">
+                            {idx + 1}
+                          </div>
+                          <span className="font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
+                            {item}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Features & Specifications */}
+                  <div className="mb-12">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                      <Sparkles className="w-7 h-7 text-blue-600" />
+                      Features & Specifications
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {[
+                        { title: "Premium Materials", desc: "High-quality fabrics sourced from certified suppliers" },
+                        { title: "Custom Branding", desc: "Add your logo, labels, and custom packaging" },
+                        { title: "Quality Control", desc: "Multi-stage inspection process (AQL 2.5 standard)" },
+                        { title: "Flexible MOQ", desc: "Scalable orders from small batches to bulk production" },
+                        { title: "Fast Turnaround", desc: "Efficient production with on-time delivery guarantee" },
+                        { title: "Global Shipping", desc: "Worldwide delivery with trusted logistics partners" },
+                      ].map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-4 p-4 bg-white rounded-xl border border-slate-200 hover:shadow-lg transition-shadow">
+                          <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <span className="text-green-600 font-bold">✓</span>
+                          </div>
+                          <div>
+                            <h4 className="font-bold text-slate-900 mb-1">{feature.title}</h4>
+                            <p className="text-sm text-slate-600">{feature.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CTA Section */}
+                  <div className="relative">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur-lg opacity-25"></div>
+                    <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-10 text-center">
+                      <h3 className="text-3xl font-bold text-white mb-4">
+                        Ready to Order {selectedProduct.name}?
+                      </h3>
+                      <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
+                        Contact us today to discuss your requirements, get a quote, and start your order
+                      </p>
+                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a
+                          href="#contact"
+                          onClick={closeProductDetail}
+                          className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                        >
+                          <span>Request Quote</span>
+                          <ArrowRight className="w-5 h-5" />
+                        </a>
+                        <button
+                          onClick={closeProductDetail}
+                          className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-full backdrop-blur-sm transition-all duration-300"
+                        >
+                          <span>Browse More Products</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out;
+        }
+        .animate-slideUp {
+          animation: slideUp 0.4s ease-out;
+        }
+      `}</style>
     </>
   );
 }
