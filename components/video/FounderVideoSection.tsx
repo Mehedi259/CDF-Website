@@ -233,7 +233,7 @@ export default function FounderVideoSection() {
                   onEnded={() => setIsPlaying(false)}
                 >
                   <source
-                    src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                    src="/founders/our_story.mp4"
                     type="video/mp4"
                   />
                   Your browser does not support the video tag.
