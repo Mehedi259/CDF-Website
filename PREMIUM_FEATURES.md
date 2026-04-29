@@ -1,6 +1,6 @@
 # 🌟 Premium Features Documentation
 
-This document outlines all the premium, high-level features added to the CTF Studio manufacturing website.
+This document outlines all the premium, high-level features added to the CDF Studio manufacturing website.
 
 ## 🎨 Premium Enhancements Overview
 

@@ -16,7 +16,7 @@ export default function Footer() {
                 <span className="text-white font-bold text-xl">C</span>
               </div>
               <div>
-                <div className="font-bold text-lg">CTF Studio</div>
+                <div className="font-bold text-lg">CDF Studio</div>
                 <div className="text-xs text-slate-400">Premium Apparel Solutions</div>
               </div>
             </div>
@@ -122,10 +122,10 @@ export default function Footer() {
                 <Mail className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
                 <div>
                   <a
-                    href="mailto:info@ctfstudio.com"
+                    href="mailto:info@cdfstudio.com"
                     className="text-slate-400 hover:text-white transition-colors"
                   >
-                    info@ctfstudio.com
+                    info@cdfstudio.com
                   </a>
                 </div>
               </li>
@@ -168,7 +168,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-400 text-sm">
-            © {currentYear} CTF Studio. All rights reserved.
+            © {currentYear} CDF Studio. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
             <a href="#" className="text-slate-400 hover:text-white transition-colors">

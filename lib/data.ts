@@ -1,6 +1,6 @@
 // Company Data
 export const companyData = {
-  name: "CTF Studio",
+  name: "CDF Studio",
   tagline: "Premium Apparel Manufacturing for Global Brands",
   description: "ISO-certified manufacturing facility specializing in high-quality garment production, fabric sourcing, and end-to-end apparel solutions for international brands.",
   established: "2008",

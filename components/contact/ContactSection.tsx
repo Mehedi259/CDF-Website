@@ -174,8 +174,8 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <div className="font-semibold text-slate-900 mb-1">Email</div>
-                    <a href="mailto:info@ctfstudio.com" className="text-blue-600 hover:text-blue-700">
-                      info@ctfstudio.com
+                    <a href="mailto:info@cdfstudio.com" className="text-blue-600 hover:text-blue-700">
+                      info@cdfstudio.com
                     </a>
                     <div className="text-sm text-slate-500 mt-1">
                       Response within 24 hours

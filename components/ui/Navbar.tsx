@@ -101,7 +101,7 @@ export default function Navbar() {
                   <span className="text-white font-bold text-2xl">C</span>
                 </motion.div>
                 <div className={`font-bold text-sm leading-tight transition-colors text-center ${scrolled ? "text-slate-900 dark:text-white" : "text-white"}`}>
-                  CTF Studio
+                  CDF Studio
                 </div>
               </motion.a>
 
@@ -270,14 +270,14 @@ export default function Navbar() {
                     <span className="font-medium">+1 (800) 555-1234</span>
                   </motion.a>
                   <motion.a
-                    href="mailto:info@ctfstudio.com"
+                    href="mailto:info@cdfstudio.com"
                     className="flex items-center gap-3 text-slate-700 hover:text-blue-600 transition-colors p-4 rounded-xl hover:bg-slate-100"
                     whileHover={{ x: 5 }}
                   >
                     <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                       <Mail className="w-5 h-5 text-blue-600" />
                     </div>
-                    <span className="font-medium">info@ctfstudio.com</span>
+                    <span className="font-medium">info@cdfstudio.com</span>
                   </motion.a>
                   <motion.a
                     href="#contact"

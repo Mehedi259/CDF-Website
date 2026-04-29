@@ -54,7 +54,7 @@ export function useLanguage() {
 const translations: Record<Language, Record<string, string>> = {
   en: {
     // Company
-    companyName: "CTF Studio",
+    companyName: "CDF Studio",
     tagline: "Premium Apparel Solutions",
     
     // Navigation
@@ -98,7 +98,7 @@ const translations: Record<Language, Record<string, string>> = {
   },
   nl: {
     // Company
-    companyName: "CTF Studio",
+    companyName: "CDF Studio",
     tagline: "Premium Kledingoplossingen",
     
     // Navigation

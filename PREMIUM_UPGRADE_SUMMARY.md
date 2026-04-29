@@ -2,7 +2,7 @@
 
 ## What's Been Added
 
-Your CTF Studio manufacturing website has been upgraded with **premium, high-level features** including 3D animations, advanced interactions, and stunning visual effects.
+Your CDF Studio manufacturing website has been upgraded with **premium, high-level features** including 3D animations, advanced interactions, and stunning visual effects.
 
 ---
 
