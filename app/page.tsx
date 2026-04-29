@@ -15,10 +15,10 @@ export default function Home() {
   return (
     <main>
       <OptimizedHeroSection />
+      <ProductsCatalogSection />
       <ServicesSection />
       <LightweightAboutSection />
       <FounderVideoSection />
-      <ProductsCatalogSection />
       <LightweightProcessSection />
       <LightweightPortfolioSection />
       <LightweightTestimonialsSection />
