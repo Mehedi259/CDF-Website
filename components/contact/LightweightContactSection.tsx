@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, Phone, MapPin, Send, MessageSquare } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageSquare, Sparkles, Clock, CheckCircle, Globe } from "lucide-react";
 import { useState } from "react";
 
 export default function LightweightContactSection() {
@@ -48,212 +48,270 @@ This inquiry was submitted through the CDF Studio website contact form.
   };
 
   return (
-    <section id="contact" className="relative py-20 bg-slate-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-semibold mb-4">
-            Get In Touch
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            Start Your Manufacturing Journey
+    <section id="contact" className="relative py-20 md:py-32 bg-gradient-to-b from-white via-slate-50 to-white overflow-hidden">
+      {/* Background Decorations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Premium Section Header */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 rounded-full text-sm font-semibold mb-6">
+            <Sparkles className="w-4 h-4 text-blue-600" />
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Get In Touch
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
+            Start Your{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Manufacturing Journey
+            </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Ready to discuss your project? Fill out the form and we'll respond within 24 hours
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Form */}
-          <div className="bg-white rounded-xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-slate-900 mb-6">
-              Request a Production Quote
-            </h3>
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="John Smith"
-                />
+          {/* Premium Contact Form */}
+          <div className="group relative">
+            {/* Gradient Border Effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></div>
+            
+            <div className="relative bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-slate-100">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+                  <Send className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
+                  Request a Quote
+                </h3>
               </div>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-2">
-                  Business Email *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="john@company.com"
-                />
-              </div>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-bold text-slate-700 mb-2">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-5 py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-slate-900 placeholder:text-slate-400"
+                    placeholder="John Smith"
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="company" className="block text-sm font-semibold text-slate-700 mb-2">
-                  Company Name *
-                </label>
-                <input
-                  type="text"
-                  id="company"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="Your Company Ltd."
-                />
-              </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-bold text-slate-700 mb-2">
+                    Business Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-5 py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-slate-900 placeholder:text-slate-400"
+                    placeholder="john@company.com"
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="phone" className="block text-sm font-semibold text-slate-700 mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="+1 (555) 000-0000"
-                />
-              </div>
+                <div>
+                  <label htmlFor="company" className="block text-sm font-bold text-slate-700 mb-2">
+                    Company Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-5 py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-slate-900 placeholder:text-slate-400"
+                    placeholder="Your Company Ltd."
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="requirements" className="block text-sm font-semibold text-slate-700 mb-2">
-                  Project Requirements *
-                </label>
-                <textarea
-                  id="requirements"
-                  name="requirements"
-                  value={formData.requirements}
-                  onChange={handleChange}
-                  required
-                  rows={4}
-                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
-                  placeholder="Please describe your project..."
-                />
-              </div>
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-bold text-slate-700 mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-5 py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-slate-900 placeholder:text-slate-400"
+                    placeholder="+1 (555) 000-0000"
+                  />
+                </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-lg transition-all shadow-md"
-              >
-                {isSubmitting ? 'Sending...' : 'Send Inquiry'}
-                <Send className="w-5 h-5" />
-              </button>
-            </form>
+                <div>
+                  <label htmlFor="requirements" className="block text-sm font-bold text-slate-700 mb-2">
+                    Project Requirements *
+                  </label>
+                  <textarea
+                    id="requirements"
+                    name="requirements"
+                    value={formData.requirements}
+                    onChange={handleChange}
+                    required
+                    rows={5}
+                    className="w-full px-5 py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none text-slate-900 placeholder:text-slate-400"
+                    placeholder="Tell us about your project requirements, quantities, timeline, etc."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="group/btn relative w-full"
+                >
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl blur opacity-30 group-hover/btn:opacity-50 transition-opacity"></div>
+                  <div className="relative flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+                    {isSubmitting ? 'Sending...' : 'Send Inquiry'}
+                    <Send className="w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform" />
+                  </div>
+                </button>
+              </form>
+            </div>
           </div>
 
-          {/* Contact Information */}
+          {/* Premium Contact Information */}
           <div className="space-y-6">
             {/* Contact Cards */}
-            <div className="bg-white rounded-xl p-6 shadow-lg">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">
-                Contact Information
-              </h3>
-              <div className="space-y-5">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 text-blue-600" />
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></div>
+              
+              <div className="relative bg-white rounded-3xl p-8 shadow-xl border border-slate-100">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+                    <Globe className="w-6 h-6 text-white" />
                   </div>
-                  <div>
-                    <div className="font-semibold text-slate-900 mb-1">Email</div>
-                    <a href="mailto:info@cdfstudio.com" className="text-blue-600 hover:text-blue-700">
-                      info@cdfstudio.com
-                    </a>
-                    <div className="text-sm text-slate-500 mt-1">
-                      Response within 24 hours
-                    </div>
-                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900">
+                    Contact Info
+                  </h3>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-slate-900 mb-1">Phone</div>
-                    <a href="tel:+31687620061" className="text-blue-600 hover:text-blue-700">
-                      +31 6 87620061
-                    </a>
-                    <div className="text-sm text-slate-500 mt-1">
-                      Mon-Fri, 9AM-6PM EST
+                <div className="space-y-6">
+                  <div className="group/item flex items-start gap-4 p-4 rounded-2xl hover:bg-blue-50 transition-colors">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover/item:scale-110 transition-transform">
+                      <Mail className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-slate-900 mb-1">Email</div>
+                      <a href="mailto:info@cdfstudio.com" className="text-blue-600 hover:text-blue-700 font-semibold">
+                        info@cdfstudio.com
+                      </a>
+                      <div className="text-sm text-slate-500 mt-1 flex items-center gap-1">
+                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        Response within 24 hours
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MessageSquare className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-slate-900 mb-1">WhatsApp</div>
-                    <a href="https://wa.me/31687620061" className="text-blue-600 hover:text-blue-700">
-                      +31 6 87620061
-                    </a>
-                    <div className="text-sm text-slate-500 mt-1">
-                      Instant messaging support
+                  <div className="group/item flex items-start gap-4 p-4 rounded-2xl hover:bg-purple-50 transition-colors">
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover/item:scale-110 transition-transform">
+                      <Phone className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-slate-900 mb-1">Phone</div>
+                      <a href="tel:+31687620061" className="text-purple-600 hover:text-purple-700 font-semibold">
+                        +31 6 87620061
+                      </a>
+                      <div className="text-sm text-slate-500 mt-1">
+                        Mon-Fri, 9AM-6PM CET
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-blue-600" />
+                  <div className="group/item flex items-start gap-4 p-4 rounded-2xl hover:bg-green-50 transition-colors">
+                    <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover/item:scale-110 transition-transform">
+                      <MessageSquare className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-slate-900 mb-1">WhatsApp</div>
+                      <a href="https://wa.me/31687620061" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 font-semibold">
+                        +31 6 87620061
+                      </a>
+                      <div className="text-sm text-slate-500 mt-1">
+                        Instant messaging support
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-semibold text-slate-900 mb-1">Factory Location</div>
-                    <div className="text-slate-600 text-sm">
-                      Industrial Zone, Sector 45<br />
-                      Manufacturing District<br />
-                      Bangladesh
+
+                  <div className="group/item flex items-start gap-4 p-4 rounded-2xl hover:bg-orange-50 transition-colors">
+                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover/item:scale-110 transition-transform">
+                      <MapPin className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-slate-900 mb-1">Office Location</div>
+                      <div className="text-slate-600 text-sm leading-relaxed">
+                        Amsterdam, Netherlands<br />
+                        <span className="text-slate-500">Factory: Bangladesh</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Business Hours */}
-            <div className="bg-slate-900 rounded-xl p-6 text-white">
-              <h3 className="text-xl font-bold mb-4">Business Hours</h3>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-slate-400">Monday - Friday</span>
-                  <span className="font-semibold">9:00 AM - 6:00 PM</span>
+            {/* Premium Business Hours */}
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur-lg opacity-25 group-hover:opacity-40 transition-opacity"></div>
+              
+              <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 text-white">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                    <Clock className="w-5 h-5 text-blue-400" />
+                  </div>
+                  <h3 className="text-xl font-bold">Business Hours</h3>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-400">Saturday</span>
-                  <span className="font-semibold">10:00 AM - 4:00 PM</span>
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between items-center p-3 bg-white/5 rounded-xl backdrop-blur-sm">
+                    <span className="text-slate-300">Monday - Friday</span>
+                    <span className="font-bold text-blue-400">9:00 AM - 6:00 PM</span>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-white/5 rounded-xl backdrop-blur-sm">
+                    <span className="text-slate-300">Saturday</span>
+                    <span className="font-bold text-purple-400">10:00 AM - 4:00 PM</span>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-white/5 rounded-xl backdrop-blur-sm">
+                    <span className="text-slate-300">Sunday</span>
+                    <span className="font-bold text-slate-400">Closed</span>
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-400">Sunday</span>
-                  <span className="font-semibold">Closed</span>
-                </div>
+                
+                {/* Decorative Elements */}
+                <div className="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-blue-400/20 rounded-tr-3xl"></div>
+                <div className="absolute bottom-4 left-4 w-16 h-16 border-b-2 border-l-2 border-purple-400/20 rounded-bl-3xl"></div>
               </div>
             </div>
 
-            {/* Quick Response Promise */}
-            <div className="bg-blue-600 rounded-xl p-6 text-white">
-              <h3 className="text-xl font-bold mb-3">Our Promise</h3>
-              <p className="text-blue-100 text-sm leading-relaxed">
-                We respond to all inquiries within 24 hours with a detailed proposal tailored to your requirements.
-              </p>
+            {/* Premium Promise Card */}
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity"></div>
+              
+              <div className="relative bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl p-8 text-white">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                    <Sparkles className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-xl font-bold">Our Promise</h3>
+                </div>
+                <p className="text-white/90 leading-relaxed">
+                  We respond to all inquiries within 24 hours with a detailed proposal tailored to your requirements. Your success is our priority.
+                </p>
+              </div>
             </div>
           </div>
         </div>
