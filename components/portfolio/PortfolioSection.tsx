@@ -1,0 +1,148 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle } from "lucide-react";
+import { portfolio } from "@/lib/data";
+import PatternBackground from "@/components/backgrounds/PatternBackground";
+
+export default function PortfolioSection() {
+  return (
+    <section id="portfolio" className="relative py-24 bg-slate-50 scroll-mt-20 overflow-hidden">
+      {/* Pattern Background */}
+      <PatternBackground variant="waves" className="opacity-30" />
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <span className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-semibold mb-4">
+            Case Studies
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            Success Stories
+          </h2>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            Real results from real partnerships. See how we've helped brands scale their
+            production and achieve their business goals.
+          </p>
+        </motion.div>
+
+        {/* Portfolio Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {portfolio.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+            >
+              {/* Image Placeholder */}
+              <div className="relative h-64 bg-gradient-to-br from-blue-600 to-blue-800 overflow-hidden">
+                <div className="absolute inset-0 bg-slate-900/20" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <div className="text-6xl font-bold opacity-20 mb-2">
+                      {project.id}
+                    </div>
+                    <div className="text-xl font-semibold">
+                      {project.category}
+                    </div>
+                  </div>
+                </div>
+                {/* Category Badge */}
+                <div className="absolute top-4 right-4">
+                  <span className="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-semibold text-slate-900">
+                    {project.category}
+                  </span>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-slate-900 mb-3">
+                  {project.client}
+                </h3>
+                <p className="text-slate-600 mb-6 leading-relaxed">
+                  {project.description}
+                </p>
+
+                {/* Result */}
+                <div className="flex items-start gap-3 p-4 bg-green-50 rounded-lg border-l-4 border-green-500 mb-6">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-sm font-semibold text-green-900 mb-1">
+                      Result
+                    </p>
+                    <p className="text-sm text-green-700">
+                      {project.result}
+                    </p>
+                  </div>
+                </div>
+
+                {/* View Details Link */}
+                <a
+                  href="#contact"
+                  className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold group-hover:gap-2 transition-all"
+                >
+                  Discuss Similar Project
+                  <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Stats Bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="bg-slate-900 rounded-2xl p-8 md:p-12"
+        >
+          <div className="grid md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2">
+                200+
+              </div>
+              <div className="text-slate-400">
+                Successful Projects
+              </div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2">
+                98.5%
+              </div>
+              <div className="text-slate-400">
+                On-Time Delivery
+              </div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2">
+                150+
+              </div>
+              <div className="text-slate-400">
+                Active Clients
+              </div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2">
+                10M+
+              </div>
+              <div className="text-slate-400">
+                Units Produced
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
