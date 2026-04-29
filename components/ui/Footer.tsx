@@ -105,12 +105,36 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-lg mb-6">Our Services</h3>
             <ul className="space-y-3">
-              <li className="text-slate-400">Apparel Manufacturing</li>
-              <li className="text-slate-400">Fabric Sourcing</li>
-              <li className="text-slate-400">Sampling & Prototyping</li>
-              <li className="text-slate-400">Bulk Production</li>
-              <li className="text-slate-400">Private Label / OEM / ODM</li>
-              <li className="text-slate-400">Quality Control</li>
+              <li>
+                <a href="#services" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                  Apparel Manufacturing
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                  Fabric Sourcing
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                  Sampling & Prototyping
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                  Bulk Production
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                  Private Label / OEM / ODM
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                  Quality Control
+                </a>
+              </li>
             </ul>
           </div>
 
