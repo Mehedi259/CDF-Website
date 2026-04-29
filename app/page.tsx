@@ -1,49 +1,26 @@
 import dynamic from "next/dynamic";
 
-// Use optimized hero for better performance (60% faster load time)
-const OptimizedHeroSection = dynamic(() => import("@/components/hero/OptimizedHeroSection"), {
-  loading: () => <div className="h-screen bg-slate-950" />,
-});
-
-const ServicesSection = dynamic(() => import("@/components/services/ServicesSection"), {
-  loading: () => <div className="h-screen bg-white" />,
-});
-
-const PremiumAboutSection = dynamic(() => import("@/components/about/PremiumAboutSection"), {
-  loading: () => <div className="h-screen bg-slate-50" />,
-});
-
-const FounderVideoSection = dynamic(() => import("@/components/video/FounderVideoSection"), {
-  loading: () => <div className="h-screen bg-white" />,
-});
-
-const ProcessSection = dynamic(() => import("@/components/process/ProcessSection"), {
-  loading: () => <div className="h-screen bg-white" />,
-});
-
-const PortfolioSection = dynamic(() => import("@/components/portfolio/PortfolioSection"), {
-  loading: () => <div className="h-screen bg-slate-50" />,
-});
-
-const TestimonialsSection = dynamic(() => import("@/components/testimonials/TestimonialsSection"), {
-  loading: () => <div className="h-screen bg-white" />,
-});
-
-const ContactSection = dynamic(() => import("@/components/contact/ContactSection"), {
-  loading: () => <div className="h-screen bg-slate-50" />,
-});
+// Ultra-lightweight components - NO Framer Motion animations
+const OptimizedHeroSection = dynamic(() => import("@/components/hero/OptimizedHeroSection"));
+const ServicesSection = dynamic(() => import("@/components/services/ServicesSection"));
+const LightweightAboutSection = dynamic(() => import("@/components/about/LightweightAboutSection"));
+const FounderVideoSection = dynamic(() => import("@/components/video/FounderVideoSection"));
+const LightweightProcessSection = dynamic(() => import("@/components/process/LightweightProcessSection"));
+const LightweightPortfolioSection = dynamic(() => import("@/components/portfolio/LightweightPortfolioSection"));
+const LightweightTestimonialsSection = dynamic(() => import("@/components/testimonials/LightweightTestimonialsSection"));
+const LightweightContactSection = dynamic(() => import("@/components/contact/LightweightContactSection"));
 
 export default function Home() {
   return (
     <main>
       <OptimizedHeroSection />
       <ServicesSection />
-      <PremiumAboutSection />
+      <LightweightAboutSection />
       <FounderVideoSection />
-      <ProcessSection />
-      <PortfolioSection />
-      <TestimonialsSection />
-      <ContactSection />
+      <LightweightProcessSection />
+      <LightweightPortfolioSection />
+      <LightweightTestimonialsSection />
+      <LightweightContactSection />
     </main>
   );
 }

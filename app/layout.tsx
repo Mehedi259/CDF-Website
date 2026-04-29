@@ -3,7 +3,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/ui/Navbar";
+import LightweightNavbar from "@/components/ui/LightweightNavbar";
 import Footer from "@/components/ui/Footer";
 import { ThemeProvider } from "@/lib/context/ThemeContext";
 import { LanguageProvider } from "@/lib/context/LanguageContext";
@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider>
           <LanguageProvider>
-            <Navbar />
+            <LightweightNavbar />
             {children}
             <Footer />
           </LanguageProvider>
