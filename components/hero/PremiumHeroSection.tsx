@@ -65,9 +65,6 @@ export default function PremiumHeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentQuote, setCurrentQuote] = useState(0);
   const { t } = useLanguage();
-  const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-  const scale = useTransform(scrollY, [0, 300], [1, 0.8]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -82,18 +79,9 @@ export default function PremiumHeroSection() {
     setCurrentQuote(currentSlide % founderQuotes.length);
   }, [currentSlide]);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
   return (
-    <motion.section 
+    <section 
       id="home"
-      style={{ opacity, scale }}
       className="relative h-screen w-full overflow-hidden bg-slate-950"
     >
       {/* Premium Pattern Background */}
@@ -321,67 +309,15 @@ export default function PremiumHeroSection() {
         </div>
       </div>
 
-      {/* Enhanced Slide Navigation */}
-      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-30 flex items-center gap-6">
-        <motion.button
-          onClick={prevSlide}
-          className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          aria-label="Previous slide"
-        >
-          ←
-        </motion.button>
-        
-        <div className="flex gap-3">
-          {slides.map((_, index) => (
-            <motion.button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                currentSlide === index 
-                  ? "w-12 bg-gradient-to-r from-blue-500 to-purple-500" 
-                  : "w-2 bg-white/40 hover:bg-white/60"
-              }`}
-              whileHover={{ scale: 1.2 }}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-        
-        <motion.button
-          onClick={nextSlide}
-          className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          aria-label="Next slide"
-        >
-          →
-        </motion.button>
-      </div>
-
       {/* Enhanced Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-12 right-12 z-30"
-      >
+      <div className="absolute bottom-12 right-12 z-30">
         <div className="flex flex-col items-center gap-3 text-white/80">
           <span className="text-sm font-medium tracking-wider">SCROLL</span>
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-8 h-14 border-2 border-white/40 rounded-full flex items-start justify-center p-2"
-          >
-            <motion.div 
-              className="w-2 h-3 bg-gradient-to-b from-blue-400 to-purple-500 rounded-full"
-              animate={{ opacity: [1, 0.3, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </motion.div>
+          <div className="w-8 h-14 border-2 border-white/40 rounded-full flex items-start justify-center p-2">
+            <div className="w-2 h-3 bg-gradient-to-b from-blue-400 to-purple-500 rounded-full" />
+          </div>
         </div>
-      </motion.div>
-    </motion.section>
+      </div>
+    </section>
   );
 }

@@ -18,12 +18,6 @@ const TestimonialsSection = dynamic(() => import("@/components/testimonials/Test
 const ContactSection = dynamic(() => import("@/components/contact/ContactSection"), {
   loading: () => <div className="h-screen" />,
 });
-const ConfettiEffect = dynamic(() => import("@/components/animations/ConfettiEffect"), {
-  ssr: false,
-});
-const PremiumPopup = dynamic(() => import("@/components/ui/PremiumPopup"), {
-  ssr: false,
-});
 const FounderVideoSection = dynamic(() => import("@/components/video/FounderVideoSection"), {
   loading: () => <div className="h-screen" />,
 });
@@ -31,24 +25,6 @@ const FounderVideoSection = dynamic(() => import("@/components/video/FounderVide
 export default function Home() {
   return (
     <main>
-      {/* Welcome Confetti Animation */}
-      <ConfettiEffect 
-        duration={3000}
-        particleCount={50}
-      />
-
-      {/* Welcome Popup - Shows after 4 seconds */}
-      <PremiumPopup 
-        type="welcome" 
-        delay={4000}
-      />
-
-      {/* Inquiry Popup - Shows after scrolling 1500px */}
-      <PremiumPopup 
-        type="inquiry" 
-        scrollTrigger={1500}
-      />
-      
       <PremiumHeroSection />
       <ServicesSection />
       <PremiumAboutSection />
