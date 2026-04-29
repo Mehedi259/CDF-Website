@@ -9,6 +9,66 @@ export const companyData = {
   countries: "45+",
 };
 
+// Founder Quotes
+export const founderQuotes = [
+  {
+    id: 1,
+    quote: "Quality is not an act, it is a habit. We build excellence into every stitch.",
+    author: "Sarah Chen",
+    role: "Co-Founder & CEO",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
+  },
+  {
+    id: 2,
+    quote: "Innovation in manufacturing means staying ahead of trends while maintaining timeless quality.",
+    author: "Michael Rodriguez",
+    role: "Co-Founder & COO",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
+  },
+  {
+    id: 3,
+    quote: "Sustainability isn't a choice anymore—it's our responsibility to the next generation.",
+    author: "Priya Sharma",
+    role: "Head of Sustainability",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
+  },
+  {
+    id: 4,
+    quote: "Our success is measured by the success of the brands we partner with.",
+    author: "David Kim",
+    role: "VP of Operations",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80",
+  },
+  {
+    id: 5,
+    quote: "Every garment tells a story. We ensure it's a story of craftsmanship and care.",
+    author: "Emma Thompson",
+    role: "Quality Director",
+    image: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&q=80",
+  },
+  {
+    id: 6,
+    quote: "Speed without quality is meaningless. We deliver both, every single time.",
+    author: "James Wilson",
+    role: "Production Manager",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
+  },
+  {
+    id: 7,
+    quote: "Global reach, local touch. We bring the world closer through seamless logistics.",
+    author: "Sofia Martinez",
+    role: "Logistics Director",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
+  },
+  {
+    id: 8,
+    quote: "Fair pricing doesn't mean compromising quality. It means smart manufacturing.",
+    author: "Robert Chang",
+    role: "Finance Director",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
+  },
+];
+
 // Services Data
 export const services = [
   {

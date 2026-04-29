@@ -1,12 +1,14 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Play, Sparkles } from "lucide-react";
+import { ArrowRight, Play, Sparkles, Quote } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import PatternBackground from "@/components/backgrounds/PatternBackground";
 import MagneticButton from "@/components/animations/MagneticButton";
 import TextReveal from "@/components/animations/TextReveal";
+import { founderQuotes } from "@/lib/data";
+import Image from "next/image";
 
 const slides = [
   {
@@ -61,6 +63,7 @@ const slides = [
 
 export default function PremiumHeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentQuote, setCurrentQuote] = useState(0);
   const { t } = useLanguage();
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
@@ -73,6 +76,11 @@ export default function PremiumHeroSection() {
 
     return () => clearInterval(timer);
   }, []);
+
+  // Sync quote with slide
+  useEffect(() => {
+    setCurrentQuote(currentSlide % founderQuotes.length);
+  }, [currentSlide]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -134,97 +142,167 @@ export default function PremiumHeroSection() {
       {/* Content with Advanced Animations */}
       <div className="relative z-20 h-full flex items-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl">
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-            >
-              {/* Premium Badge with Glow */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Side - Content */}
+            <div className="max-w-3xl">
               <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="mb-8"
+                key={currentSlide}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
               >
+                {/* Premium Badge with Glow */}
                 <motion.div
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-full backdrop-blur-md"
-                  animate={{
-                    boxShadow: [
-                      "0 0 20px rgba(37, 99, 235, 0.3)",
-                      "0 0 40px rgba(37, 99, 235, 0.5)",
-                      "0 0 20px rgba(37, 99, 235, 0.3)",
-                    ],
-                  }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <Sparkles className="w-4 h-4 text-blue-400" />
-                  <span className="text-blue-400 text-sm font-semibold tracking-wide">
-                    {t("trustedSince")}
-                  </span>
-                </motion.div>
-              </motion.div>
-
-              {/* Animated Title with Text Reveal */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
-                  <TextReveal 
-                    text={t(slides[currentSlide].titleKey)}
-                    className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent"
-                    delay={0.5}
-                  />
-                </h1>
-              </motion.div>
-
-              {/* Subtitle with Stagger Animation */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="text-xl md:text-2xl text-slate-300 mb-12 leading-relaxed max-w-3xl"
-              >
-                {t(slides[currentSlide].subtitleKey)}
-              </motion.p>
-
-              {/* Premium CTA Buttons with Magnetic Effect */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1 }}
-                className="flex flex-col sm:flex-row gap-6"
-              >
-                <MagneticButton
-                  href="#contact"
-                  className="group relative inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-xl overflow-hidden shadow-2xl shadow-blue-500/50 transition-all duration-300 hover:shadow-blue-500/70"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="mb-8"
                 >
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  <span className="relative z-10 flex items-center gap-3">
-                    {t("requestQuote")}
-                    <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-                  </span>
-                </MagneticButton>
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-full backdrop-blur-md"
+                    animate={{
+                      boxShadow: [
+                        "0 0 20px rgba(37, 99, 235, 0.3)",
+                        "0 0 40px rgba(37, 99, 235, 0.5)",
+                        "0 0 20px rgba(37, 99, 235, 0.3)",
+                      ],
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <Sparkles className="w-4 h-4 text-blue-400" />
+                    <span className="text-blue-400 text-sm font-semibold tracking-wide">
+                      {t("trustedSince")}
+                    </span>
+                  </motion.div>
+                </motion.div>
 
-                <MagneticButton
-                  href="#services"
-                  className="group relative inline-flex items-center justify-center px-10 py-5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl backdrop-blur-md border border-white/20 transition-all duration-300"
+                {/* Animated Title with Text Reveal */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
                 >
-                  <span className="flex items-center gap-3">
-                    {t("viewCapabilities")}
-                    <Play className="w-6 h-6" />
-                  </span>
-                </MagneticButton>
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
+                    <TextReveal 
+                      text={t(slides[currentSlide].titleKey)}
+                      className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent"
+                      delay={0.5}
+                    />
+                  </h1>
+                </motion.div>
+
+                {/* Subtitle with Stagger Animation */}
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.8 }}
+                  className="text-lg md:text-xl text-slate-300 mb-12 leading-relaxed"
+                >
+                  {t(slides[currentSlide].subtitleKey)}
+                </motion.p>
+
+                {/* Premium CTA Buttons with Magnetic Effect */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1 }}
+                  className="flex flex-col sm:flex-row gap-6"
+                >
+                  <MagneticButton
+                    href="#contact"
+                    className="group relative inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-xl overflow-hidden shadow-2xl shadow-blue-500/50 transition-all duration-300 hover:shadow-blue-500/70"
+                  >
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: 0 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <span className="relative z-10 flex items-center gap-3">
+                      {t("requestQuote")}
+                      <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                    </span>
+                  </MagneticButton>
+
+                  <MagneticButton
+                    href="#services"
+                    className="group relative inline-flex items-center justify-center px-10 py-5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl backdrop-blur-md border border-white/20 transition-all duration-300"
+                  >
+                    <span className="flex items-center gap-3">
+                      {t("viewCapabilities")}
+                      <Play className="w-6 h-6" />
+                    </span>
+                  </MagneticButton>
+                </motion.div>
               </motion.div>
-            </motion.div>
+            </div>
+
+            {/* Right Side - Founder Quotes Cards */}
+            <div className="hidden lg:flex justify-center items-center">
+              <div className="relative w-full max-w-md h-[500px]">
+                {founderQuotes.map((quote, index) => (
+                  <motion.div
+                    key={quote.id}
+                    className="absolute inset-0"
+                    initial={{ opacity: 0, scale: 0.8, rotateY: -90 }}
+                    animate={{ 
+                      opacity: currentQuote === index ? 1 : 0,
+                      scale: currentQuote === index ? 1 : 0.8,
+                      rotateY: currentQuote === index ? 0 : 90,
+                      zIndex: currentQuote === index ? 10 : 0,
+                    }}
+                    transition={{ 
+                      duration: 0.8,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    {/* Glassmorphism Card */}
+                    <div className="relative h-full bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl p-8 shadow-2xl">
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 rounded-3xl" />
+                      
+                      {/* Quote Icon */}
+                      <div className="relative mb-6">
+                        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+                          <Quote className="w-8 h-8 text-white" />
+                        </div>
+                      </div>
+
+                      {/* Quote Text */}
+                      <div className="relative mb-8">
+                        <p className="text-white text-xl md:text-2xl font-medium leading-relaxed italic">
+                          "{quote.quote}"
+                        </p>
+                      </div>
+
+                      {/* Author Info */}
+                      <div className="relative flex items-center gap-4 mt-auto">
+                        <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-white/30">
+                          <Image
+                            src={quote.image}
+                            alt={quote.author}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <div>
+                          <h4 className="text-white font-bold text-lg">
+                            {quote.author}
+                          </h4>
+                          <p className="text-blue-300 text-sm">
+                            {quote.role}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Decorative Elements */}
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl" />
+                      <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl" />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
