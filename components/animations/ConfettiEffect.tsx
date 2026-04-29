@@ -75,7 +75,8 @@ export default function ConfettiEffect({
     return () => {
       clearTimeout(timer);
     };
-  }, [autoStart, duration, particleCount, colors]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoStart, duration, particleCount]);
 
   if (!isActive || confetti.length === 0) return null;
 
