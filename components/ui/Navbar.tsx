@@ -158,7 +158,7 @@ export default function Navbar() {
                   whileTap={{ scale: 0.95 }}
                 >
                   <Phone className="w-4 h-4" />
-                  <span className="font-medium text-sm">+1 (800) 555-1234</span>
+                  <span className="font-medium text-sm">+31 6 87620061</span>
                 </motion.a>
                 <motion.a
                   href="#contact"
@@ -260,14 +260,14 @@ export default function Navbar() {
                 {/* Mobile Contact Info */}
                 <div className="mt-auto space-y-4">
                   <motion.a
-                    href="tel:+18005551234"
+                    href="tel:+31687620061"
                     className="flex items-center gap-3 text-slate-700 hover:text-blue-600 transition-colors p-4 rounded-xl hover:bg-slate-100"
                     whileHover={{ x: 5 }}
                   >
                     <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                       <Phone className="w-5 h-5 text-blue-600" />
                     </div>
-                    <span className="font-medium">+1 (800) 555-1234</span>
+                    <span className="font-medium">+31 6 87620061</span>
                   </motion.a>
                   <motion.a
                     href="mailto:info@cdfstudio.com"

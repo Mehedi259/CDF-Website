@@ -189,8 +189,8 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <div className="font-semibold text-slate-900 mb-1">Phone</div>
-                    <a href="tel:+18005551234" className="text-blue-600 hover:text-blue-700">
-                      +1 (800) 555-1234
+                    <a href="tel:+31687620061" className="text-blue-600 hover:text-blue-700">
+                      +31 6 87620061
                     </a>
                     <div className="text-sm text-slate-500 mt-1">
                       Mon-Fri, 9AM-6PM EST
@@ -204,8 +204,8 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <div className="font-semibold text-slate-900 mb-1">WhatsApp</div>
-                    <a href="https://wa.me/18005551234" className="text-blue-600 hover:text-blue-700">
-                      +1 (800) 555-1234
+                    <a href="https://wa.me/31687620061" className="text-blue-600 hover:text-blue-700">
+                      +31 6 87620061
                     </a>
                     <div className="text-sm text-slate-500 mt-1">
                       Instant messaging support

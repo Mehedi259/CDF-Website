@@ -133,10 +133,10 @@ export default function Footer() {
                 <Phone className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
                 <div>
                   <a
-                    href="tel:+18005551234"
+                    href="tel:+31687620061"
                     className="text-slate-400 hover:text-white transition-colors"
                   >
-                    +1 (800) 555-1234
+                    +31 6 87620061
                   </a>
                 </div>
               </li>
