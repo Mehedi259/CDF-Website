@@ -5,6 +5,7 @@ const OptimizedHeroSection = dynamic(() => import("@/components/hero/OptimizedHe
 const ServicesSection = dynamic(() => import("@/components/services/ServicesSection"));
 const LightweightAboutSection = dynamic(() => import("@/components/about/LightweightAboutSection"));
 const FounderVideoSection = dynamic(() => import("@/components/video/FounderVideoSection"));
+const ProductsCatalogSection = dynamic(() => import("@/components/products/ProductsCatalogSection"));
 const LightweightProcessSection = dynamic(() => import("@/components/process/LightweightProcessSection"));
 const LightweightPortfolioSection = dynamic(() => import("@/components/portfolio/LightweightPortfolioSection"));
 const LightweightTestimonialsSection = dynamic(() => import("@/components/testimonials/LightweightTestimonialsSection"));
@@ -17,6 +18,7 @@ export default function Home() {
       <ServicesSection />
       <LightweightAboutSection />
       <FounderVideoSection />
+      <ProductsCatalogSection />
       <LightweightProcessSection />
       <LightweightPortfolioSection />
       <LightweightTestimonialsSection />
