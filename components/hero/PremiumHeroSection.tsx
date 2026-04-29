@@ -87,15 +87,13 @@ export default function PremiumHeroSection() {
       {/* Premium Pattern Background */}
       <PatternBackground variant="circuit" />
 
-      {/* Background Slides with Enhanced Effects */}
+      {/* Background Slides - Only render current slide for performance */}
       {slides.map((slide, index) => {
-        // Only render current, previous, and next slides for better performance
-        const shouldRender = 
-          index === currentSlide || 
-          index === (currentSlide - 1 + slides.length) % slides.length ||
-          index === (currentSlide + 1) % slides.length;
+        // Only render current slide and preload next
+        const isCurrent = index === currentSlide;
+        const isNext = index === (currentSlide + 1) % slides.length;
         
-        if (!shouldRender) return null;
+        if (!isCurrent && !isNext) return null;
         
         return (
           <motion.div
@@ -103,23 +101,12 @@ export default function PremiumHeroSection() {
             className="absolute inset-0"
             initial={{ opacity: 0 }}
             animate={{ 
-              opacity: currentSlide === index ? 1 : 0,
-              scale: currentSlide === index ? 1 : 1.1,
+              opacity: isCurrent ? 1 : 0,
+              scale: isCurrent ? 1 : 1.05,
             }}
-            transition={{ duration: 1, ease: "easeInOut" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            {/* Gradient Overlays with Animation */}
-            <motion.div 
-              className="absolute inset-0 z-10"
-              animate={{
-                background: [
-                  "radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.3) 0%, transparent 50%)",
-                  "radial-gradient(circle at 80% 50%, rgba(37, 99, 235, 0.3) 0%, transparent 50%)",
-                  "radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.3) 0%, transparent 50%)",
-                ],
-              }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            />
+            {/* Static Gradient Overlay - removed animation for performance */}
             <div className="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/70 to-slate-950/90 z-10" />
             
             {/* Optimized Image with Next.js Image component */}
@@ -129,13 +116,9 @@ export default function PremiumHeroSection() {
               fill
               priority={index === 0}
               loading={index === 0 ? "eager" : "lazy"}
-              quality={75}
+              quality={60}
               sizes="100vw"
               className="object-cover"
-              style={{
-                transform: currentSlide === index ? 'scale(1.1)' : 'scale(1)',
-                transition: 'transform 5s ease-out',
-              }}
             />
           </motion.div>
         );

@@ -78,7 +78,7 @@ export const services = [
     benefit: "Reduce production costs by 40% while maintaining premium quality standards",
     example: "Produced 2M+ units for Fortune 500 sportswear brands",
     icon: "factory",
-    image: "https://images.unsplash.com/photo-1558769132-cb1aea1c8347?w=600&q=80",
+    image: "/hero/hero-1.webp",
   },
   {
     id: 2,
@@ -87,7 +87,7 @@ export const services = [
     benefit: "Eliminate middlemen costs and reduce lead times by 30%",
     example: "Sourced sustainable cotton for major European fashion retailers",
     icon: "layers",
-    image: "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=600&q=80",
+    image: "/hero/hero-2.webp",
   },
   {
     id: 3,
@@ -96,7 +96,7 @@ export const services = [
     benefit: "Validate designs before bulk production, minimize costly errors",
     example: "Developed 500+ samples for startup brands entering retail",
     icon: "clipboard",
-    image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80",
+    image: "/hero/hero-3.webp",
   },
   {
     id: 4,
@@ -105,7 +105,7 @@ export const services = [
     benefit: "Scale your business without capital investment in facilities",
     example: "Managed 50,000-unit orders with 98.5% on-time delivery rate",
     icon: "package",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80",
+    image: "/hero/hero-4.webp",
   },
   {
     id: 5,
@@ -114,7 +114,7 @@ export const services = [
     benefit: "Launch your apparel line without manufacturing infrastructure",
     example: "Launched 15+ private label brands now selling in major retailers",
     icon: "tag",
-    image: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600&q=80",
+    image: "/hero/hero-5.webp",
   },
   {
     id: 6,
@@ -123,7 +123,7 @@ export const services = [
     benefit: "Guarantee product quality, reduce returns and customer complaints",
     example: "Maintained 99.2% quality pass rate across 10M+ units",
     icon: "shield-check",
-    image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&q=80",
+    image: "/hero/hero-6.webp",
   },
   {
     id: 7,
@@ -132,7 +132,7 @@ export const services = [
     benefit: "Ensure perfect fit across all sizes, reduce sample iterations",
     example: "Created 1000+ patterns for international fashion brands",
     icon: "clipboard",
-    image: "https://images.unsplash.com/photo-1558769132-92e717d613cd?w=600&q=80",
+    image: "/hero/hero-7.webp",
   },
   {
     id: 8,
@@ -141,7 +141,7 @@ export const services = [
     benefit: "Add value to products with premium finishing techniques",
     example: "Completed 500K+ custom embroidery orders with zero defects",
     icon: "tag",
-    image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=80",
+    image: "/hero/hero-8.webp",
   },
   {
     id: 9,
@@ -150,7 +150,7 @@ export const services = [
     benefit: "Achieve desired look and feel while maintaining fabric integrity",
     example: "Processed 1M+ denim pieces with sustainable washing methods",
     icon: "factory",
-    image: "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=600&q=80",
+    image: "/hero/hero-1.webp",
   },
   {
     id: 10,
@@ -159,7 +159,7 @@ export const services = [
     benefit: "Create memorable unboxing experience for your customers",
     example: "Designed packaging for 200+ brands entering retail market",
     icon: "package",
-    image: "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&q=80",
+    image: "/hero/hero-2.webp",
   },
   {
     id: 11,
@@ -168,7 +168,7 @@ export const services = [
     benefit: "Hassle-free delivery to your warehouse or retail locations",
     example: "Shipped 10M+ units globally with 99% on-time delivery",
     icon: "package",
-    image: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=600&q=80",
+    image: "/hero/hero-3.webp",
   },
   {
     id: 12,
@@ -177,7 +177,7 @@ export const services = [
     benefit: "Create market-ready designs with professional guidance",
     example: "Consulted on 300+ successful product launches",
     icon: "clipboard",
-    image: "https://images.unsplash.com/photo-1558769132-92e717d613cd?w=600&q=80",
+    image: "/hero/hero-4.webp",
   },
 ];
 
