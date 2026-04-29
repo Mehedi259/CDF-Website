@@ -100,44 +100,58 @@ export default function PremiumHeroSection() {
       <PatternBackground variant="circuit" />
 
       {/* Background Slides with Enhanced Effects */}
-      {slides.map((slide, index) => (
-        <motion.div
-          key={index}
-          className="absolute inset-0"
-          initial={{ opacity: 0 }}
-          animate={{ 
-            opacity: currentSlide === index ? 1 : 0,
-            scale: currentSlide === index ? 1 : 1.1,
-          }}
-          transition={{ duration: 1, ease: "easeInOut" }}
-        >
-          {/* Gradient Overlays with Animation */}
-          <motion.div 
-            className="absolute inset-0 z-10"
-            animate={{
-              background: [
-                "radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.3) 0%, transparent 50%)",
-                "radial-gradient(circle at 80% 50%, rgba(37, 99, 235, 0.3) 0%, transparent 50%)",
-                "radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.3) 0%, transparent 50%)",
-              ],
-            }}
-            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/70 to-slate-950/90 z-10" />
-          
-          {/* Image with Ken Burns Effect */}
+      {slides.map((slide, index) => {
+        // Only render current, previous, and next slides for better performance
+        const shouldRender = 
+          index === currentSlide || 
+          index === (currentSlide - 1 + slides.length) % slides.length ||
+          index === (currentSlide + 1) % slides.length;
+        
+        if (!shouldRender) return null;
+        
+        return (
           <motion.div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${slide.image})`,
+            key={index}
+            className="absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={{ 
+              opacity: currentSlide === index ? 1 : 0,
+              scale: currentSlide === index ? 1 : 1.1,
             }}
-            animate={{
-              scale: currentSlide === index ? [1, 1.1] : 1,
-            }}
-            transition={{ duration: 5, ease: "easeOut" }}
-          />
-        </motion.div>
-      ))}
+            transition={{ duration: 1, ease: "easeInOut" }}
+          >
+            {/* Gradient Overlays with Animation */}
+            <motion.div 
+              className="absolute inset-0 z-10"
+              animate={{
+                background: [
+                  "radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.3) 0%, transparent 50%)",
+                  "radial-gradient(circle at 80% 50%, rgba(37, 99, 235, 0.3) 0%, transparent 50%)",
+                  "radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.3) 0%, transparent 50%)",
+                ],
+              }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/70 to-slate-950/90 z-10" />
+            
+            {/* Optimized Image with Next.js Image component */}
+            <Image
+              src={slide.image}
+              alt={slide.alt}
+              fill
+              priority={index === 0}
+              loading={index === 0 ? "eager" : "lazy"}
+              quality={75}
+              sizes="100vw"
+              className="object-cover"
+              style={{
+                transform: currentSlide === index ? 'scale(1.1)' : 'scale(1)',
+                transition: 'transform 5s ease-out',
+              }}
+            />
+          </motion.div>
+        );
+      })}
 
       {/* Content with Advanced Animations */}
       <div className="relative z-20 h-full flex items-center">

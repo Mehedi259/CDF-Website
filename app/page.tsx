@@ -1,21 +1,40 @@
+import dynamic from "next/dynamic";
 import PremiumHeroSection from "@/components/hero/PremiumHeroSection";
 import ServicesSection from "@/components/services/ServicesSection";
-import PremiumAboutSection from "@/components/about/PremiumAboutSection";
-import ProcessSection from "@/components/process/ProcessSection";
-import PortfolioSection from "@/components/portfolio/PortfolioSection";
-import TestimonialsSection from "@/components/testimonials/TestimonialsSection";
-import ContactSection from "@/components/contact/ContactSection";
-import ConfettiEffect from "@/components/animations/ConfettiEffect";
-import PremiumPopup from "@/components/ui/PremiumPopup";
-import FounderVideoSection from "@/components/video/FounderVideoSection";
+
+// Lazy load heavy components
+const PremiumAboutSection = dynamic(() => import("@/components/about/PremiumAboutSection"), {
+  loading: () => <div className="h-screen" />,
+});
+const ProcessSection = dynamic(() => import("@/components/process/ProcessSection"), {
+  loading: () => <div className="h-screen" />,
+});
+const PortfolioSection = dynamic(() => import("@/components/portfolio/PortfolioSection"), {
+  loading: () => <div className="h-screen" />,
+});
+const TestimonialsSection = dynamic(() => import("@/components/testimonials/TestimonialsSection"), {
+  loading: () => <div className="h-screen" />,
+});
+const ContactSection = dynamic(() => import("@/components/contact/ContactSection"), {
+  loading: () => <div className="h-screen" />,
+});
+const ConfettiEffect = dynamic(() => import("@/components/animations/ConfettiEffect"), {
+  ssr: false,
+});
+const PremiumPopup = dynamic(() => import("@/components/ui/PremiumPopup"), {
+  ssr: false,
+});
+const FounderVideoSection = dynamic(() => import("@/components/video/FounderVideoSection"), {
+  loading: () => <div className="h-screen" />,
+});
 
 export default function Home() {
   return (
     <main>
       {/* Welcome Confetti Animation */}
       <ConfettiEffect 
-        duration={4000}
-        particleCount={100}
+        duration={3000}
+        particleCount={50}
       />
 
       {/* Welcome Popup - Shows after 4 seconds */}
