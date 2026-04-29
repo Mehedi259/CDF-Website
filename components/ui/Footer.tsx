@@ -106,32 +106,32 @@ export default function Footer() {
             <h3 className="font-bold text-lg mb-6">Our Services</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#services" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                <a href="/services/apparel-manufacturing" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
                   Apparel Manufacturing
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                <a href="/services/fabric-sourcing" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
                   Fabric Sourcing
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                <a href="/services/sampling-prototyping" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
                   Sampling & Prototyping
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                <a href="/services/bulk-production" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
                   Bulk Production
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                <a href="/services/private-label-oem-odm" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
                   Private Label / OEM / ODM
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                <a href="/services/quality-control" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
                   Quality Control
                 </a>
               </li>
@@ -195,13 +195,13 @@ export default function Footer() {
             © {currentYear} CDF Studio. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">
+            <a href="/privacy" className="text-slate-400 hover:text-white transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">
+            <a href="/terms" className="text-slate-400 hover:text-white transition-colors">
               Terms of Service
             </a>
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">
+            <a href="/cookies" className="text-slate-400 hover:text-white transition-colors">
               Cookie Policy
             </a>
           </div>

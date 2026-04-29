@@ -1,9 +1,9 @@
 "use client";
 
-import { Factory, Layers, Clipboard, Package, Tag, ShieldCheck, ArrowRight, Sparkles, Zap, X, CheckCircle, TrendingUp, Users, Clock } from "lucide-react";
+import { Factory, Layers, Clipboard, Package, Tag, ShieldCheck, ArrowRight, Sparkles, Zap } from "lucide-react";
 import { services } from "@/lib/data";
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
 
 const iconMap = {
   factory: Factory,
@@ -14,18 +14,17 @@ const iconMap = {
   "shield-check": ShieldCheck,
 };
 
+// Service slug mapping
+const serviceSlugMap: Record<string, string> = {
+  "apparel-manufacturing": "apparel-manufacturing",
+  "fabric-sourcing": "fabric-sourcing",
+  "sampling-prototyping": "sampling-prototyping",
+  "bulk-production": "bulk-production",
+  "private-label": "private-label-oem-odm",
+  "quality-control": "quality-control",
+};
+
 export default function ServicesSection() {
-  const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
-
-  const openServiceDetail = (service: typeof services[0]) => {
-    setSelectedService(service);
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeServiceDetail = () => {
-    setSelectedService(null);
-    document.body.style.overflow = "unset";
-  };
   return (
     <section 
       id="services" 
@@ -62,12 +61,13 @@ export default function ServicesSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {services.slice(0, 6).map((service, index) => {
             const Icon = iconMap[service.icon as keyof typeof iconMap];
+            const serviceSlug = serviceSlugMap[service.id];
             
             return (
-              <div
+              <Link
                 key={service.id}
-                onClick={() => openServiceDetail(service)}
-                className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-transparent cursor-pointer"
+                href={`/services/${serviceSlug}`}
+                className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-transparent cursor-pointer block"
               >
                 {/* Gradient Border Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-500 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-sm"></div>
@@ -147,7 +147,7 @@ export default function ServicesSection() {
                     <ArrowRight className="w-5 h-5 text-white" />
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
@@ -183,190 +183,7 @@ export default function ServicesSection() {
         .animation-delay-2000 {
           animation-delay: 2s;
         }
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes slideUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
-        }
-        .animate-slideUp {
-          animation: slideUp 0.4s ease-out;
-        }
       `}</style>
-
-      {/* Service Detail Modal */}
-      {selectedService && (
-        <div className="fixed inset-0 z-[10001] flex items-center justify-center p-4 bg-slate-900/95 backdrop-blur-sm animate-fadeIn">
-          <div className="relative w-full max-w-6xl max-h-[90vh] bg-white rounded-3xl shadow-2xl overflow-hidden animate-slideUp">
-            {/* Close Button */}
-            <button
-              onClick={closeServiceDetail}
-              className="absolute top-6 right-6 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-slate-900/80 hover:bg-slate-900 text-white transition-all duration-200 hover:scale-110 backdrop-blur-sm"
-              aria-label="Close"
-            >
-              <X className="w-6 h-6" />
-            </button>
-
-            <div className="overflow-y-auto max-h-[90vh]">
-              {/* Hero Image Section */}
-              <div className="relative h-96 overflow-hidden">
-                <Image
-                  src={selectedService.image}
-                  alt={selectedService.title}
-                  width={1200}
-                  height={600}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent"></div>
-                
-                {/* Service Title Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-                  <div className="max-w-4xl mx-auto">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 rounded-full text-white text-sm font-bold mb-4 shadow-lg">
-                      {(() => {
-                        const Icon = iconMap[selectedService.icon as keyof typeof iconMap];
-                        return <Icon className="w-5 h-5" />;
-                      })()}
-                      <span>Premium Service</span>
-                    </div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                      {selectedService.title}
-                    </h2>
-                    <p className="text-xl text-white/90 leading-relaxed">
-                      {selectedService.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Service Details Content */}
-              <div className="p-8 md:p-12">
-                <div className="max-w-4xl mx-auto">
-                  {/* Key Benefits */}
-                  <div className="mb-12">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                      <Sparkles className="w-7 h-7 text-blue-600" />
-                      Business Benefits
-                    </h3>
-                    <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-100">
-                      <p className="text-lg text-slate-700 leading-relaxed">
-                        {selectedService.benefit}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Success Example */}
-                  <div className="mb-12">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                      <CheckCircle className="w-7 h-7 text-green-600" />
-                      Success Story
-                    </h3>
-                    <div className="bg-green-50 rounded-2xl p-8 border border-green-200">
-                      <p className="text-lg text-green-900 leading-relaxed">
-                        {selectedService.example}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Service Features */}
-                  <div className="mb-12">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                      <TrendingUp className="w-7 h-7 text-blue-600" />
-                      What's Included
-                    </h3>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      {[
-                        { title: "Expert Consultation", desc: "Dedicated team to understand your requirements" },
-                        { title: "Quality Assurance", desc: "Multi-stage inspection and quality control" },
-                        { title: "Timely Delivery", desc: "On-time delivery with progress tracking" },
-                        { title: "Competitive Pricing", desc: "Best value for premium quality services" },
-                        { title: "Custom Solutions", desc: "Tailored to your specific business needs" },
-                        { title: "24/7 Support", desc: "Responsive customer service team" },
-                      ].map((feature, idx) => (
-                        <div key={idx} className="flex items-start gap-4 p-5 bg-white rounded-xl border border-slate-200 hover:shadow-lg transition-shadow">
-                          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <span className="text-white font-bold text-sm">{idx + 1}</span>
-                          </div>
-                          <div>
-                            <h4 className="font-bold text-slate-900 mb-1">{feature.title}</h4>
-                            <p className="text-sm text-slate-600">{feature.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Process Timeline */}
-                  <div className="mb-12">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                      <Clock className="w-7 h-7 text-blue-600" />
-                      Service Process
-                    </h3>
-                    <div className="space-y-4">
-                      {[
-                        { step: "1", title: "Initial Consultation", desc: "Discuss your requirements and project scope" },
-                        { step: "2", title: "Proposal & Quote", desc: "Receive detailed proposal with pricing" },
-                        { step: "3", title: "Production Start", desc: "Begin manufacturing with quality checks" },
-                        { step: "4", title: "Delivery", desc: "On-time delivery with full documentation" },
-                      ].map((process, idx) => (
-                        <div key={idx} className="flex items-start gap-4 p-5 bg-slate-50 rounded-xl hover:bg-blue-50 transition-colors">
-                          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0 text-white font-bold shadow-lg">
-                            {process.step}
-                          </div>
-                          <div className="flex-1">
-                            <h4 className="font-bold text-slate-900 mb-1">{process.title}</h4>
-                            <p className="text-sm text-slate-600">{process.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* CTA Section */}
-                  <div className="relative">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur-lg opacity-25"></div>
-                    <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-10 text-center">
-                      <h3 className="text-3xl font-bold text-white mb-4">
-                        Ready to Get Started with {selectedService.title}?
-                      </h3>
-                      <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
-                        Contact us today to discuss your project requirements and receive a customized quote
-                      </p>
-                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a
-                          href="#contact"
-                          onClick={closeServiceDetail}
-                          className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
-                        >
-                          <span>Request Quote</span>
-                          <ArrowRight className="w-5 h-5" />
-                        </a>
-                        <button
-                          onClick={closeServiceDetail}
-                          className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-full backdrop-blur-sm transition-all duration-300"
-                        >
-                          <span>View Other Services</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
