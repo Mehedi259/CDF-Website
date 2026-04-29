@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, MessageSquare } from "lucide-react";
 import { useState } from "react";
 import PatternBackground from "@/components/backgrounds/PatternBackground";
+import emailjs from '@emailjs/browser';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -13,13 +14,73 @@ export default function ContactSection() {
     phone: "",
     requirements: "",
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
-    alert("Thank you for your inquiry! We'll get back to you within 24 hours.");
-    setFormData({ name: "", email: "", company: "", phone: "", requirements: "" });
+    setIsSubmitting(true);
+    
+    try {
+      // EmailJS configuration
+      // You need to replace these with your actual EmailJS credentials
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
+      
+      // Check if EmailJS is configured
+      if (serviceId === 'YOUR_SERVICE_ID' || !serviceId) {
+        // Fallback to mailto if EmailJS is not configured
+        const subject = `New Production Quote Request from ${formData.company}`;
+        const body = `
+New Production Quote Request
+
+Full Name: ${formData.name}
+Business Email: ${formData.email}
+Company Name: ${formData.company}
+Phone Number: ${formData.phone || 'Not provided'}
+
+Project Requirements:
+${formData.requirements}
+
+---
+This inquiry was submitted through the CDF Studio website contact form.
+        `.trim();
+
+        const mailtoLink = `mailto:info@cdfstudio.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailtoLink;
+        
+        alert("Your email client will open to send the message. Please click send in your email application.");
+        setFormData({ name: "", email: "", company: "", phone: "", requirements: "" });
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Send email using EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        company_name: formData.company,
+        phone_number: formData.phone || 'Not provided',
+        message: formData.requirements,
+        to_email: 'info@cdfstudio.com',
+      };
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
+
+      alert("Thank you for your inquiry! We'll get back to you within 24 hours.");
+      setFormData({ name: "", email: "", company: "", phone: "", requirements: "" });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert("There was an error sending your message. Please try again or contact us directly at info@cdfstudio.com");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -146,9 +207,10 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+                disabled={isSubmitting}
+                className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                Send Inquiry
+                {isSubmitting ? 'Sending...' : 'Send Inquiry'}
                 <Send className="w-5 h-5" />
               </button>
             </form>
