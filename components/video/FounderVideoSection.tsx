@@ -106,7 +106,7 @@ export default function FounderVideoSection() {
               <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
                 {/* High-Quality Thumbnail Image */}
                 <Image
-                  src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1920&q=90"
+                  src="/founders/founder-video-thumb.webp"
                   alt="CDF Studio Founders"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
