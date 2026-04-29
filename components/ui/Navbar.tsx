@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import { useLanguage } from "@/lib/context/LanguageContext";
-import ThemeLanguageSwitcher from "./ThemeLanguageSwitcher";
 
 const navLinks = [
   { nameKey: "home", href: "#home" },
@@ -13,7 +12,6 @@ const navLinks = [
   { nameKey: "process", href: "#process" },
   { nameKey: "portfolio", href: "#portfolio" },
   { nameKey: "testimonials", href: "#testimonials" },
-  { nameKey: "contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -25,23 +23,40 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-
-      // Detect active section
-      const sections = navLinks.map(link => link.href.replace('#', ''));
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
     };
     
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    
+    // Intersection Observer for active section detection
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px', // Trigger when section is 20% from top
+      threshold: 0
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Observe all sections
+    navLinks.forEach(link => {
+      const sectionId = link.href.replace('#', '');
+      const element = document.getElementById(sectionId);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -57,75 +72,70 @@ export default function Navbar() {
           <motion.div
             animate={{
               backgroundColor: scrolled 
-                ? "rgba(255, 255, 255, 0.95)" 
-                : "rgba(255, 255, 255, 0.1)",
+                ? "rgba(255, 255, 255, 0.98)" 
+                : "rgba(255, 255, 255, 0.05)",
               backdropFilter: scrolled ? "blur(20px)" : "blur(10px)",
               boxShadow: scrolled 
                 ? "0 10px 40px rgba(0, 0, 0, 0.1)" 
                 : "0 5px 20px rgba(0, 0, 0, 0.05)",
             }}
             transition={{ duration: 0.3 }}
-            className="rounded-2xl border border-white/20 dark:border-slate-700/50 px-6 py-4 dark:bg-slate-900/95"
+            className="rounded-2xl border border-white/20 dark:border-slate-700/50 px-8 py-5 dark:bg-slate-900/95"
             style={{
               WebkitBackdropFilter: scrolled ? "blur(20px)" : "blur(10px)",
             }}
           >
             <div className="flex items-center justify-between">
-              {/* Logo */}
+              {/* Logo - Vertical Layout */}
               <motion.a
                 href="#home"
-                className="flex items-center gap-3 group"
+                className="flex flex-col items-center gap-1 group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <motion.div
-                  className="w-11 h-11 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-blue-500/50 transition-shadow"
+                  className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-blue-500/50 transition-shadow"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <span className="text-white font-bold text-xl">C</span>
+                  <span className="text-white font-bold text-2xl">C</span>
                 </motion.div>
-                <div>
-                  <div className={`font-bold text-lg leading-tight transition-colors ${scrolled ? "text-slate-900 dark:text-white" : "text-white"}`}>
-                    {t("companyName")}
-                  </div>
-                  <div className={`text-xs transition-colors ${scrolled ? "text-slate-600 dark:text-slate-400" : "text-slate-300"}`}>
-                    {t("tagline")}
-                  </div>
+                <div className={`font-bold text-sm leading-tight transition-colors text-center ${scrolled ? "text-slate-900 dark:text-white" : "text-white"}`}>
+                  CTF Studio
                 </div>
               </motion.a>
 
               {/* Desktop Navigation */}
-              <div className="hidden lg:flex items-center gap-2">
+              <div className="hidden lg:flex items-center gap-1">
                 {navLinks.map((link) => {
                   const isActive = activeSection === link.href.replace('#', '');
                   return (
                     <motion.a
                       key={link.nameKey}
                       href={link.href}
-                      className="relative px-4 py-2 rounded-lg font-medium transition-colors"
+                      className="relative px-5 py-2.5 rounded-xl font-semibold text-sm transition-colors"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
                       <span className={`relative z-10 ${
                         scrolled
                           ? isActive ? "text-white" : "text-slate-700 dark:text-slate-300"
-                          : isActive ? "text-white" : "text-white/80"
+                          : isActive ? "text-white" : "text-white/90"
                       }`}>
                         {t(link.nameKey)}
                       </span>
                       {isActive && (
                         <motion.div
                           layoutId="activeSection"
-                          className={`absolute inset-0 rounded-lg ${
-                            scrolled ? "bg-blue-600" : "bg-white/20"
+                          className={`absolute inset-0 rounded-xl ${
+                            scrolled ? "bg-gradient-to-r from-blue-600 to-purple-600" : "bg-white/20"
                           }`}
                           transition={{ type: "spring", stiffness: 380, damping: 30 }}
                         />
                       )}
                       {!isActive && (
                         <motion.div
-                          className={`absolute inset-0 rounded-lg ${
+                          className={`absolute inset-0 rounded-xl ${
                             scrolled ? "bg-slate-100 dark:bg-slate-800" : "bg-white/10"
                           } opacity-0 hover:opacity-100 transition-opacity`}
                         />
@@ -137,7 +147,6 @@ export default function Navbar() {
 
               {/* Desktop CTA */}
               <div className="hidden lg:flex items-center gap-3">
-                <ThemeLanguageSwitcher />
                 <motion.a
                   href="tel:+18005551234"
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${

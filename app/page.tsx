@@ -8,7 +8,7 @@ import ContactSection from "@/components/contact/ContactSection";
 
 export default function Home() {
   return (
-    <main id="home">
+    <main>
       <PremiumHeroSection />
       <ServicesSection />
       <PremiumAboutSection />

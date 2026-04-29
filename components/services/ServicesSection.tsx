@@ -96,7 +96,7 @@ export default function ServicesSection() {
       ref={sectionRef}
       id="services" 
       className="relative bg-gradient-to-b from-white to-slate-50 scroll-mt-20"
-      style={{ minHeight: '250vh' }} // Reduced height for better scroll experience
+      style={{ minHeight: '200vh' }} // Reduced for better scroll feel with wider cards
     >
       {/* Pattern Background */}
       <PatternBackground variant="hexagon" className="opacity-40" />
@@ -157,7 +157,7 @@ export default function ServicesSection() {
                 scrollBehavior: "smooth",
               }}
             >
-              {services.map((service, index) => {
+              {services.slice(0, 5).map((service, index) => {
                 const Icon = iconMap[service.icon as keyof typeof iconMap];
                 
                 return (
@@ -169,85 +169,99 @@ export default function ServicesSection() {
                     transition={{ duration: 0.5, delay: index * 0.05 }}
                     whileHover={{ 
                       y: -10,
-                      scale: 1.03,
                       transition: { duration: 0.3 }
                     }}
-                    className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 flex-shrink-0 w-[380px]"
+                    className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 flex-shrink-0 w-[700px]"
                   >
-                    {/* Image Background */}
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        width={400}
-                        height={200}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent" />
-                      
-                      {/* Icon on Image */}
-                      <div className="absolute bottom-4 left-4">
+                    {/* Horizontal Layout: Image Left, Content Right */}
+                    <div className="flex">
+                      {/* Left Side - Image */}
+                      <div className="relative w-[280px] flex-shrink-0 overflow-hidden">
                         <motion.div
-                          whileHover={{ rotate: 360 }}
-                          transition={{ duration: 0.6 }}
-                          className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center shadow-xl"
+                          className="w-full h-full"
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.6, ease: "easeOut" }}
                         >
-                          <Icon className="w-7 h-7 text-white" />
+                          <Image
+                            src={service.image}
+                            alt={service.title}
+                            width={280}
+                            height={400}
+                            className="w-full h-full object-cover"
+                          />
                         </motion.div>
-                      </div>
-
-                      {/* Service Number */}
-                      <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-lg">
-                        {index + 1}
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-2">
-                        {service.description}
-                      </p>
-
-                      {/* Benefit Badge */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="mb-3 p-3 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg border-l-4 border-blue-600"
-                      >
-                        <p className="text-xs font-semibold text-blue-900 mb-1">
-                          Business Benefit
-                        </p>
-                        <p className="text-xs text-blue-700 font-medium line-clamp-2">
-                          {service.benefit}
-                        </p>
-                      </motion.div>
-
-                      {/* Example */}
-                      <div className="pt-3 border-t border-slate-200">
-                        <p className="text-xs text-slate-500 italic flex items-start gap-2 line-clamp-2">
-                          <span className="text-blue-600 font-bold flex-shrink-0">✓</span>
-                          {service.example}
-                        </p>
-                      </div>
-
-                      {/* Hover Arrow */}
-                      <motion.div
-                        initial={{ opacity: 0, x: -10 }}
-                        className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300"
-                      >
-                        <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
-                          <ArrowRight className="w-5 h-5 text-white" />
+                        
+                        {/* Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-900/20 to-slate-900/40" />
+                        
+                        {/* Icon on Image */}
+                        <div className="absolute bottom-6 left-6">
+                          <motion.div
+                            whileHover={{ rotate: 360, scale: 1.1 }}
+                            transition={{ duration: 0.6 }}
+                            className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl"
+                          >
+                            <Icon className="w-8 h-8 text-white" />
+                          </motion.div>
                         </div>
-                      </motion.div>
+
+                        {/* Service Number */}
+                        <div className="absolute top-6 left-6 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-slate-900 font-bold text-xl shadow-lg">
+                          {index + 1}
+                        </div>
+                      </div>
+
+                      {/* Right Side - Content */}
+                      <div className="flex-1 p-8 flex flex-col justify-between">
+                        <div>
+                          <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
+                            {service.title}
+                          </h3>
+                          <p className="text-slate-600 text-base mb-5 leading-relaxed">
+                            {service.description}
+                          </p>
+
+                          {/* Benefit Badge */}
+                          <motion.div
+                            initial={{ opacity: 0, x: 20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="mb-4 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border-l-4 border-blue-600"
+                          >
+                            <p className="text-sm font-semibold text-blue-900 mb-2">
+                              💼 Business Benefit
+                            </p>
+                            <p className="text-sm text-blue-700 font-medium">
+                              {service.benefit}
+                            </p>
+                          </motion.div>
+                        </div>
+
+                        {/* Bottom Section */}
+                        <div>
+                          {/* Example */}
+                          <div className="pt-4 border-t border-slate-200 mb-4">
+                            <p className="text-sm text-slate-500 italic flex items-start gap-2">
+                              <span className="text-green-600 font-bold flex-shrink-0 text-lg">✓</span>
+                              <span>{service.example}</span>
+                            </p>
+                          </div>
+
+                          {/* Hover Arrow */}
+                          <motion.div
+                            initial={{ opacity: 0, x: -10 }}
+                            className="flex items-center gap-2 text-blue-600 font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300"
+                          >
+                            <span className="text-sm">Learn More</span>
+                            <ArrowRight className="w-5 h-5" />
+                          </motion.div>
+                        </div>
+                      </div>
                     </div>
 
                     {/* Decorative Elements */}
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/5 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-700" />
-                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-600/5 rounded-full translate-y-12 -translate-x-12 group-hover:scale-150 transition-transform duration-700" />
+                    <div className="absolute top-0 right-0 w-40 h-40 bg-blue-600/5 rounded-full -translate-y-20 translate-x-20 group-hover:scale-150 transition-transform duration-700" />
+                    <div className="absolute bottom-0 right-0 w-32 h-32 bg-purple-600/5 rounded-full translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-700" />
                   </motion.div>
                 );
               })}

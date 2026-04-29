@@ -84,6 +84,7 @@ export default function PremiumHeroSection() {
 
   return (
     <motion.section 
+      id="home"
       style={{ opacity, scale }}
       className="relative h-screen w-full overflow-hidden bg-slate-950"
     >
