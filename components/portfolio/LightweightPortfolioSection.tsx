@@ -27,20 +27,16 @@ export default function LightweightPortfolioSection() {
               key={project.id}
               className="bg-slate-50 rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
-              {/* Image Placeholder */}
-              <div className="relative h-48 bg-gradient-to-br from-blue-600 to-blue-800">
-                <div className="absolute inset-0 flex items-center justify-center text-white">
-                  <div className="text-center">
-                    <div className="text-5xl font-bold opacity-30 mb-2">
-                      {project.id}
-                    </div>
-                    <div className="text-lg font-semibold">
-                      {project.category}
-                    </div>
-                  </div>
-                </div>
+              {/* Image */}
+              <div className="relative h-64 bg-gradient-to-br from-blue-600 to-blue-800 overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.category}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
                 <div className="absolute top-4 right-4">
-                  <span className="px-4 py-2 bg-white/90 rounded-full text-sm font-semibold text-slate-900">
+                  <span className="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-semibold text-slate-900">
                     {project.category}
                   </span>
                 </div>

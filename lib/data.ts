@@ -229,7 +229,7 @@ export const portfolio = [
     category: "Athletic Wear",
     description: "Produced 250,000 units of technical performance wear with moisture-wicking fabric",
     result: "Delivered 2 weeks ahead of schedule with 99.8% quality approval",
-    image: "/portfolio/portfolio-1.webp",
+    image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80",
   },
   {
     id: 2,
@@ -237,7 +237,7 @@ export const portfolio = [
     category: "Sustainable Fashion",
     description: "Sourced and manufactured organic cotton collection for eco-conscious brand",
     result: "Achieved GOTS certification, 40% cost reduction vs. previous supplier",
-    image: "/portfolio/portfolio-2.webp",
+    image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=80",
   },
   {
     id: 3,
@@ -245,7 +245,7 @@ export const portfolio = [
     category: "Workwear",
     description: "Bulk production of 100,000 corporate uniforms with custom branding",
     result: "Maintained consistent quality across 6-month production cycle",
-    image: "/portfolio/portfolio-3.webp",
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80",
   },
   {
     id: 4,
@@ -253,7 +253,7 @@ export const portfolio = [
     category: "Fashion",
     description: "End-to-end support from design to delivery for new brand launch",
     result: "Successfully launched with 5,000-unit initial order, now scaling to 50K/month",
-    image: "/portfolio/portfolio-4.webp",
+    image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80",
   },
 ];
 
