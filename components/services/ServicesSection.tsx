@@ -14,14 +14,20 @@ const iconMap = {
   "shield-check": ShieldCheck,
 };
 
-// Service slug mapping
-const serviceSlugMap: Record<string, string> = {
-  "apparel-manufacturing": "apparel-manufacturing",
-  "fabric-sourcing": "fabric-sourcing",
-  "sampling-prototyping": "sampling-prototyping",
-  "bulk-production": "bulk-production",
-  "private-label": "private-label-oem-odm",
-  "quality-control": "quality-control",
+// Service slug mapping - maps service ID to URL slug
+const serviceSlugMap: Record<number, string> = {
+  1: "apparel-manufacturing",
+  2: "fabric-sourcing",
+  3: "sampling-prototyping",
+  4: "bulk-production",
+  5: "private-label-oem-odm",
+  6: "quality-control",
+  7: "pattern-making-grading",
+  8: "embroidery-printing",
+  9: "washing-finishing",
+  10: "packaging-labeling",
+  11: "logistics-shipping",
+  12: "design-consultation",
 };
 
 export default function ServicesSection() {
@@ -59,7 +65,7 @@ export default function ServicesSection() {
 
         {/* Premium Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {services.slice(0, 6).map((service, index) => {
+          {services.map((service, index) => {
             const Icon = iconMap[service.icon as keyof typeof iconMap];
             const serviceSlug = serviceSlugMap[service.id];
             
