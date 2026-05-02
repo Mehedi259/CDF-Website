@@ -6,12 +6,12 @@ import { Menu, X, Phone, Mail } from "lucide-react";
 import { useLanguage } from "@/lib/context/LanguageContext";
 
 const navLinks = [
-  { nameKey: "home", href: "#home" },
-  { nameKey: "services", href: "#services" },
-  { nameKey: "about", href: "#about" },
-  { nameKey: "process", href: "#process" },
-  { nameKey: "portfolio", href: "#portfolio" },
-  { nameKey: "testimonials", href: "#testimonials" },
+  { nameKey: "home", href: "/#home" },
+  { nameKey: "services", href: "/#services" },
+  { nameKey: "about", href: "/#about" },
+  { nameKey: "process", href: "/#process" },
+  { nameKey: "portfolio", href: "/#portfolio" },
+  { nameKey: "testimonials", href: "/#testimonials" },
 ];
 
 export default function Navbar() {
@@ -88,7 +88,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between">
               {/* Logo - Vertical Layout */}
               <motion.a
-                href="#home"
+                href="/"
                 className="flex flex-col items-center gap-1 group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -161,7 +161,7 @@ export default function Navbar() {
                   <span className="font-medium text-sm">+31 6 87620061</span>
                 </motion.a>
                 <motion.a
-                  href="#contact"
+                  href="/#contact"
                   className="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl hover:shadow-blue-500/50"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -280,7 +280,7 @@ export default function Navbar() {
                     <span className="font-medium">info@cdfstudio.com</span>
                   </motion.a>
                   <motion.a
-                    href="#contact"
+                    href="/#contact"
                     onClick={() => setIsOpen(false)}
                     className="block w-full text-center px-6 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-xl transition-all shadow-lg"
                     whileHover={{ scale: 1.02 }}

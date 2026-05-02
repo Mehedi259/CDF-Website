@@ -5,12 +5,12 @@ import { Menu, X, Phone } from "lucide-react";
 import { useLanguage } from "@/lib/context/LanguageContext";
 
 const navLinks = [
-  { nameKey: "home", href: "#home" },
-  { nameKey: "services", href: "#services" },
-  { nameKey: "about", href: "#about" },
-  { nameKey: "process", href: "#process" },
-  { nameKey: "portfolio", href: "#portfolio" },
-  { nameKey: "testimonials", href: "#testimonials" },
+  { nameKey: "home", href: "/#home" },
+  { nameKey: "services", href: "/#services" },
+  { nameKey: "about", href: "/#about" },
+  { nameKey: "process", href: "/#process" },
+  { nameKey: "portfolio", href: "/#portfolio" },
+  { nameKey: "testimonials", href: "/#testimonials" },
 ];
 
 export default function LightweightNavbar() {
@@ -72,7 +72,7 @@ export default function LightweightNavbar() {
             <div className="flex items-center justify-between">
               {/* Compact Logo */}
               <a
-                href="#home"
+                href="/"
                 className="flex items-center gap-2 group"
               >
                 <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
@@ -121,7 +121,7 @@ export default function LightweightNavbar() {
                   <span className="font-medium">+31 6 87620061</span>
                 </a>
                 <a
-                  href="#contact"
+                  href="/#contact"
                   className="px-4 py-1.5 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-sm font-semibold rounded-lg transition-all shadow-md"
                 >
                   {t("getQuote")}
@@ -198,7 +198,7 @@ export default function LightweightNavbar() {
                   <span className="font-medium text-sm">+31 6 87620061</span>
                 </a>
                 <a
-                  href="#contact"
+                  href="/#contact"
                   onClick={() => setIsOpen(false)}
                   className="block w-full text-center px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all"
                 >
