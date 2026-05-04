@@ -51,7 +51,7 @@ This inquiry was submitted through the CDF Studio website contact form.
   return (
     <section id="contact" className="relative py-20 md:py-32 bg-gradient-to-b from-white via-slate-50 to-white overflow-hidden">
       {/* PatternCraft Background */}
-      <PatternBackground variant="patterncraft-radial" className="opacity-35" />
+      <PatternBackground variant="aurora-gradient" className="opacity-50" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Premium Section Header */}

@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 
 interface PatternBackgroundProps {
-  variant?: "dots" | "grid" | "circuit" | "topography" | "hexagon" | "waves" | "patterncraft-grid" | "patterncraft-diagonal" | "patterncraft-radial" | "patterncraft-noise";
+  variant?: "dots" | "grid" | "circuit" | "topography" | "hexagon" | "waves" | "patterncraft-grid" | "patterncraft-diagonal" | "patterncraft-radial" | "patterncraft-noise" | "aurora-gradient" | "mesh-gradient" | "spotlight-grid" | "electric-grid" | "cosmic-dots";
   className?: string;
 }
 
 export default function PatternBackground({ 
-  variant = "patterncraft-grid", 
+  variant = "aurora-gradient", 
   className = "" 
 }: PatternBackgroundProps) {
   
@@ -265,6 +265,214 @@ export default function PatternBackground({
           style={{
             background: `
               linear-gradient(45deg, rgba(59, 130, 246, 0.03) 0%, transparent 50%, rgba(147, 51, 234, 0.03) 100%)
+            `
+          }}
+        />
+      </div>
+    ),
+
+    // Aurora Gradient - Stunning animated gradient mesh
+    "aurora-gradient": (
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        {/* Base gradient mesh */}
+        <div 
+          className="absolute inset-0 opacity-70"
+          style={{
+            background: `
+              radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 80% 50%, rgba(147, 51, 234, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.12) 0%, transparent 50%),
+              radial-gradient(circle at 50% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%)
+            `
+          }}
+        />
+        {/* Animated gradient orbs */}
+        <motion.div
+          className="absolute inset-0"
+          animate={{
+            background: [
+              "radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.2) 0%, transparent 40%)",
+              "radial-gradient(circle at 80% 70%, rgba(147, 51, 234, 0.2) 0%, transparent 40%)",
+              "radial-gradient(circle at 40% 80%, rgba(236, 72, 153, 0.18) 0%, transparent 40%)",
+              "radial-gradient(circle at 60% 20%, rgba(59, 130, 246, 0.18) 0%, transparent 40%)",
+              "radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.2) 0%, transparent 40%)",
+            ],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        />
+        {/* Subtle grid overlay */}
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px'
+          }}
+        />
+      </div>
+    ),
+
+    // Mesh Gradient - Modern gradient mesh with dots
+    "mesh-gradient": (
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        {/* Multi-layer gradient mesh */}
+        <div 
+          className="absolute inset-0 opacity-60"
+          style={{
+            background: `
+              radial-gradient(ellipse at 0% 0%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+              radial-gradient(ellipse at 100% 0%, rgba(147, 51, 234, 0.2) 0%, transparent 50%),
+              radial-gradient(ellipse at 100% 100%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at 0% 100%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 50%, rgba(147, 51, 234, 0.1) 0%, transparent 50%)
+            `
+          }}
+        />
+        {/* Animated gradient layer */}
+        <motion.div
+          className="absolute inset-0 opacity-40"
+          animate={{
+            background: [
+              "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.15) 0%, transparent 60%)",
+              "radial-gradient(circle at 70% 60%, rgba(147, 51, 234, 0.15) 0%, transparent 60%)",
+              "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.15) 0%, transparent 60%)",
+            ],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+        {/* Dot pattern overlay */}
+        <div 
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.15) 1px, transparent 0)`,
+            backgroundSize: '30px 30px'
+          }}
+        />
+      </div>
+    ),
+
+    // Spotlight Grid - Professional grid with spotlight effect
+    "spotlight-grid": (
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        {/* Base grid */}
+        <div 
+          className="absolute inset-0 opacity-40"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+              radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.2) 1.5px, transparent 0)
+            `,
+            backgroundSize: '50px 50px, 50px 50px, 50px 50px'
+          }}
+        />
+        {/* Animated spotlight effect */}
+        <motion.div
+          className="absolute inset-0"
+          animate={{
+            background: [
+              "radial-gradient(circle 600px at 20% 30%, rgba(59, 130, 246, 0.12) 0%, transparent 100%)",
+              "radial-gradient(circle 600px at 80% 70%, rgba(147, 51, 234, 0.12) 0%, transparent 100%)",
+              "radial-gradient(circle 600px at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 100%)",
+              "radial-gradient(circle 600px at 20% 30%, rgba(59, 130, 246, 0.12) 0%, transparent 100%)",
+            ],
+          }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        />
+        {/* Gradient overlay for depth */}
+        <div 
+          className="absolute inset-0 opacity-50"
+          style={{
+            background: `
+              linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 50%, rgba(147, 51, 234, 0.05) 100%)
+            `
+          }}
+        />
+      </div>
+    ),
+
+    // Electric Grid - Vibrant grid with glow effects
+    "electric-grid": (
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        {/* Glowing grid lines */}
+        <div 
+          className="absolute inset-0 opacity-50"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(59, 130, 246, 0.15) 2px, transparent 2px),
+              linear-gradient(90deg, rgba(59, 130, 246, 0.15) 2px, transparent 2px),
+              linear-gradient(rgba(147, 51, 234, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(147, 51, 234, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '100px 100px, 100px 100px, 20px 20px, 20px 20px',
+            backgroundPosition: '-1px -1px, -1px -1px, -1px -1px, -1px -1px'
+          }}
+        />
+        {/* Intersection glow points */}
+        <div 
+          className="absolute inset-0 opacity-60"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 0px 0px, rgba(59, 130, 246, 0.3) 2px, transparent 2px),
+              radial-gradient(circle at 0px 0px, rgba(147, 51, 234, 0.2) 1px, transparent 1px)
+            `,
+            backgroundSize: '100px 100px, 20px 20px'
+          }}
+        />
+        {/* Animated glow effect */}
+        <motion.div
+          className="absolute inset-0"
+          animate={{
+            background: [
+              "radial-gradient(circle 400px at 30% 40%, rgba(59, 130, 246, 0.08) 0%, transparent 100%)",
+              "radial-gradient(circle 400px at 70% 60%, rgba(147, 51, 234, 0.08) 0%, transparent 100%)",
+              "radial-gradient(circle 400px at 30% 40%, rgba(59, 130, 246, 0.08) 0%, transparent 100%)",
+            ],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
+    ),
+
+    // Cosmic Dots - Starfield-like dot pattern
+    "cosmic-dots": (
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        {/* Multi-size dot layers */}
+        <div 
+          className="absolute inset-0 opacity-50"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.2) 2px, transparent 2px),
+              radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.2) 1.5px, transparent 1.5px),
+              radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.15) 1px, transparent 1px),
+              radial-gradient(circle at 10% 90%, rgba(59, 130, 246, 0.15) 1.5px, transparent 1.5px),
+              radial-gradient(circle at 90% 10%, rgba(147, 51, 234, 0.15) 1px, transparent 1px)
+            `,
+            backgroundSize: '80px 80px, 60px 60px, 40px 40px, 100px 100px, 70px 70px',
+            backgroundPosition: '0 0, 30px 30px, 15px 15px, 50px 50px, 40px 40px'
+          }}
+        />
+        {/* Animated glow orbs */}
+        <motion.div
+          className="absolute inset-0 opacity-40"
+          animate={{
+            background: [
+              "radial-gradient(circle 300px at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 70%)",
+              "radial-gradient(circle 300px at 80% 70%, rgba(147, 51, 234, 0.1) 0%, transparent 70%)",
+              "radial-gradient(circle 300px at 50% 50%, rgba(236, 72, 153, 0.08) 0%, transparent 70%)",
+              "radial-gradient(circle 300px at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 70%)",
+            ],
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+        />
+        {/* Subtle gradient overlay */}
+        <div 
+          className="absolute inset-0 opacity-30"
+          style={{
+            background: `
+              radial-gradient(ellipse at 50% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 70%)
             `
           }}
         />

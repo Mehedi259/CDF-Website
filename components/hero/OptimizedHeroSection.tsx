@@ -94,7 +94,7 @@ export default function OptimizedHeroSection() {
       className="relative h-screen w-full overflow-hidden bg-slate-900"
     >
       {/* PatternCraft Background */}
-      <PatternBackground variant="patterncraft-radial" className="opacity-30" />
+      <PatternBackground variant="cosmic-dots" className="opacity-40" />
       {/* Background Slides - Optimized: Only render current and next */}
       {slides.map((slide, index) => {
         const isCurrent = index === currentSlide;
