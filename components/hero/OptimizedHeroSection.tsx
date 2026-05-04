@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import Image from "next/image";
 import { founderQuotes } from "@/lib/data";
+import PatternBackground from "@/components/backgrounds/PatternBackground";
 
 const slides = [
   {
@@ -92,6 +93,8 @@ export default function OptimizedHeroSection() {
       id="home"
       className="relative h-screen w-full overflow-hidden bg-slate-900"
     >
+      {/* PatternCraft Background */}
+      <PatternBackground variant="patterncraft-radial" className="opacity-30" />
       {/* Background Slides - Optimized: Only render current and next */}
       {slides.map((slide, index) => {
         const isCurrent = index === currentSlide;

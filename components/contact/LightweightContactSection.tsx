@@ -2,6 +2,7 @@
 
 import { Mail, Phone, MapPin, Send, MessageSquare, Sparkles, Clock, CheckCircle, Globe } from "lucide-react";
 import { useState } from "react";
+import PatternBackground from "@/components/backgrounds/PatternBackground";
 
 export default function LightweightContactSection() {
   const [formData, setFormData] = useState({
@@ -49,11 +50,8 @@ This inquiry was submitted through the CDF Studio website contact form.
 
   return (
     <section id="contact" className="relative py-20 md:py-32 bg-gradient-to-b from-white via-slate-50 to-white overflow-hidden">
-      {/* Background Decorations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-      </div>
+      {/* PatternCraft Background */}
+      <PatternBackground variant="patterncraft-radial" className="opacity-35" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Premium Section Header */}

@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 
 interface PatternBackgroundProps {
-  variant?: "dots" | "grid" | "circuit" | "topography" | "hexagon" | "waves";
+  variant?: "dots" | "grid" | "circuit" | "topography" | "hexagon" | "waves" | "patterncraft-grid" | "patterncraft-diagonal" | "patterncraft-radial" | "patterncraft-noise";
   className?: string;
 }
 
 export default function PatternBackground({ 
-  variant = "circuit", 
+  variant = "patterncraft-grid", 
   className = "" 
 }: PatternBackgroundProps) {
   
@@ -149,6 +149,127 @@ export default function PatternBackground({
         <rect width="100%" height="100%" fill="url(#waves)"/>
       </svg>
     ),
+
+    // PatternCraft Style - Professional Grid with Dots
+    "patterncraft-grid": (
+      <div className="absolute inset-0 w-full h-full">
+        <div 
+          className="w-full h-full opacity-[0.4]"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.15) 1px, transparent 0),
+              linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+              linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px)
+            `,
+            backgroundSize: '20px 20px, 20px 20px, 20px 20px',
+            backgroundPosition: '0 0, 0 0, 0 0'
+          }}
+        />
+        {/* Gradient overlay */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.04) 0%, transparent 50%)
+            `
+          }}
+        />
+      </div>
+    ),
+
+    // PatternCraft Style - Diagonal Grid Pattern
+    "patterncraft-diagonal": (
+      <div className="absolute inset-0 w-full h-full">
+        <div 
+          className="w-full h-full opacity-[0.3]"
+          style={{
+            backgroundImage: `
+              linear-gradient(45deg, rgba(59, 130, 246, 0.08) 25%, transparent 25%),
+              linear-gradient(-45deg, rgba(59, 130, 246, 0.08) 25%, transparent 25%),
+              linear-gradient(45deg, transparent 75%, rgba(59, 130, 246, 0.08) 75%),
+              linear-gradient(-45deg, transparent 75%, rgba(59, 130, 246, 0.08) 75%)
+            `,
+            backgroundSize: '30px 30px',
+            backgroundPosition: '0 0, 0 15px, 15px -15px, -15px 0px'
+          }}
+        />
+        {/* Subtle gradient overlay */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: `
+              linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 50%, rgba(147, 51, 234, 0.05) 100%)
+            `
+          }}
+        />
+      </div>
+    ),
+
+    // PatternCraft Style - Radial Dots with Glow
+    "patterncraft-radial": (
+      <div className="absolute inset-0 w-full h-full">
+        <div 
+          className="w-full h-full opacity-[0.6]"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 2px, transparent 2px),
+              radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.1) 1px, transparent 1px),
+              radial-gradient(circle at 25% 75%, rgba(59, 130, 246, 0.08) 1.5px, transparent 1.5px),
+              radial-gradient(circle at 75% 25%, rgba(147, 51, 234, 0.08) 1.5px, transparent 1.5px)
+            `,
+            backgroundSize: '50px 50px, 30px 30px, 40px 40px, 35px 35px',
+            backgroundPosition: '0 0, 25px 25px, 0 25px, 25px 0'
+          }}
+        />
+        {/* Animated glow effect */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.06) 0%, transparent 60%),
+              radial-gradient(circle at 70% 30%, rgba(147, 51, 234, 0.06) 0%, transparent 60%)
+            `
+          }}
+        />
+      </div>
+    ),
+
+    // PatternCraft Style - Noise Texture with Grid
+    "patterncraft-noise": (
+      <div className="absolute inset-0 w-full h-full">
+        {/* Base grid */}
+        <div 
+          className="w-full h-full opacity-[0.25]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(59, 130, 246, 0.06) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(59, 130, 246, 0.06) 1px, transparent 1px),
+              radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.08) 1px, transparent 1px)
+            `,
+            backgroundSize: '25px 25px, 25px 25px, 25px 25px'
+          }}
+        />
+        {/* Noise texture overlay */}
+        <div 
+          className="absolute inset-0 opacity-[0.4]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
+            mixBlendMode: 'multiply'
+          }}
+        />
+        {/* Gradient overlay */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: `
+              linear-gradient(45deg, rgba(59, 130, 246, 0.03) 0%, transparent 50%, rgba(147, 51, 234, 0.03) 100%)
+            `
+          }}
+        />
+      </div>
+    ),
   };
 
   return (
@@ -163,7 +284,7 @@ export default function PatternBackground({
         {patterns[variant]}
       </div>
 
-      {/* Animated Gradient Overlay */}
+      {/* Enhanced Animated Gradient Overlay */}
       <motion.div
         className="absolute inset-0"
         style={{
@@ -173,17 +294,39 @@ export default function PatternBackground({
           background: [
             "radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 50%)",
             "radial-gradient(circle at 80% 70%, rgba(147, 51, 234, 0.08) 0%, transparent 50%)",
+            "radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.06) 0%, transparent 50%)",
+            "radial-gradient(circle at 60% 20%, rgba(147, 51, 234, 0.06) 0%, transparent 50%)",
             "radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 50%)",
           ],
         }}
-        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Noise Texture */}
+      {/* Subtle moving light effect */}
+      <motion.div
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.02) 50%, transparent 70%)",
+        }}
+        animate={{
+          transform: ["translateX(-100%) translateY(-100%)", "translateX(100%) translateY(100%)"],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+      />
+
+      {/* Enhanced Noise Texture */}
+      <div 
+        className="absolute inset-0 opacity-[0.02] mix-blend-mode-multiply"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      />
+
+      {/* Subtle grain texture */}
       <div 
         className="absolute inset-0 opacity-[0.015]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.6'/%3E%3C/svg%3E")`,
         }}
       />
     </motion.div>

@@ -4,6 +4,7 @@ import { Factory, Layers, Clipboard, Package, Tag, ShieldCheck, ArrowRight, Spar
 import { services } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
+import PatternBackground from "@/components/backgrounds/PatternBackground";
 
 const iconMap = {
   factory: Factory,
@@ -36,11 +37,8 @@ export default function ServicesSection() {
       id="services" 
       className="relative py-20 md:py-32 bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden"
     >
-      {/* Background Decorations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-      </div>
+      {/* PatternCraft Style Background */}
+      <PatternBackground variant="patterncraft-grid" className="opacity-60" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Premium Section Header */}

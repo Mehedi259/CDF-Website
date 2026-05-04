@@ -1,6 +1,7 @@
 "use client";
 
 import { Award, Users, Globe, TrendingUp, Sparkles, CheckCircle, Target } from "lucide-react";
+import PatternBackground from "@/components/backgrounds/PatternBackground";
 
 export default function LightweightAboutSection() {
   return (
@@ -8,11 +9,8 @@ export default function LightweightAboutSection() {
       id="about" 
       className="relative py-20 md:py-32 bg-gradient-to-b from-white via-slate-50 to-white overflow-hidden"
     >
-      {/* Background Decorations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 -left-20 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-        <div className="absolute bottom-20 -right-20 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-      </div>
+      {/* PatternCraft Background */}
+      <PatternBackground variant="patterncraft-diagonal" className="opacity-40" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
