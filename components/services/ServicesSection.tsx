@@ -37,8 +37,8 @@ export default function ServicesSection() {
       id="services" 
       className="relative py-20 md:py-32 bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden"
     >
-      {/* PatternCraft Style Background */}
-      <PatternBackground variant="spotlight-grid" className="opacity-70" />
+      {/* Premium Grid Background */}
+      <PatternBackground variant="premium-grid" className="opacity-60" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Premium Section Header */}

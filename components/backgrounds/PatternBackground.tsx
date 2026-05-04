@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 
 interface PatternBackgroundProps {
-  variant?: "dots" | "grid" | "circuit" | "topography" | "hexagon" | "waves" | "patterncraft-grid" | "patterncraft-diagonal" | "patterncraft-radial" | "patterncraft-noise" | "aurora-gradient" | "mesh-gradient" | "spotlight-grid" | "electric-grid" | "cosmic-dots";
+  variant?: "dots" | "grid" | "circuit" | "topography" | "hexagon" | "waves" | "patterncraft-grid" | "patterncraft-diagonal" | "patterncraft-radial" | "patterncraft-noise" | "aurora-gradient" | "mesh-gradient" | "premium-grid" | "cosmic-dots";
   className?: string;
 }
 
 export default function PatternBackground({ 
-  variant = "aurora-gradient", 
+  variant = "premium-grid", 
   className = "" 
 }: PatternBackgroundProps) {
   
@@ -353,85 +353,43 @@ export default function PatternBackground({
       </div>
     ),
 
-    // Spotlight Grid - Professional grid with spotlight effect
-    "spotlight-grid": (
+    // Premium Grid Pattern - Best grid design with dots and glow
+    "premium-grid": (
       <div className="absolute inset-0 w-full h-full overflow-hidden">
-        {/* Base grid */}
+        {/* Main grid with dots at intersections */}
+        <div 
+          className="absolute inset-0 opacity-50"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+              radial-gradient(circle at 0px 0px, rgba(59, 130, 246, 0.25) 2px, transparent 2px)
+            `,
+            backgroundSize: '50px 50px, 50px 50px, 50px 50px',
+            backgroundPosition: '-1px -1px, -1px -1px, 0 0'
+          }}
+        />
+        {/* Animated spotlight glow */}
+        <motion.div
+          className="absolute inset-0"
+          animate={{
+            background: [
+              "radial-gradient(circle 800px at 20% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 100%)",
+              "radial-gradient(circle 800px at 80% 70%, rgba(147, 51, 234, 0.08) 0%, transparent 100%)",
+              "radial-gradient(circle 800px at 50% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 100%)",
+              "radial-gradient(circle 800px at 20% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 100%)",
+            ],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        />
+        {/* Subtle gradient overlay for depth */}
         <div 
           className="absolute inset-0 opacity-40"
           style={{
-            backgroundImage: `
-              linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px),
-              radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.2) 1.5px, transparent 0)
-            `,
-            backgroundSize: '50px 50px, 50px 50px, 50px 50px'
-          }}
-        />
-        {/* Animated spotlight effect */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{
-            background: [
-              "radial-gradient(circle 600px at 20% 30%, rgba(59, 130, 246, 0.12) 0%, transparent 100%)",
-              "radial-gradient(circle 600px at 80% 70%, rgba(147, 51, 234, 0.12) 0%, transparent 100%)",
-              "radial-gradient(circle 600px at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 100%)",
-              "radial-gradient(circle 600px at 20% 30%, rgba(59, 130, 246, 0.12) 0%, transparent 100%)",
-            ],
-          }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        />
-        {/* Gradient overlay for depth */}
-        <div 
-          className="absolute inset-0 opacity-50"
-          style={{
             background: `
-              linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 50%, rgba(147, 51, 234, 0.05) 100%)
+              linear-gradient(135deg, rgba(59, 130, 246, 0.04) 0%, transparent 50%, rgba(147, 51, 234, 0.04) 100%)
             `
           }}
-        />
-      </div>
-    ),
-
-    // Electric Grid - Vibrant grid with glow effects
-    "electric-grid": (
-      <div className="absolute inset-0 w-full h-full overflow-hidden">
-        {/* Glowing grid lines */}
-        <div 
-          className="absolute inset-0 opacity-50"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(59, 130, 246, 0.15) 2px, transparent 2px),
-              linear-gradient(90deg, rgba(59, 130, 246, 0.15) 2px, transparent 2px),
-              linear-gradient(rgba(147, 51, 234, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(147, 51, 234, 0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '100px 100px, 100px 100px, 20px 20px, 20px 20px',
-            backgroundPosition: '-1px -1px, -1px -1px, -1px -1px, -1px -1px'
-          }}
-        />
-        {/* Intersection glow points */}
-        <div 
-          className="absolute inset-0 opacity-60"
-          style={{
-            backgroundImage: `
-              radial-gradient(circle at 0px 0px, rgba(59, 130, 246, 0.3) 2px, transparent 2px),
-              radial-gradient(circle at 0px 0px, rgba(147, 51, 234, 0.2) 1px, transparent 1px)
-            `,
-            backgroundSize: '100px 100px, 20px 20px'
-          }}
-        />
-        {/* Animated glow effect */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{
-            background: [
-              "radial-gradient(circle 400px at 30% 40%, rgba(59, 130, 246, 0.08) 0%, transparent 100%)",
-              "radial-gradient(circle 400px at 70% 60%, rgba(147, 51, 234, 0.08) 0%, transparent 100%)",
-              "radial-gradient(circle 400px at 30% 40%, rgba(59, 130, 246, 0.08) 0%, transparent 100%)",
-            ],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
     ),

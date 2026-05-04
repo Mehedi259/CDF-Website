@@ -147,8 +147,8 @@ export default function ProductsCatalogSection() {
   return (
     <>
       <section id="products" className="relative py-20 md:py-32 bg-white overflow-hidden">
-        {/* PatternCraft Background */}
-        <PatternBackground variant="electric-grid" className="opacity-50" />
+        {/* Premium Grid Background */}
+        <PatternBackground variant="premium-grid" className="opacity-45" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
