@@ -282,9 +282,8 @@ This inquiry was submitted through the CDF Studio website contact form.
                   <div>
                     <div className="font-semibold text-slate-900 mb-1">Factory Location</div>
                     <div className="text-slate-600">
-                      Industrial Zone, Sector 45<br />
-                      Manufacturing District<br />
-                      Bangladesh
+                      Amsterdam<br />
+                      Netherlands
                     </div>
                   </div>
                 </div>
