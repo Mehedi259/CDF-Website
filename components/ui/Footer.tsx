@@ -167,9 +167,8 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
                 <div className="text-slate-400">
-                  Industrial Zone, Sector 45<br />
-                  Manufacturing District<br />
-                  Bangladesh
+                  Amsterdam<br />
+                  Netherlands
                 </div>
               </li>
             </ul>
