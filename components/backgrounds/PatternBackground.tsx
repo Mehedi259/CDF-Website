@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 
 interface PatternBackgroundProps {
-  variant?: "dots" | "grid" | "circuit" | "topography" | "hexagon" | "waves" | "patterncraft-grid" | "patterncraft-diagonal" | "patterncraft-radial" | "patterncraft-noise" | "aurora-gradient" | "mesh-gradient" | "premium-grid" | "cosmic-dots";
+  variant?: "dots" | "grid" | "circuit" | "topography" | "hexagon" | "waves" | "patterncraft-grid" | "patterncraft-diagonal" | "patterncraft-radial" | "patterncraft-noise" | "aurora-gradient" | "mesh-gradient" | "premium-grid" | "purple-corner-grid" | "cosmic-dots";
   className?: string;
 }
 
 export default function PatternBackground({ 
-  variant = "premium-grid", 
+  variant = "purple-corner-grid", 
   className = "" 
 }: PatternBackgroundProps) {
   
@@ -348,6 +348,60 @@ export default function PatternBackground({
           style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.15) 1px, transparent 0)`,
             backgroundSize: '30px 30px'
+          }}
+        />
+      </div>
+    ),
+
+    // Purple Corner Grid - Premium grid with purple gradient from corners
+    "purple-corner-grid": (
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        {/* Main grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-40"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(147, 51, 234, 0.12) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(147, 51, 234, 0.12) 1px, transparent 1px),
+              radial-gradient(circle at 0px 0px, rgba(147, 51, 234, 0.3) 2px, transparent 2px)
+            `,
+            backgroundSize: '40px 40px, 40px 40px, 40px 40px',
+            backgroundPosition: '-1px -1px, -1px -1px, 0 0'
+          }}
+        />
+        {/* Purple gradient from top-left corner */}
+        <div 
+          className="absolute inset-0 opacity-60"
+          style={{
+            background: `
+              radial-gradient(ellipse 1200px 1200px at 0% 0%, rgba(147, 51, 234, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse 1000px 1000px at 100% 0%, rgba(59, 130, 246, 0.12) 0%, transparent 50%),
+              radial-gradient(ellipse 1000px 1000px at 100% 100%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+              radial-gradient(ellipse 1000px 1000px at 0% 100%, rgba(59, 130, 246, 0.1) 0%, transparent 50%)
+            `
+          }}
+        />
+        {/* Animated glow effect */}
+        <motion.div
+          className="absolute inset-0"
+          animate={{
+            background: [
+              "radial-gradient(circle 600px at 10% 10%, rgba(147, 51, 234, 0.08) 0%, transparent 100%)",
+              "radial-gradient(circle 600px at 90% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 100%)",
+              "radial-gradient(circle 600px at 90% 90%, rgba(147, 51, 234, 0.08) 0%, transparent 100%)",
+              "radial-gradient(circle 600px at 10% 90%, rgba(59, 130, 246, 0.08) 0%, transparent 100%)",
+              "radial-gradient(circle 600px at 10% 10%, rgba(147, 51, 234, 0.08) 0%, transparent 100%)",
+            ],
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+        />
+        {/* Subtle overlay for depth */}
+        <div 
+          className="absolute inset-0 opacity-30"
+          style={{
+            background: `
+              linear-gradient(135deg, rgba(147, 51, 234, 0.05) 0%, transparent 50%, rgba(59, 130, 246, 0.05) 100%)
+            `
           }}
         />
       </div>

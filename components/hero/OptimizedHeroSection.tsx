@@ -93,8 +93,8 @@ export default function OptimizedHeroSection() {
       id="home"
       className="relative h-screen w-full overflow-hidden bg-slate-900"
     >
-      {/* Premium Grid Background */}
-      <PatternBackground variant="premium-grid" className="opacity-35" />
+      {/* Purple Corner Grid Background */}
+      <PatternBackground variant="purple-corner-grid" className="opacity-35" />
       {/* Background Slides - Optimized: Only render current and next */}
       {slides.map((slide, index) => {
         const isCurrent = index === currentSlide;
