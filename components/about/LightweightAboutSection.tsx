@@ -10,7 +10,7 @@ export default function LightweightAboutSection() {
       className="relative py-20 md:py-32 bg-gradient-to-b from-white via-slate-50 to-white overflow-hidden"
     >
       {/* Purple Corner Grid Background */}
-      <PatternBackground variant="purple-corner-grid" className="opacity-50" />
+      <PatternBackground variant="purple-corner-grid" className="opacity-100" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
