@@ -494,7 +494,7 @@ export default function PatternBackground({
 
   return (
     <motion.div 
-      className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}
+      className={`fixed inset-0 overflow-hidden pointer-events-none ${className}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
