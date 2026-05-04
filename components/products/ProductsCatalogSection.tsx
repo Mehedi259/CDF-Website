@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { X, ArrowRight, Package, Sparkles } from "lucide-react";
 import Image from "next/image";
-import PatternBackground from "@/components/backgrounds/PatternBackground";
 
 // Product Categories Data
 const productCategories = [
@@ -147,8 +146,11 @@ export default function ProductsCatalogSection() {
   return (
     <>
       <section id="products" className="relative py-20 md:py-32 bg-white overflow-hidden">
-        {/* Purple Corner Grid Background */}
-        <PatternBackground variant="purple-corner-grid" className="opacity-100" />
+        {/* Background Decoration */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-40"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-50 rounded-full mix-blend-multiply filter blur-3xl opacity-40"></div>
+        </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}

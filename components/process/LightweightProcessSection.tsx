@@ -3,7 +3,6 @@
 import { MessageSquare, Pencil, Beaker, Cog, CheckCircle, Truck, ArrowRight, Clock, Sparkles } from "lucide-react";
 import { processSteps } from "@/lib/data";
 import { useState } from "react";
-import PatternBackground from "@/components/backgrounds/PatternBackground";
 
 const iconMap = [MessageSquare, Pencil, Beaker, Cog, CheckCircle, Truck];
 
@@ -12,8 +11,12 @@ export default function LightweightProcessSection() {
 
   return (
     <section id="process" className="relative py-20 md:py-32 bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden">
-      {/* Purple Corner Grid Background */}
-      <PatternBackground variant="purple-corner-grid" className="opacity-100" />
+      {/* Background Decorations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-20 left-1/2 w-72 h-72 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+      </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
