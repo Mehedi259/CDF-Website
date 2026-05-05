@@ -2,8 +2,11 @@
 
 import { Mail, Phone, MapPin, Send, MessageSquare, Sparkles, Clock, CheckCircle, Globe } from "lucide-react";
 import { useState } from "react";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { motion } from "framer-motion";
 
 export default function LightweightContactSection() {
+  const { language, t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -58,26 +61,44 @@ This inquiry was submitted through the CDF Studio website contact form.
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Premium Section Header */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 rounded-full text-sm font-semibold mb-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-100 rounded-full text-sm font-semibold mb-6 shadow-sm"
+          >
             <Sparkles className="w-4 h-4 text-blue-600" />
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Get In Touch
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
-            Start Your{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Manufacturing Journey
-            </span>
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Ready to discuss your project? Fill out the form and we'll respond within 24 hours
-          </p>
+            <span className="text-blue-700 tracking-wide uppercase">{t("getInTouch")}</span>
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 tracking-tight"
+          >
+            {t("startJourney").split(" ").slice(0, 2).join(" ")} <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent drop-shadow-sm">{t("startJourney").split(" ").slice(2).join(" ")}</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-medium"
+          >
+            {t("contactSubtitle")}
+          </motion.p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Premium Contact Form */}
-          <div className="group relative">
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
+            className="group relative"
+          >
             {/* Gradient Border Effect */}
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></div>
             
@@ -93,9 +114,7 @@ This inquiry was submitted through the CDF Studio website contact form.
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-bold text-slate-700 mb-2">
-                    Full Name *
-                  </label>
+                  <label htmlFor="name" className="block text-sm font-bold text-slate-700 mb-2">{t("fullName")}</label>
                   <input
                     type="text"
                     id="name"
@@ -109,9 +128,7 @@ This inquiry was submitted through the CDF Studio website contact form.
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-bold text-slate-700 mb-2">
-                    Business Email *
-                  </label>
+                  <label htmlFor="email" className="block text-sm font-bold text-slate-700 mb-2">{t("businessEmail")}</label>
                   <input
                     type="email"
                     id="email"
@@ -125,9 +142,7 @@ This inquiry was submitted through the CDF Studio website contact form.
                 </div>
 
                 <div>
-                  <label htmlFor="company" className="block text-sm font-bold text-slate-700 mb-2">
-                    Company Name *
-                  </label>
+                  <label htmlFor="company" className="block text-sm font-bold text-slate-700 mb-2">{t("companyName")}</label>
                   <input
                     type="text"
                     id="company"
@@ -184,10 +199,16 @@ This inquiry was submitted through the CDF Studio website contact form.
                 </button>
               </form>
             </div>
-          </div>
+          </motion.div>
 
           {/* Premium Contact Information */}
-          <div className="space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.2, type: "spring", bounce: 0.3 }}
+            className="space-y-6"
+          >
             {/* Contact Cards */}
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></div>
@@ -313,7 +334,7 @@ This inquiry was submitted through the CDF Studio website contact form.
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

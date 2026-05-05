@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { useLanguage } from "@/lib/context/LanguageContext";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
 const navLinks = [
   { nameKey: "home", href: "/#home" },
@@ -109,6 +110,7 @@ export default function LightweightNavbar() {
 
               {/* Desktop CTA - Compact */}
               <div className="hidden lg:flex items-center gap-2">
+                <LanguageSwitcher />
                 <a
                   href="tel:+31687620061"
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-all ${
@@ -190,6 +192,9 @@ export default function LightweightNavbar() {
 
               {/* Mobile Contact */}
               <div className="mt-auto space-y-3">
+                <div className="flex justify-center mb-4">
+                  <LanguageSwitcher />
+                </div>
                 <a
                   href="tel:+31687620061"
                   className="flex items-center gap-3 text-slate-700 p-3 rounded-lg hover:bg-slate-100"

@@ -1,8 +1,14 @@
 "use client";
 
 import { Award, Users, Globe, TrendingUp, Sparkles, CheckCircle, Target } from "lucide-react";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { motion } from "framer-motion";
+import { stats, companyData } from "@/lib/data";
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 export default function LightweightAboutSection() {
+  const { language, t } = useLanguage();
+  const currentStats = stats[language];
   return (
     <section 
       id="about" 
@@ -16,50 +22,70 @@ export default function LightweightAboutSection() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 rounded-full text-sm font-semibold mb-6">
+        <div className="text-center mb-24">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-100 rounded-full text-sm font-semibold mb-6 shadow-sm"
+          >
             <Sparkles className="w-4 h-4 text-blue-600" />
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              About CDF Studio
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
-            Your Trusted{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Manufacturing Partner
-            </span>
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Building global brands through precision manufacturing and unwavering commitment to excellence since 2008
-          </p>
+            <span className="text-blue-700 tracking-wide uppercase">{t("aboutCdf")}</span>
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 tracking-tight"
+          >
+            {t("trustedPartner").split(" ").slice(0, 2).join(" ")} <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{t("trustedPartner").split(" ").slice(2).join(" ")}</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-medium"
+          >
+            {t("aboutSubtitle")}
+          </motion.p>
         </div>
 
         {/* Premium Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {[
-            { value: "500K+", label: "Units Produced Monthly", icon: TrendingUp, color: "from-blue-500 to-blue-600" },
-            { value: "850+", label: "Skilled Employees", icon: Users, color: "from-purple-500 to-purple-600" },
-            { value: "45+", label: "Countries Served", icon: Globe, color: "from-pink-500 to-pink-600" },
-            { value: "99.2%", label: "Quality Pass Rate", icon: Award, color: "from-orange-500 to-orange-600" },
-          ].map((stat, index) => (
-            <div
+          {currentStats.map((stat, index) => {
+            const statsDecorations = [
+              { color: "from-blue-500 to-blue-600" },
+              { color: "from-purple-500 to-purple-600" },
+              { color: "from-pink-500 to-pink-600" },
+              { color: "from-orange-500 to-orange-600" },
+            ];
+            const decoration = statsDecorations[index] || statsDecorations[0];
+            return (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
               key={index}
-              className="group relative bg-white rounded-2xl p-6 border border-slate-200 hover:border-transparent hover:shadow-2xl transition-all duration-500"
+              className="group relative bg-white rounded-3xl p-8 border border-slate-200/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500"
             >
               {/* Gradient Border on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-sm"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl"></div>
               
-              <div className={`w-14 h-14 bg-gradient-to-br ${stat.color} rounded-xl flex items-center justify-center mb-4 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
-                <stat.icon className="w-7 h-7 text-white" />
+              <div className={`w-16 h-16 bg-gradient-to-br ${decoration.color} rounded-2xl flex items-center justify-center mb-6 shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ease-out`}>
+                <TrendingUp className="w-8 h-8 text-white" />
               </div>
-              <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-                {stat.value}
+              <div className="text-5xl font-extrabold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent mb-3 tracking-tight">
+                <AnimatedCounter value={stat.value} duration={2} />
               </div>
-              <div className="text-sm text-slate-600 font-medium">
+              <div className="text-base text-slate-500 font-semibold uppercase tracking-wider">
                 {stat.label}
               </div>
-            </div>
-          ))}
+            </motion.div>
+          );
+          })}
         </div>
 
         {/* Premium Key Strengths */}
@@ -85,9 +111,13 @@ export default function LightweightAboutSection() {
                 gradient: "from-orange-500 to-red-500",
               },
             ].map((feature, index) => (
-              <div
-                key={index}
-                className="group relative bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-transparent"
+              <motion.div
+              initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.1, type: "spring", bounce: 0.3 }}
+              key={index}
+              className="group relative bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-transparent"
               >
                 {/* Gradient Background on Hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
@@ -109,7 +139,7 @@ export default function LightweightAboutSection() {
                     <span className="text-sm font-semibold">Verified & Certified</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

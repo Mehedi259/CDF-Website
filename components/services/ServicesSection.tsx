@@ -4,6 +4,8 @@ import { Factory, Layers, Clipboard, Package, Tag, ShieldCheck, ArrowRight, Spar
 import { services } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { motion } from "framer-motion";
 
 const iconMap = {
   factory: Factory,
@@ -31,49 +33,66 @@ const serviceSlugMap: Record<number, string> = {
 };
 
 export default function ServicesSection() {
+  const { language, t } = useLanguage();
+  const currentServices = services[language];
   return (
     <section 
       id="services" 
-      className="relative py-20 md:py-32 bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden"
+      className="relative py-24 md:py-32 bg-slate-950 overflow-hidden"
     >
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full mix-blend-screen filter blur-[100px] opacity-50 animate-blob"></div>
+        <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-purple-600/20 rounded-full mix-blend-screen filter blur-[100px] opacity-50 animate-blob animation-delay-2000"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Premium Section Header */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 rounded-full text-sm font-semibold mb-6">
-            <Zap className="w-4 h-4 text-blue-600" />
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Our Capabilities
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
-            Comprehensive{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Manufacturing Solutions
-            </span>
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            From concept to delivery, we provide end-to-end apparel manufacturing services
-            tailored to your business needs
-          </p>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-900/30 border border-blue-500/30 rounded-full text-sm font-semibold mb-6 backdrop-blur-md"
+          >
+            <Zap className="w-4 h-4 text-blue-400" />
+            <span className="text-blue-300 tracking-wide uppercase">{t("ourCapabilities")}</span>
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight"
+          >
+            {t("comprehensiveSolutions").split(" ")[0]} <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent drop-shadow-sm">{t("comprehensiveSolutions").substring(t("comprehensiveSolutions").indexOf(" ") + 1)}</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed"
+          >
+            {t("servicesSubtitle")}
+          </motion.p>
         </div>
 
         {/* Premium Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {services.map((service, index) => {
+          {currentServices.map((service, index) => {
             const Icon = iconMap[service.icon as keyof typeof iconMap];
             const serviceSlug = serviceSlugMap[service.id];
             
             return (
-              <Link
+              <motion.a
+                initial={{ opacity: 0, x: index % 3 === 0 ? -80 : index % 3 === 2 ? 80 : 0, y: index % 3 === 1 ? 80 : 0 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.1, type: "spring", bounce: 0.3 }}
                 key={service.id}
                 href={`/services/${serviceSlug}`}
-                className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-transparent cursor-pointer block"
+                className="group relative bg-slate-900/40 rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_20px_40px_rgba(37,99,235,0.2)] transition-all duration-500 border border-white/10 hover:border-blue-500/50 cursor-pointer block backdrop-blur-sm hover:-translate-y-2"
               >
                 {/* Gradient Border Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-500 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-sm"></div>
@@ -98,8 +117,8 @@ export default function ServicesSection() {
 
                   {/* Number Badge */}
                   <div className="absolute top-4 right-4">
-                    <div className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-slate-900 font-bold shadow-lg">
-                      {index + 1}
+                    <div className="w-12 h-12 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center text-white font-bold shadow-xl border border-white/10">
+                      0{index + 1}
                     </div>
                   </div>
 
@@ -112,35 +131,34 @@ export default function ServicesSection() {
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-3">
+                  <p className="text-slate-400 text-sm mb-6 leading-relaxed line-clamp-3">
                     {service.description}
                   </p>
 
                   {/* Premium Benefit Card */}
-                  <div className="mb-4 p-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl border border-blue-100">
+                  <div className="mb-6 p-4 bg-slate-900/50 rounded-xl border border-white/5 group-hover:border-blue-500/30 transition-colors">
                     <div className="flex items-start gap-2 mb-2">
-                      <Sparkles className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
-                      <p className="text-xs font-bold text-blue-900 uppercase tracking-wide">
+                      <Sparkles className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <p className="text-xs font-bold text-blue-300 uppercase tracking-widest">
                         Business Benefit
                       </p>
                     </div>
-                    <p className="text-sm text-blue-700 font-medium">
+                    <p className="text-sm text-slate-300 font-medium">
                       {service.benefit}
                     </p>
                   </div>
 
                   {/* Example with Check */}
-                  <div className="pt-4 border-t border-slate-200">
-                    <div className="flex items-start gap-2">
-                      <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-green-600 text-xs font-bold">✓</span>
+                  <div className="pt-4 border-t border-white/10">
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span className="text-green-400 text-xs font-bold">✓</span>
                       </div>
-                      <p className="text-xs text-slate-600 line-clamp-2">
+                      <p className="text-sm text-slate-400 line-clamp-2">
                         {service.example}
                       </p>
                     </div>
@@ -153,7 +171,7 @@ export default function ServicesSection() {
                     <ArrowRight className="w-5 h-5 text-white" />
                   </div>
                 </div>
-              </Link>
+              </motion.a>
             );
           })}
         </div>
@@ -170,7 +188,7 @@ export default function ServicesSection() {
               className="relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
             >
               <Sparkles className="w-5 h-5" />
-              <span>Discuss Your Project Requirements</span>
+              <span>{t("discussProject")}</span>
               <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
             </a>
           </div>

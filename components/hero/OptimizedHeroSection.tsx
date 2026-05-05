@@ -68,7 +68,7 @@ const slides = [
 
 export default function OptimizedHeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   // Auto-rotate slider every 5 seconds
   useEffect(() => {
@@ -147,12 +147,14 @@ export default function OptimizedHeroSection() {
                   </motion.div>
 
                   <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+                    transition={{ duration: 0.8, delay: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
+                    className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]"
                   >
-                    {t(slides[currentSlide].titleKey)}
+                    <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent drop-shadow-sm">
+                      {t(slides[currentSlide].titleKey)}
+                    </span>
                   </motion.h1>
 
                   <motion.p
@@ -168,21 +170,24 @@ export default function OptimizedHeroSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.5 }}
-                    className="flex flex-col sm:flex-row gap-4"
+                    className="flex flex-col sm:flex-row gap-5"
                   >
                     <a
                       href="#contact"
-                      className="group inline-flex items-center justify-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/50"
+                      className="group relative inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-full overflow-hidden transition-all duration-300 shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:shadow-[0_0_60px_rgba(37,99,235,0.6)] hover:-translate-y-1"
                     >
-                      {t("requestQuote")}
-                      <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
+                      <span className="relative z-10 flex items-center">
+                        {t("requestQuote")}
+                        <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      </span>
                     </a>
                     <a
                       href="#services"
-                      className="group inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-all duration-300 backdrop-blur-sm border border-white/20"
+                      className="group inline-flex items-center justify-center px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full transition-all duration-300 backdrop-blur-md border border-white/10 hover:border-white/30"
                     >
                       {t("viewCapabilities")}
-                      <Play className="ml-2 w-5 h-5" />
+                      <Play className="ml-2 w-5 h-5 group-hover:scale-110 transition-transform" />
                     </a>
                   </motion.div>
                 </motion.div>
@@ -201,9 +206,9 @@ export default function OptimizedHeroSection() {
                   className="relative"
                 >
                   {/* Glass Morphism Card */}
-                  <div className="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl">
+                  <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-10 shadow-[0_30px_60px_rgba(0,0,0,0.4)] animate-float">
                     {/* Quote Icon */}
-                    <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                    <div className="absolute -top-6 -left-6 w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-xl border-4 border-slate-900">
                       <Quote className="w-6 h-6 text-white" />
                     </div>
 
@@ -211,8 +216,8 @@ export default function OptimizedHeroSection() {
                     <div className="mb-6">
                       <div className="relative w-24 h-24 mx-auto">
                         <Image
-                          src={founderQuotes[slides[currentSlide].founderIndex].image}
-                          alt={founderQuotes[slides[currentSlide].founderIndex].author}
+                          src={founderQuotes[language as "en" | "nl"][slides[currentSlide].founderIndex].image}
+                          alt={founderQuotes[language as "en" | "nl"][slides[currentSlide].founderIndex].author}
                           fill
                           className="rounded-full object-cover border-4 border-white/30"
                         />
@@ -222,16 +227,16 @@ export default function OptimizedHeroSection() {
 
                     {/* Quote Text */}
                     <blockquote className="text-white text-lg md:text-xl font-medium leading-relaxed mb-6 text-center">
-                      "{founderQuotes[slides[currentSlide].founderIndex].quote}"
+                      "{founderQuotes[language as "en" | "nl"][slides[currentSlide].founderIndex].quote}"
                     </blockquote>
 
                     {/* Author Info */}
                     <div className="text-center">
                       <div className="font-bold text-white text-lg mb-1">
-                        {founderQuotes[slides[currentSlide].founderIndex].author}
+                        {founderQuotes[language as "en" | "nl"][slides[currentSlide].founderIndex].author}
                       </div>
                       <div className="text-blue-300 text-sm font-medium">
-                        {founderQuotes[slides[currentSlide].founderIndex].role}
+                        {founderQuotes[language as "en" | "nl"][slides[currentSlide].founderIndex].role}
                       </div>
                     </div>
 

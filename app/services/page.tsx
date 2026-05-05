@@ -3,6 +3,7 @@
 import { services } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/lib/context/LanguageContext";
 import { Factory, Layers, Clipboard, Package, Tag, ShieldCheck, ArrowRight } from "lucide-react";
 
 const iconMap = {
@@ -25,6 +26,7 @@ const serviceSlugMap: { [key: number]: string } = {
 };
 
 export default function ServicesPage() {
+  const { language } = useLanguage();
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-50">
       {/* Hero Section */}
@@ -50,7 +52,7 @@ export default function ServicesPage() {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {services.slice(0, 6).map((service) => {
+            {services[language].slice(0, 6).map((service) => {
               const Icon = iconMap[service.icon as keyof typeof iconMap];
               const slug = serviceSlugMap[service.id];
               

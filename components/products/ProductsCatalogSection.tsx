@@ -3,124 +3,21 @@
 import { useState } from "react";
 import { X, ArrowRight, Package, Sparkles } from "lucide-react";
 import Image from "next/image";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { productCategories } from "@/lib/data";
+import { motion } from "framer-motion";
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 // Product Categories Data
-const productCategories = [
-  {
-    id: 1,
-    name: "T-Shirts & Tops",
-    description: "Premium quality cotton and polyester blend t-shirts",
-    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80",
-    products: ["Basic Tees", "Polo Shirts", "Long Sleeve", "Tank Tops", "Henley Shirts"],
-    minOrder: "500 units",
-    featured: true,
-  },
-  {
-    id: 2,
-    name: "Pants & Trousers",
-    description: "Formal and casual pants with perfect fit",
-    image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=800&q=80",
-    products: ["Chinos", "Dress Pants", "Cargo Pants", "Jeans", "Joggers"],
-    minOrder: "300 units",
-    featured: true,
-  },
-  {
-    id: 3,
-    name: "Blazers & Jackets",
-    description: "Tailored blazers and premium outerwear",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80",
-    products: ["Business Blazers", "Casual Jackets", "Bomber Jackets", "Windbreakers", "Hoodies"],
-    minOrder: "200 units",
-    featured: true,
-  },
-  {
-    id: 4,
-    name: "Footwear",
-    description: "Quality shoes for every occasion",
-    image: "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=800&q=80",
-    products: ["Formal Shoes", "Sneakers", "Loafers", "Boots", "Sandals"],
-    minOrder: "500 pairs",
-    featured: true,
-  },
-  {
-    id: 5,
-    name: "Accessories",
-    description: "Complete your look with premium accessories",
-    image: "https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=800&q=80",
-    products: ["Ties", "Bow Ties", "Belts", "Scarves", "Pocket Squares"],
-    minOrder: "1000 units",
-    featured: false,
-  },
-  {
-    id: 6,
-    name: "Shirts & Dress Shirts",
-    description: "Formal and casual shirts for all occasions",
-    image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800&q=80",
-    products: ["Dress Shirts", "Casual Shirts", "Oxford Shirts", "Flannel", "Denim Shirts"],
-    minOrder: "400 units",
-    featured: false,
-  },
-  {
-    id: 7,
-    name: "Sportswear",
-    description: "High-performance athletic wear",
-    image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80",
-    products: ["Sports Jerseys", "Track Pants", "Shorts", "Leggings", "Sports Bras"],
-    minOrder: "600 units",
-    featured: false,
-  },
-  {
-    id: 8,
-    name: "Workwear & Uniforms",
-    description: "Durable uniforms for professionals",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
-    products: ["Corporate Uniforms", "Medical Scrubs", "Chef Uniforms", "Security Wear", "Industrial Wear"],
-    minOrder: "300 units",
-    featured: false,
-  },
-  {
-    id: 9,
-    name: "Denim Collection",
-    description: "Premium denim jeans and jackets",
-    image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=800&q=80",
-    products: ["Slim Fit Jeans", "Straight Fit", "Bootcut", "Denim Jackets", "Denim Shirts"],
-    minOrder: "400 units",
-    featured: false,
-  },
-  {
-    id: 10,
-    name: "Kids Wear",
-    description: "Comfortable and stylish clothing for children",
-    image: "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=800&q=80",
-    products: ["Kids T-Shirts", "Kids Pants", "School Uniforms", "Baby Rompers", "Kids Jackets"],
-    minOrder: "500 units",
-    featured: false,
-  },
-  {
-    id: 11,
-    name: "Swimwear",
-    description: "Beach and pool ready swimwear",
-    image: "https://images.unsplash.com/photo-1582639510494-c80b5de9f148?w=800&q=80",
-    products: ["Swim Trunks", "Bikinis", "One-Piece", "Rash Guards", "Board Shorts"],
-    minOrder: "400 units",
-    featured: false,
-  },
-  {
-    id: 12,
-    name: "Underwear & Innerwear",
-    description: "Comfortable everyday essentials",
-    image: "https://images.unsplash.com/photo-1566206091558-7f218b696731?w=800&q=80",
-    products: ["Boxers", "Briefs", "Undershirts", "Socks", "Thermal Wear"],
-    minOrder: "1000 units",
-    featured: false,
-  },
-];
+
 
 export default function ProductsCatalogSection() {
+  const { language, t } = useLanguage();
+  const currentProducts = productCategories[language];
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<typeof productCategories[0] | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<typeof currentProducts[0] | null>(null);
 
-  const featuredProducts = productCategories.filter(p => p.featured);
+  const featuredProducts = currentProducts.filter(p => p.featured);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -133,7 +30,7 @@ export default function ProductsCatalogSection() {
     document.body.style.overflow = "unset";
   };
 
-  const openProductDetail = (product: typeof productCategories[0]) => {
+  const openProductDetail = (product: typeof currentProducts[0]) => {
     setSelectedProduct(product);
     document.body.style.overflow = "hidden";
   };
@@ -154,31 +51,50 @@ export default function ProductsCatalogSection() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 rounded-full text-sm font-semibold mb-6">
+          <div className="text-center mb-20">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-100 rounded-full text-sm font-semibold mb-6 shadow-sm"
+            >
               <Package className="w-4 h-4 text-blue-600" />
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Our Products
-              </span>
-            </div>
-            <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
+              <span className="text-blue-700 tracking-wide uppercase">{t("ourProducts")}</span>
+            </motion.div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 tracking-tight"
+            >
               Premium Apparel{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent drop-shadow-sm">
                 Catalog
               </span>
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              From t-shirts to blazers, we manufacture and supply high-quality apparel for global brands
-            </p>
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-medium"
+            >
+              {t("productsSubtitle")}
+            </motion.p>
           </div>
 
           {/* Featured Products Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {featuredProducts.map((product) => (
-              <div
+            {featuredProducts.map((product, index) => (
+              <motion.div
+                initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.1, type: "spring", bounce: 0.3 }}
                 key={product.id}
                 onClick={() => openProductDetail(product)}
-                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-blue-200 cursor-pointer"
+                className="group relative bg-white rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 border border-slate-200/60 hover:border-blue-200 cursor-pointer"
               >
                 {/* Image */}
                 <div className="relative h-64 overflow-hidden">
@@ -223,7 +139,7 @@ export default function ProductsCatalogSection() {
                     <ArrowRight className="w-5 h-5 text-blue-600 transform group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -250,14 +166,21 @@ export default function ProductsCatalogSection() {
               { value: "500K+", label: "Units/Month Capacity" },
               { value: "100%", label: "Quality Guaranteed" },
             ].map((stat, index) => (
-              <div key={index} className="text-center p-6 bg-slate-50 rounded-2xl">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1, type: "spring" }}
+                key={index} 
+                className="text-center p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm"
+              >
                 <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">
-                  {stat.value}
+                  <AnimatedCounter value={stat.value} duration={2} />
                 </div>
                 <div className="text-sm text-slate-600 font-medium">
                   {stat.label}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -274,7 +197,7 @@ export default function ProductsCatalogSection() {
                   Complete Product Catalog
                 </h3>
                 <p className="text-blue-100">
-                  Browse all {productCategories.length} categories we manufacture
+                  {t("browseAll")} {currentProducts.length} {t("categoriesWeManufacture")}
                 </p>
               </div>
               <button
@@ -289,7 +212,7 @@ export default function ProductsCatalogSection() {
             {/* Modal Content */}
             <div className="overflow-y-auto max-h-[calc(90vh-120px)] p-8">
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {productCategories.map((product) => (
+                {currentProducts.map((product) => (
                   <div
                     key={product.id}
                     onClick={() => {

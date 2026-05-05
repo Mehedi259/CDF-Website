@@ -4,8 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Play, X, Volume2, VolumeX } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 export default function FounderVideoSection() {
+  const { language, t } = useLanguage();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -82,15 +85,11 @@ export default function FounderVideoSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
                 className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-semibold mb-4"
-              >
-                Meet Our Founders
-              </motion.span>
+              >{t("meetFounders")}</motion.span>
               <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
                 Our Story, Your Success
               </h2>
-              <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                Discover how CDF Studio is revolutionizing apparel manufacturing with innovation, quality, and partnership.
-              </p>
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto">{t("videoSubtitle")}</p>
             </motion.div>
 
             {/* Video Thumbnail */}
@@ -178,16 +177,20 @@ export default function FounderVideoSection() {
                 { label: "Production Capacity", value: "500K+", suffix: "/month" },
                 { label: "Team Members", value: "850+" },
               ].map((stat, index) => (
-                <div
+                <motion.div
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: index * 0.1, type: "spring", bounce: 0.3 }}
                   key={index}
                   className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">
-                    {stat.value}
+                    <AnimatedCounter value={stat.value} duration={2.5} />
                     {stat.suffix && <span className="text-lg text-slate-500">{stat.suffix}</span>}
                   </div>
                   <div className="text-sm text-slate-600 font-medium">{stat.label}</div>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </div>

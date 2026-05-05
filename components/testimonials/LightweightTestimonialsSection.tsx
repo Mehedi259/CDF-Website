@@ -2,8 +2,12 @@
 
 import { Star, Quote, Sparkles, TrendingUp, Users, Award } from "lucide-react";
 import { testimonials } from "@/lib/data";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { motion } from "framer-motion";
 
 export default function LightweightTestimonialsSection() {
+  const { language, t } = useLanguage();
+  const currentTestimonials = testimonials[language];
   return (
     <section id="testimonials" className="relative py-20 md:py-32 bg-gradient-to-b from-white via-slate-50 to-white overflow-hidden">
       {/* Background Decorations */}
@@ -17,15 +21,9 @@ export default function LightweightTestimonialsSection() {
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 rounded-full text-sm font-semibold mb-6">
             <Award className="w-4 h-4 text-blue-600" />
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Client Testimonials
-            </span>
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">{t("clientTestimonials")}</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
-            Trusted by{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Industry Leaders
-            </span>
+          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">{t("trustedByLeaders").split(" ")[0]} <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">{t("trustedByLeaders").substring(t("trustedByLeaders").indexOf(" ") + 1)}</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Here's what our partners say about working with us
@@ -34,8 +32,12 @@ export default function LightweightTestimonialsSection() {
 
         {/* Premium Testimonials Grid */}
         <div className="grid md:grid-cols-2 gap-8 mb-20 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <div
+          {currentTestimonials.map((testimonial, index) => (
+            <motion.div
+              initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.1, type: "spring", bounce: 0.3 }}
               key={testimonial.id}
               className="group relative bg-white rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-transparent"
             >
@@ -87,7 +89,7 @@ export default function LightweightTestimonialsSection() {
 
               {/* Decorative Corner */}
               <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-blue-200 rounded-tr-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

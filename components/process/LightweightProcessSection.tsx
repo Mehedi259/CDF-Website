@@ -2,11 +2,15 @@
 
 import { MessageSquare, Pencil, Beaker, Cog, CheckCircle, Truck, ArrowRight, Clock, Sparkles } from "lucide-react";
 import { processSteps } from "@/lib/data";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 const iconMap = [MessageSquare, Pencil, Beaker, Cog, CheckCircle, Truck];
 
 export default function LightweightProcessSection() {
+  const { language, t } = useLanguage();
+  const currentSteps = processSteps[language];
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
 
   return (
@@ -23,9 +27,7 @@ export default function LightweightProcessSection() {
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 rounded-full text-sm font-semibold mb-6">
             <Sparkles className="w-4 h-4 text-blue-600" />
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Our Process
-            </span>
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">{t("ourProcess")}</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
             From Concept to{" "}
@@ -44,7 +46,7 @@ export default function LightweightProcessSection() {
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 via-purple-200 to-blue-200 hidden md:block transform -translate-x-1/2"></div>
 
           <div className="space-y-12 md:space-y-24">
-            {processSteps.map((step, index) => {
+            {currentSteps.map((step, index) => {
               const Icon = iconMap[index];
               const isEven = index % 2 === 0;
               const isHovered = hoveredStep === index;
@@ -99,7 +101,13 @@ export default function LightweightProcessSection() {
                   <div className="hidden md:block">
                     <div className={`flex items-center ${isEven ? 'flex-row' : 'flex-row-reverse'}`}>
                       {/* Content Card */}
-                      <div className="w-5/12">
+                      <motion.div 
+                        initial={{ opacity: 0, x: isEven ? -100 : 100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.7, type: "spring", bounce: 0.3 }}
+                        className="w-5/12"
+                      >
                         <div className={`relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-blue-200 ${isHovered ? 'scale-105' : ''}`}>
                           {/* Gradient Border Effect */}
                           <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-0 hover:opacity-10 transition-opacity duration-500"></div>
@@ -126,7 +134,7 @@ export default function LightweightProcessSection() {
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
 
                       {/* Center Icon */}
                       <div className="w-2/12 flex justify-center">
