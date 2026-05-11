@@ -1,44 +1,34 @@
 export const companyData = {
   en: {
     name: "CDF Studio",
-    tagline: "Premium Apparel Manufacturing for Global Brands",
-    description: "ISO-certified manufacturing facility specializing in high-quality garment production, fabric sourcing, and end-to-end apparel solutions for international brands.",
+    tagline: "B2B Clothing Manufacturing Partner",
+    description: "CDF Studio is a B2B clothing manufacturing partner for startup and early-stage fashion brands. We work with founders who are developing new collections and need a structured, dependable production process — not just a factory that processes an order.\n\nFrom fabric sourcing and sampling through production, quality control, and shipment coordination, we manage each stage with consistent communication, realistic timelines, and a focus on fit, finish, and repeatable quality.",
     established: "2008",
-    capacity: "500,000+ units/month",
-    employees: "850+",
-    countries: "45+",
+    capacity: "Low MOQ",
+    employees: "Transparent",
+    countries: "Ethical",
   },
   nl: {
     name: "CDF Studio",
-    tagline: "Premium Kledingproductie voor Wereldwijde Merken",
-    description: "ISO-gecertificeerde productiefaciliteit gespecialiseerd in hoogwaardige kledingproductie, stofinkoop en end-to-end kledingoplossingen voor internationale merken.",
+    tagline: "B2B Kledingproductie Partner",
+    description: "CDF Studio is een B2B kledingproductiepartner voor startup en beginnende modemerken. We werken met oprichters die nieuwe collecties ontwikkelen en een gestructureerd, betrouwbaar productieproces nodig hebben — niet zomaar een fabriek die een bestelling verwerkt.\n\nVan stofinkoop en bemonstering tot productie, kwaliteitscontrole en verzendcoördinatie, wij beheren elke fase met consistente communicatie, realistische tijdlijnen en een focus op pasvorm, afwerking en herhaalbare kwaliteit.",
     established: "2008",
-    capacity: "500.000+ eenheden/maand",
-    employees: "850+",
-    countries: "45+",
+    capacity: "Lage MOQ",
+    employees: "Transparant",
+    countries: "Ethisch",
   }
 };
 
 export const founderQuotes = {
   en: [
-    { id: 1, quote: "Quality is not an act, it is a habit. We build excellence into every stitch.", author: "Sarah Chen", role: "Co-Founder & CEO", image: "/founders/founder-1.webp" },
-    { id: 2, quote: "Innovation in manufacturing means staying ahead of trends while maintaining timeless quality.", author: "Michael Rodriguez", role: "Co-Founder & COO", image: "/founders/founder-2.webp" },
-    { id: 3, quote: "Sustainability isn't a choice anymore—it's our responsibility to the next generation.", author: "Priya Sharma", role: "Head of Sustainability", image: "/founders/founder-3.webp" },
-    { id: 4, quote: "Our success is measured by the success of the brands we partner with.", author: "David Kim", role: "VP of Operations", image: "/founders/founder-4.webp" },
-    { id: 5, quote: "Every garment tells a story. We ensure it's a story of craftsmanship and care.", author: "Emma Thompson", role: "Quality Director", image: "/founders/founder-5.webp" },
-    { id: 6, quote: "Speed without quality is meaningless. We deliver both, every single time.", author: "James Wilson", role: "Production Manager", image: "/founders/founder-6.webp" },
-    { id: 7, quote: "Global reach, local touch. We bring the world closer through seamless logistics.", author: "Sofia Martinez", role: "Logistics Director", image: "/founders/founder-7.webp" },
-    { id: 8, quote: "Fair pricing doesn't mean compromising quality. It means smart manufacturing.", author: "Robert Chang", role: "Finance Director", image: "/founders/founder-8.webp" }
+    { id: 1, quote: "Fashion is an instrument for change. It can shift our perspective on the world.", author: "Iris van Herpen", role: "Haute Couture Designer", image: "/hero/founder-1.jpg" },
+    { id: 2, quote: "Trend forecasting is not about predicting the future, it's about observing the present very closely.", author: "Lidewij Edelkoort", role: "Trend Forecaster", image: "/hero/founder-2.jpg" },
+    { id: 3, quote: "We believe in the power of fashion to transform the mundane into something extraordinary.", author: "Viktor Horsting", role: "Avant-Garde Designer", image: "/hero/founder-3.jpg" }
   ],
   nl: [
-    { id: 1, quote: "Kwaliteit is geen daad, het is een gewoonte. We bouwen uitmuntendheid in elke steek.", author: "Sarah Chen", role: "Medeoprichter & CEO", image: "/founders/founder-1.webp" },
-    { id: 2, quote: "Innovatie in productie betekent voorop blijven lopen in trends met behoud van tijdloze kwaliteit.", author: "Michael Rodriguez", role: "Medeoprichter & COO", image: "/founders/founder-2.webp" },
-    { id: 3, quote: "Duurzaamheid is geen keuze meer—het is onze verantwoordelijkheid naar de volgende generatie.", author: "Priya Sharma", role: "Hoofd Duurzaamheid", image: "/founders/founder-3.webp" },
-    { id: 4, quote: "Ons succes wordt afgemeten aan het succes van de merken waarmee we samenwerken.", author: "David Kim", role: "VP Operaties", image: "/founders/founder-4.webp" },
-    { id: 5, quote: "Elk kledingstuk vertelt een verhaal. Wij zorgen ervoor dat het een verhaal is van vakmanschap en zorg.", author: "Emma Thompson", role: "Kwaliteitsdirecteur", image: "/founders/founder-5.webp" },
-    { id: 6, quote: "Snelheid zonder kwaliteit is betekenisloos. Wij leveren beide, elke keer weer.", author: "James Wilson", role: "Productiemanager", image: "/founders/founder-6.webp" },
-    { id: 7, quote: "Wereldwijd bereik, lokaal contact. Wij brengen de wereld dichterbij door naadloze logistiek.", author: "Sofia Martinez", role: "Logistiek Directeur", image: "/founders/founder-7.webp" },
-    { id: 8, quote: "Eerlijke prijzen betekent niet inleveren op kwaliteit. Het betekent slimme productie.", author: "Robert Chang", role: "Financieel Directeur", image: "/founders/founder-8.webp" }
+    { id: 1, quote: "Mode is een instrument voor verandering. Het kan ons perspectief op de wereld verschuiven.", author: "Iris van Herpen", role: "Haute Couture Ontwerper", image: "/hero/founder-1.jpg" },
+    { id: 2, quote: "Trendvoorspelling gaat niet over het voorspellen van de toekomst, het gaat erom het heden heel goed te observeren.", author: "Lidewij Edelkoort", role: "Trendvoorspeller", image: "/hero/founder-2.jpg" },
+    { id: 3, quote: "Wij geloven in de kracht van mode om het alledaagse te transformeren in iets buitengewoons.", author: "Viktor Horsting", role: "Avant-Garde Ontwerper", image: "/hero/founder-3.jpg" }
   ]
 };
 
@@ -75,35 +65,29 @@ export const services = {
 
 export const processSteps = {
   en: [
-    { step: 1, title: "Requirement Discussion", description: "We analyze your product specifications, target market, quality standards, and budget requirements. Our team provides technical consultation and feasibility assessment.", duration: "1-2 days" },
-    { step: 2, title: "Design & Tech Pack", description: "Our design team creates detailed technical packages including measurements, construction details, fabric specifications, and trim requirements.", duration: "3-5 days" },
-    { step: 3, title: "Sampling", description: "We produce initial samples for your approval. Includes fit samples, color matching, and any required modifications until perfect.", duration: "7-10 days" },
-    { step: 4, title: "Production", description: "Bulk manufacturing begins with strict timeline management. Real-time production updates and progress tracking throughout the process.", duration: "30-45 days" },
-    { step: 5, title: "Quality Check", description: "Comprehensive AQL 2.5 inspection at multiple stages. Third-party audits available. Detailed quality reports provided.", duration: "2-3 days" },
-    { step: 6, title: "Shipping & Delivery", description: "Coordinated logistics with trusted freight partners. FOB, CIF, or DDP terms available. Full documentation and customs support.", duration: "15-30 days" }
+    { step: 1, title: "Brief & Alignment", description: "We review your designs, specifications, and timeline. Before anything moves forward, we confirm everything in writing.", duration: "Step 1" },
+    { step: 2, title: "Fabric & Sampling", description: "Fabric sourcing followed by sample development. We work through feedback until the sample matches your standard.", duration: "Step 2" },
+    { step: 3, title: "Production & Quality Control", description: "Garment production with quality checks throughout — not just a final inspection at the end.", duration: "Step 3" },
+    { step: 4, title: "Shipment & Handover", description: "Coordinated delivery with full documentation. We debrief after each run so the next one is more efficient.", duration: "Step 4" }
   ],
   nl: [
-    { step: 1, title: "Vereisten Bespreken", description: "We analyseren uw productspecificaties, doelgroep, kwaliteitsnormen en budgetvereisten. Ons team biedt technisch advies en haalbaarheidsbeoordeling.", duration: "1-2 dagen" },
-    { step: 2, title: "Ontwerp & Tech Pack", description: "Ons ontwerpteam maakt gedetailleerde technische pakketten, inclusief afmetingen, constructiedetails, stofspecificaties en vereisten voor afwerking.", duration: "3-5 dagen" },
-    { step: 3, title: "Bemonstering", description: "Wij produceren initiële monsters ter goedkeuring. Inclusief pasvormmonsters, kleurmatching en alle nodige aanpassingen tot het perfect is.", duration: "7-10 dagen" },
-    { step: 4, title: "Productie", description: "Bulkproductie begint met strikt tijdlijnbeheer. Realtime productie-updates en voortgangsregistratie gedurende het hele proces.", duration: "30-45 dagen" },
-    { step: 5, title: "Kwaliteitscontrole", description: "Uitgebreide AQL 2.5-inspectie in meerdere fasen. Audits door derden beschikbaar. Gedetailleerde kwaliteitsrapporten verstrekt.", duration: "2-3 dagen" },
-    { step: 6, title: "Verzending & Levering", description: "Gecoördineerde logistiek met vertrouwde vrachtpartners. FOB-, CIF- of DDP-voorwaarden beschikbaar. Volledige documentatie en douaneondersteuning.", duration: "15-30 dagen" }
+    { step: 1, title: "Briefing & Afstemming", description: "We beoordelen uw ontwerpen, specificaties en tijdlijn. Voordat we verder gaan, bevestigen we alles schriftelijk.", duration: "Stap 1" },
+    { step: 2, title: "Stof & Bemonstering", description: "Stofinkoop gevolgd door monsterontwikkeling. We werken de feedback door totdat het monster aan uw standaard voldoet.", duration: "Stap 2" },
+    { step: 3, title: "Productie & Kwaliteitscontrole", description: "Kledingproductie met kwaliteitscontroles gedurende het hele proces — niet alleen een eindinspectie.", duration: "Stap 3" },
+    { step: 4, title: "Verzending & Overdracht", description: "Gecoördineerde levering met volledige documentatie. Na elke run evalueren we, zodat de volgende efficiënter is.", duration: "Stap 4" }
   ]
 };
 
 export const portfolio = {
   en: [
-    { id: 1, client: "Premium Sportswear Brand", category: "Athletic Wear", description: "Produced 250,000 units of technical performance wear with moisture-wicking fabric", result: "Delivered 2 weeks ahead of schedule with 99.8% quality approval", image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80" },
-    { id: 2, client: "European Fashion Retailer", category: "Sustainable Fashion", description: "Sourced and manufactured organic cotton collection for eco-conscious brand", result: "Achieved GOTS certification, 40% cost reduction vs. previous supplier", image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=80" },
-    { id: 3, client: "Corporate Uniform Provider", category: "Workwear", description: "Bulk production of 100,000 corporate uniforms with custom branding", result: "Maintained consistent quality across 6-month production cycle", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80" },
-    { id: 4, client: "Startup Streetwear Brand", category: "Fashion", description: "End-to-end support from design to delivery for new brand launch", result: "Successfully launched with 5,000-unit initial order, now scaling to 50K/month", image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80" }
+    { id: 1, client: "First & Second Collection Brands", category: "Early-Stage", description: "You're earlier in your brand journey and need a manufacturing partner who explains the process, not just someone who executes an order.", result: "We work through decisions with you.", image: "/hero/portfolio-1.png" },
+    { id: 2, client: "Low-MOQ Fashion Brands", category: "Small Batch", description: "You're not at large-scale production yet and don't need to be. We work with brands producing smaller, considered runs.", result: "Building your customer base without overproducing.", image: "/hero/portfolio-2.png" },
+    { id: 3, client: "Brands That Care About Ethics", category: "Responsible", description: "Responsible sourcing and production matter to you — as a business decision, not just a marketing angle.", result: "That's how we operate too.", image: "/hero/portfolio-3.png" }
   ],
   nl: [
-    { id: 1, client: "Premium Sportkleding Merk", category: "Sportkleding", description: "250.000 eenheden technische prestatiekleding met vochtafvoerende stof geproduceerd", result: "2 weken eerder dan gepland geleverd met 99,8% kwaliteitsgoedkeuring", image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80" },
-    { id: 2, client: "Europese Moderetailer", category: "Duurzame Mode", description: "Biologische katoencollectie ingekocht en geproduceerd voor een milieubewust merk", result: "GOTS-certificering behaald, 40% kostenreductie vs. vorige leverancier", image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=80" },
-    { id: 3, client: "Leverancier van Bedrijfskleding", category: "Werkkleding", description: "Bulkproductie van 100.000 bedrijfsuniformen met aangepaste branding", result: "Consistente kwaliteit behouden over een productiecyclus van 6 maanden", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80" },
-    { id: 4, client: "Startup Streetwear Merk", category: "Mode", description: "End-to-end ondersteuning van ontwerp tot levering voor nieuwe merklancering", result: "Succesvol gelanceerd met een initiële bestelling van 5.000 stuks, schaalt nu op naar 50K/maand", image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80" }
+    { id: 1, client: "Eerste & Tweede Collectie Merken", category: "Beginnende Merken", description: "Je bent vroeg in je merkreis en hebt een productiepartner nodig die het proces uitlegt, niet alleen een bestelling uitvoert.", result: "Samen nemen we de beslissingen.", image: "/hero/portfolio-1.png" },
+    { id: 2, client: "Lage-MOQ Modemerken", category: "Kleine Oplage", description: "Je zit nog niet op grootschalige productie. Wij werken met merken die kleinere, overwogen oplages produceren.", result: "Bouw aan je klantenbestand zonder overproductie.", image: "/hero/portfolio-2.png" },
+    { id: 3, client: "Merken Die Geven Om Ethiek", category: "Verantwoord", description: "Verantwoorde inkoop en productie zijn belangrijk voor je — als zakelijke beslissing, niet alleen voor marketing.", result: "Dat is ook hoe wij werken.", image: "/hero/portfolio-3.png" }
   ]
 };
 

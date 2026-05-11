@@ -62,14 +62,14 @@ const translations: Record<Language, Record<string, string>> = {
     services: "Services",
     about: "About",
     process: "Process",
-    portfolio: "Portfolio",
+    portfolio: "Who We Work With",
     testimonials: "Testimonials",
     contact: "Contact",
     getQuote: "Get Quote",
     
     // Hero
-    heroTitle1: "We Manufacture Premium Apparel for Global Brands",
-    heroSubtitle1: "ISO-certified facility producing 500,000+ units monthly for international retailers and fashion brands across 45+ countries",
+    heroTitle1: "Production support for startup fashion brands.",
+    heroSubtitle1: "We guide early-stage brands through the full manufacturing process — from fabric selection and sampling to quality control and delivery — with transparent communication at every step.",
     heroTitle2: "End-to-End Apparel Solutions",
     heroSubtitle2: "From fabric sourcing to final delivery - complete manufacturing partnership for brands of all sizes",
     heroTitle3: "Quality You Can Trust",
@@ -86,7 +86,7 @@ const translations: Record<Language, Record<string, string>> = {
     heroSubtitle8: "Direct factory pricing with no middlemen, reducing costs by 40% while maintaining premium quality",
     requestQuote: "Request a Quote",
     viewCapabilities: "View Capabilities",
-    trustedSince: "Trusted Manufacturing Partner Since 2008",
+    trustedSince: "B2B Clothing Manufacturing Partner",
     
     // Services
     ourCapabilities: "Our Capabilities",
@@ -122,7 +122,7 @@ const translations: Record<Language, Record<string, string>> = {
     // About
     aboutCdf: "About CDF Studio",
     trustedPartner: "Your Trusted Manufacturing Partner",
-    aboutSubtitle: "Building global brands through precision manufacturing and unwavering commitment to excellence since 2008",
+    aboutSubtitle: "A manufacturing partner built around the needs of early-stage brands.",
     verifiedCertified: "Verified & Certified",
     readyToStart: "Ready to Start?",
     letsBuild: "Let's Build Something Amazing Together",
@@ -139,14 +139,14 @@ const translations: Record<Language, Record<string, string>> = {
     // Process
     ourProcess: "Our Process",
     howWeWork: "How We Work",
-    processSubtitle: "A streamlined manufacturing workflow designed for efficiency, transparency, and premium quality",
+    processSubtitle: "A clear process from brief to delivery. Each stage is structured so you know what's happening, what comes next, and what to expect — without having to ask.",
     typicalTimeline: "Typical Project Timeline",
     fromInitial: "From initial consultation to final delivery",
 
     // Portfolio
-    caseStudies: "Case Studies",
-    successStories: "Success Stories",
-    portfolioSubtitle: "Real results from real partnerships",
+    caseStudies: "Who We Work With",
+    successStories: "For founders building with intention.",
+    portfolioSubtitle: "We take on a small number of brands at a time so every project gets proper attention.",
     result: "Result",
 
     // Testimonials
@@ -194,14 +194,14 @@ const translations: Record<Language, Record<string, string>> = {
     services: "Diensten",
     about: "Over Ons",
     process: "Proces",
-    portfolio: "Portfolio",
+    portfolio: "Met Wie We Werken",
     testimonials: "Getuigenissen",
     contact: "Contact",
     getQuote: "Offerte Aanvragen",
     
     // Hero
-    heroTitle1: "Wij Produceren Premium Kleding voor Wereldwijde Merken",
-    heroSubtitle1: "ISO-gecertificeerde faciliteit die maandelijks 500.000+ eenheden produceert voor internationale retailers en modemerken in 45+ landen",
+    heroTitle1: "Productieondersteuning voor startup modemerken.",
+    heroSubtitle1: "Wij begeleiden beginnende merken door het volledige productieproces — van stofselectie en bemonstering tot kwaliteitscontrole en levering — met transparante communicatie bij elke stap.",
     heroTitle2: "End-to-End Kledingoplossingen",
     heroSubtitle2: "Van stofinkoop tot eindlevering - compleet productie partnerschap voor merken van alle groottes",
     heroTitle3: "Kwaliteit Waar U Op Kunt Vertrouwen",
@@ -218,7 +218,7 @@ const translations: Record<Language, Record<string, string>> = {
     heroSubtitle8: "Directe fabrieksprijzen zonder tussenpersonen, kosten verlagen met 40% met behoud van premiumkwaliteit",
     requestQuote: "Offerte Aanvragen",
     viewCapabilities: "Bekijk Mogelijkheden",
-    trustedSince: "Vertrouwde Productiepartner Sinds 2008",
+    trustedSince: "B2B Kledingproductie Partner",
     
     // Services
     ourCapabilities: "Onze Mogelijkheden",
@@ -254,7 +254,7 @@ const translations: Record<Language, Record<string, string>> = {
     // About
     aboutCdf: "Over CDF Studio",
     trustedPartner: "Uw Vertrouwde Productiepartner",
-    aboutSubtitle: "Wereldwijde merken bouwen door precisieproductie en niet-aflatende toewijding aan uitmuntendheid sinds 2008",
+    aboutSubtitle: "Een productiepartner gebouwd rond de behoeften van beginnende merken.",
     verifiedCertified: "Geverifieerd & Gecertificeerd",
     readyToStart: "Klaar om te Beginnen?",
     letsBuild: "Laten we Samen Iets Geweldigs Bouwen",
@@ -271,14 +271,14 @@ const translations: Record<Language, Record<string, string>> = {
     // Process
     ourProcess: "Ons Proces",
     howWeWork: "Hoe Wij Werken",
-    processSubtitle: "Een gestroomlijnde productieworkflow ontworpen voor efficiëntie, transparantie en premium kwaliteit",
+    processSubtitle: "Een duidelijk proces van briefing tot levering. Elke fase is zo gestructureerd dat u weet wat er gebeurt, wat de volgende stap is en wat u kunt verwachten — zonder erom te hoeven vragen.",
     typicalTimeline: "Typische Project Tijdlijn",
     fromInitial: "Van het eerste consult tot de uiteindelijke levering",
 
     // Portfolio
-    caseStudies: "Casestudies",
-    successStories: "Succesverhalen",
-    portfolioSubtitle: "Echte resultaten uit echte partnerschappen",
+    caseStudies: "Met Wie We Werken",
+    successStories: "Voor oprichters die met een doel bouwen.",
+    portfolioSubtitle: "We nemen slechts een klein aantal merken tegelijk aan, zodat elk project de juiste aandacht krijgt.",
     result: "Resultaat",
 
     // Testimonials

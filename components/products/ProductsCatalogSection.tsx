@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { productCategories } from "@/lib/data";
 import { motion } from "framer-motion";
-import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 // Product Categories Data
 
@@ -158,31 +157,7 @@ export default function ProductsCatalogSection() {
             </button>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-            {[
-              { value: "12+", label: "Product Categories" },
-              { value: "50+", label: "Product Types" },
-              { value: "500K+", label: "Units/Month Capacity" },
-              { value: "100%", label: "Quality Guaranteed" },
-            ].map((stat, index) => (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.8, y: 30 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1, type: "spring" }}
-                key={index} 
-                className="text-center p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm"
-              >
-                <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">
-                  <AnimatedCounter value={stat.value} duration={2} />
-                </div>
-                <div className="text-sm text-slate-600 font-medium">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+
         </div>
       </section>
 

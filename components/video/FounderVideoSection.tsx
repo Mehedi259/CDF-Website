@@ -5,7 +5,6 @@ import { Play, X, Volume2, VolumeX } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/lib/context/LanguageContext";
-import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 export default function FounderVideoSection() {
   const { language, t } = useLanguage();
@@ -163,36 +162,6 @@ export default function FounderVideoSection() {
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
             </motion.div>
 
-            {/* Stats Below Video */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12"
-            >
-              {[
-                { label: "Years Experience", value: "15+" },
-                { label: "Global Clients", value: "500+" },
-                { label: "Production Capacity", value: "500K+", suffix: "/month" },
-                { label: "Team Members", value: "850+" },
-              ].map((stat, index) => (
-                <motion.div
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: index * 0.1, type: "spring", bounce: 0.3 }}
-                  key={index}
-                  className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-                >
-                  <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">
-                    <AnimatedCounter value={stat.value} duration={2.5} />
-                    {stat.suffix && <span className="text-lg text-slate-500">{stat.suffix}</span>}
-                  </div>
-                  <div className="text-sm text-slate-600 font-medium">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
           </div>
         </div>
       </section>

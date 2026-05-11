@@ -93,40 +93,7 @@ export default function LightweightTestimonialsSection() {
           ))}
         </div>
 
-        {/* Premium Trust Badges */}
-        <div className="max-w-6xl mx-auto">
-          <div className="relative group">
-            {/* Glow Effect */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 rounded-3xl blur-lg opacity-25 group-hover:opacity-40 transition-opacity duration-500"></div>
-            
-            {/* Card */}
-            <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-10 md:p-16">
-              <div className="grid md:grid-cols-3 gap-10 text-center">
-                {[
-                  { icon: TrendingUp, value: "15+ Years", label: "Industry Experience", color: "from-blue-400 to-cyan-400" },
-                  { icon: Users, value: "99.2%", label: "Client Satisfaction Rate", color: "from-purple-400 to-pink-400" },
-                  { icon: Award, value: "85%", label: "Repeat Business Rate", color: "from-orange-400 to-red-400" },
-                ].map((stat, index) => (
-                  <div key={index} className="group/stat">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-xl transform group-hover/stat:scale-110 group-hover/stat:rotate-6 transition-all duration-300`}>
-                      <stat.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <div className={`text-5xl font-bold mb-3 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
-                      {stat.value}
-                    </div>
-                    <div className="text-slate-300 font-medium">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
 
-              {/* Decorative Elements */}
-              <div className="absolute top-6 left-6 w-20 h-20 border-t-2 border-l-2 border-blue-400/20 rounded-tl-3xl"></div>
-              <div className="absolute bottom-6 right-6 w-20 h-20 border-b-2 border-r-2 border-purple-400/20 rounded-br-3xl"></div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

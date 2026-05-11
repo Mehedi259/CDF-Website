@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!-- SEO -->
+<title>CDF Studio — Low MOQ Clothing Manufacturer for Startup Fashion Brands</title>
+<meta name="description" content="CDF Studio is a B2B clothing manufacturing partner for startup and early-stage fashion brands. Low MOQ, ethical production, end-to-end guidance from sampling to delivery."/>
+<meta name="keywords" content="low MOQ clothing manufacturer, B2B apparel production, startup fashion brand manufacturer, ethical clothing manufacturing, small batch garment production, fashion brand manufacturing partner, sample development apparel, clothing production for startups, sustainable apparel manufacturer, garment manufacturer small brands"/>
+<meta property="og:title" content="CDF Studio — Clothing Manufacturing for Startup Fashion Brands"/>
+<meta property="og:description" content="Low MOQ, ethical apparel production with end-to-end guidance. Built for founders developing their first collections."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://manufacturing-website-gamma.vercel.app/"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white:      #FFFFFF;
+  --offwhite:   #F5F7FA;
+  --navy:       #1B2D4F;
+  --navy-mid:   #2E4472;
+  --navy-light: #4A6FA5;
+  --blue-tint:  #EBF0F8;
+  --border:     #D3DCE8;
+  --muted:      #5A7099;
+  --faint:      #8FA3C0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--white);
+  color: var(--navy);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 200;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 6%;
+  transition: box-shadow .3s;
+}
+nav.scrolled { box-shadow: 0 2px 24px rgba(27,45,79,.09); }
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: .04em;
+  text-decoration: none;
+  color: var(--navy);
+}
+.logo span { color: var(--navy-light); }
+nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+nav a {
+  text-decoration: none;
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color .2s;
+}
+nav a:hover { color: var(--navy); }
+.nav-cta {
+  padding: .48rem 1.2rem;
+  background: var(--navy) !important;
+  color: var(--white) !important;
+  border-radius: 3px;
+  transition: background .2s !important;
+}
+.nav-cta:hover { background: var(--navy-light) !important; }
+
+/* HERO */
+#hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+  padding: 0 6%;
+  padding-top: 80px;
+}
+.hero-text { max-width: 540px; }
+.hero-eyebrow {
+  display: inline-block;
+  font-size: .68rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--navy-light);
+  background: var(--blue-tint);
+  padding: .32rem .9rem;
+  border-radius: 100px;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp .8s .15s forwards;
+}
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--navy);
+  margin-bottom: 1.5rem;
+  letter-spacing: -.02em;
+  opacity: 0;
+  animation: fadeUp .8s .3s forwards;
+}
+h1 strong { font-weight: 500; color: var(--navy-light); }
+.hero-sub {
+  font-size: .98rem;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 2.4rem;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeUp .8s .45s forwards;
+}
+.hero-actions {
+  display: flex; gap: .85rem; flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp .8s .6s forwards;
+}
+.btn-primary {
+  padding: .75rem 1.7rem;
+  background: var(--navy);
+  color: var(--white);
+  font-size: .78rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 3px;
+  font-weight: 500;
+  transition: background .2s, transform .15s;
+}
+.btn-primary:hover { background: var(--navy-light); transform: translateY(-1px); }
+.btn-ghost {
+  padding: .75rem 1.7rem;
+  border: 1.5px solid var(--border);
+  color: var(--navy);
+  font-size: .78rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: border-color .2s, color .2s, transform .15s;
+}
+.btn-ghost:hover { border-color: var(--navy-light); color: var(--navy-light); transform: translateY(-1px); }
+
+/* Hero image */
+.hero-img-wrap {
+  height: 580px;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  opacity: 0;
+  animation: fadeLeft .9s .35s forwards;
+}
+.hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.img-badge {
+  position: absolute;
+  bottom: 1.6rem; left: 1.6rem;
+  background: rgba(255,255,255,.95);
+  padding: .9rem 1.3rem;
+  border-radius: 4px;
+  border-left: 3px solid var(--navy-light);
+  font-size: .82rem;
+  color: var(--navy);
+  line-height: 1.55;
+}
+.img-badge strong { display: block; font-weight: 500; font-size: .85rem; }
+
+/* PILLARS */
+#pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--navy);
+}
+.pillar {
+  padding: 3rem 5%;
+  border-right: 1px solid rgba(255,255,255,.1);
+}
+.pillar:last-child { border-right: none; }
+.pillar-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #A8C4E0;
+  margin-bottom: .5rem;
+}
+.pillar p { font-size: .83rem; color: rgba(255,255,255,.55); line-height: 1.75; font-weight: 300; }
+
+/* ABOUT */
+#about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  padding: 7rem 6%;
+  border-bottom: 1px solid var(--border);
+}
+.about-img {
+  height: 500px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.about-img img { width: 100%; height: 100%; object-fit: cover; }
+.about-body p {
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.85;
+  font-size: .95rem;
+  margin-bottom: 1.1rem;
+}
+.mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+.mv-card {
+  padding: 1.3rem;
+  background: var(--blue-tint);
+  border-radius: 4px;
+  border-top: 2px solid var(--navy-light);
+}
+.mv-card h4 {
+  font-size: .7rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--navy-light);
+  margin-bottom: .45rem;
+  font-weight: 500;
+}
+.mv-card p { font-size: .83rem; color: var(--muted); line-height: 1.65; margin: 0; font-weight: 300; }
+
+/* PROCESS */
+#process {
+  padding: 7rem 6%;
+  background: var(--offwhite);
+  border-bottom: 1px solid var(--border);
+}
+.section-head { max-width: 520px; margin-bottom: 3.5rem; }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  overflow: hidden;
+  background: var(--white);
+}
+.step {
+  padding: 2.5rem 2rem;
+  border-right: 1px solid var(--border);
+  transition: background .25s;
+}
+.step:last-child { border-right: none; }
+.step:hover { background: var(--blue-tint); }
+.step-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: var(--border);
+  line-height: 1;
+  margin-bottom: 1.2rem;
+  transition: color .25s;
+}
+.step:hover .step-n { color: var(--navy-light); }
+.step h4 { font-size: .88rem; font-weight: 500; color: var(--navy); margin-bottom: .55rem; }
+.step p { font-size: .82rem; color: var(--muted); line-height: 1.72; font-weight: 300; }
+
+/* WHO */
+#who {
+  padding: 7rem 6%;
+  border-bottom: 1px solid var(--border);
+}
+.who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 3.2rem; }
+.who-card {
+  padding: 2.2rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  transition: border-color .25s, transform .22s;
+}
+.who-card:hover { border-color: var(--navy-light); transform: translateY(-3px); }
+.card-bar { width: 26px; height: 2px; background: var(--navy-light); border-radius: 1px; margin-bottom: 1.2rem; }
+.who-card h4 { font-size: .92rem; font-weight: 500; color: var(--navy); margin-bottom: .65rem; }
+.who-card p { font-size: .83rem; color: var(--muted); line-height: 1.75; font-weight: 300; }
+
+/* CONTACT */
+#contact {
+  padding: 8rem 6%;
+  background: var(--navy);
+  text-align: center;
+}
+#contact h2 { color: var(--white); }
+#contact .lead {
+  color: rgba(255,255,255,.58);
+  max-width: 440px;
+  margin: 1rem auto 2.6rem;
+  font-weight: 300;
+  line-height: 1.8;
+  font-size: .95rem;
+}
+.contact-btns { display: flex; gap: .9rem; justify-content: center; flex-wrap: wrap; }
+.contact-btns a {
+  padding: .72rem 1.9rem;
+  border: 1.5px solid rgba(255,255,255,.22);
+  color: var(--white);
+  font-size: .76rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: border-color .2s, background .2s, color .2s;
+}
+.contact-btns a:hover { border-color: #A8C4E0; background: #A8C4E0; color: var(--navy); }
+
+/* FOOTER */
+footer {
+  padding: 1.6rem 6%;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid var(--border);
+  font-size: .76rem;
+  color: var(--faint);
+}
+footer a { color: var(--faint); text-decoration: none; transition: color .2s; }
+footer a:hover { color: var(--navy); }
+.footer-links { display: flex; gap: 1.5rem; }
+
+/* SHARED */
+.section-tag {
+  font-size: .68rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--navy-light);
+  display: block;
+  margin-bottom: .85rem;
+  font-weight: 500;
+}
+#contact .section-tag { color: #A8C4E0; }
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.85rem, 3.2vw, 2.7rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+.sub-text { color: var(--muted); font-weight: 300; line-height: 1.8; font-size: .95rem; }
+
+/* KEYFRAMES */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.d1 { transition-delay: .1s; }
+.d2 { transition-delay: .2s; }
+.d3 { transition-delay: .3s; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  #hero { grid-template-columns: 1fr; padding-top: 100px; padding-bottom: 4rem; }
+  .hero-img-wrap { height: 300px; }
+  #about { grid-template-columns: 1fr; gap: 3rem; }
+  .about-img { height: 280px; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .step:nth-child(2) { border-right: none; }
+  .step:nth-child(1), .step:nth-child(2) { border-bottom: 1px solid var(--border); }
+  .who-grid { grid-template-columns: 1fr; }
+  .mv-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  nav ul { display: none; }
+  #pillars { grid-template-columns: 1fr; }
+  .pillar { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); }
+  footer { flex-direction: column; gap: 1rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="logo">C.D.F <span>Studio</span></a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#who">Who We Work With</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <span class="hero-eyebrow">B2B Clothing Manufacturing Partner</span>
+    <h1>Production support for <strong>startup fashion brands.</strong></h1>
+    <p class="hero-sub">We guide early-stage brands through the full manufacturing process — from fabric selection and sampling to quality control and delivery — with transparent communication at every step.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <a href="#process" class="btn-ghost">See Our Process</a>
+    </div>
+  </div>
+  <div class="hero-img-wrap">
+    <!-- Swap this for your own brand photography when ready -->
+    <img
+      src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=80&fit=crop"
+      alt="Fabric selection in a clothing production studio"
+      loading="eager"
+    />
+    <div class="img-badge">
+      <strong>End-to-End Support</strong>
+      Sampling · Production · Delivery
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<div id="pillars">
+  <div class="pillar reveal">
+    <div class="pillar-title">Low MOQ</div>
+    <p>We work with brands building carefully. Small, intentional production runs are where good collections start.</p>
+  </div>
+  <div class="pillar reveal d1">
+    <div class="pillar-title">Transparent Communication</div>
+    <p>You'll know where your order stands at every stage — clear updates, realistic timelines, no surprises.</p>
+  </div>
+  <div class="pillar reveal d2">
+    <div class="pillar-title">Responsible Production</div>
+    <p>Ethical manufacturing practices are part of how we work, not something we add on as a marketing claim.</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-img reveal">
+    <!-- Swap for your own studio or production photo -->
+    <img
+      src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&q=80&fit=crop&crop=center"
+      alt="Clothing manufacturer reviewing garment quality"
+      loading="lazy"
+    />
+  </div>
+  <div class="about-body reveal d1">
+    <span class="section-tag">About CDF Studio</span>
+    <h2>A manufacturing partner built around the needs of early-stage brands.</h2>
+    <p>CDF Studio is a B2B clothing manufacturing partner for startup and early-stage fashion brands. We work with founders who are developing new collections and need a structured, dependable production process — not just a factory that processes an order.</p>
+    <p>From fabric sourcing and sampling through production, quality control, and shipment coordination, we manage each stage with consistent communication, realistic timelines, and a focus on fit, finish, and repeatable quality.</p>
+    <div class="mv-grid">
+      <div class="mv-card">
+        <h4>Mission</h4>
+        <p>Make clothing manufacturing more accessible, reliable, and responsible for startup fashion brands.</p>
+      </div>
+      <div class="mv-card">
+        <h4>Vision</h4>
+        <p>Become a trusted long-term manufacturing partner for founders who value clarity, quality, and ethical production.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-head reveal">
+    <span class="section-tag">How We Work</span>
+    <h2>A clear process from brief to delivery.</h2>
+    <p class="sub-text">Each stage is structured so you know what's happening, what comes next, and what to expect — without having to ask.</p>
+  </div>
+  <div class="process-steps">
+    <div class="step reveal">
+      <div class="step-n">01</div>
+      <h4>Brief & Alignment</h4>
+      <p>We review your designs, specifications, and timeline. Before anything moves forward, we confirm everything in writing.</p>
+    </div>
+    <div class="step reveal d1">
+      <div class="step-n">02</div>
+      <h4>Fabric & Sampling</h4>
+      <p>Fabric sourcing followed by sample development. We work through feedback until the sample matches your standard.</p>
+    </div>
+    <div class="step reveal d2">
+      <div class="step-n">03</div>
+      <h4>Production & Quality Control</h4>
+      <p>Garment production with quality checks throughout — not just a final inspection at the end.</p>
+    </div>
+    <div class="step reveal d3">
+      <div class="step-n">04</div>
+      <h4>Shipment & Handover</h4>
+      <p>Coordinated delivery with full documentation. We debrief after each run so the next one is more efficient.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE WORK WITH -->
+<section id="who">
+  <div class="reveal">
+    <span class="section-tag">Who We Work With</span>
+    <h2>For founders building with intention.</h2>
+    <p class="sub-text">We take on a small number of brands at a time so every project gets proper attention.</p>
+  </div>
+  <div class="who-grid">
+    <div class="who-card reveal">
+      <div class="card-bar"></div>
+      <h4>First & Second Collection Brands</h4>
+      <p>You're earlier in your brand journey and need a manufacturing partner who explains the process, not just someone who executes an order. We work through decisions with you.</p>
+    </div>
+    <div class="who-card reveal d1">
+      <div class="card-bar"></div>
+      <h4>Low-MOQ Fashion Brands</h4>
+      <p>You're not at large-scale production yet and don't need to be. We work with brands producing smaller, considered runs while building their customer base.</p>
+    </div>
+    <div class="who-card reveal d2">
+      <div class="card-bar"></div>
+      <h4>Brands That Care About Ethics</h4>
+      <p>Responsible sourcing and production matter to you — as a business decision, not just a marketing angle. That's how we operate too.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="section-tag">Get In Touch</span>
+  <h2>Let's talk about your collection.</h2>
+  <p class="lead">We work with a select number of brands. If you're developing a new collection and looking for a manufacturing partner, reach out and we'll see if it's the right fit.</p>
+  <div class="contact-btns">
+    <a href="https://www.linkedin.com/company/c-d-f-studio" target="_blank" rel="noopener">LinkedIn</a>
+    <!-- Replace with your actual Instagram handle -->
+    <a href="https://www.instagram.com/yourhandle" target="_blank" rel="noopener">Instagram</a>
+    <!-- Replace with your actual email -->
+    <a href="mailto:your@email.com">Send an Email</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 C.D.F Studio</span>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/company/c-d-f-studio" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.instagram.com/yourhandle" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</footer>
+
+<script>
+  // Nav shadow on scroll
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Scroll-triggered reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

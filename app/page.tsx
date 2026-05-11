@@ -10,7 +10,7 @@ const LightweightProcessSection = dynamic(() => import("@/components/process/Lig
 const LightweightPortfolioSection = dynamic(() => import("@/components/portfolio/LightweightPortfolioSection"));
 const LightweightTestimonialsSection = dynamic(() => import("@/components/testimonials/LightweightTestimonialsSection"));
 const LightweightContactSection = dynamic(() => import("@/components/contact/LightweightContactSection"));
-const InfiniteLogoCarousel = dynamic(() => import("@/components/ui/InfiniteLogoCarousel"));
+
 
 export default function Home() {
   return (
@@ -23,7 +23,7 @@ export default function Home() {
       <LightweightProcessSection />
       <LightweightPortfolioSection />
       <LightweightTestimonialsSection />
-      <InfiniteLogoCarousel />
+
       <LightweightContactSection />
     </main>
   );

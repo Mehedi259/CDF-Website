@@ -4,7 +4,6 @@ import { Award, Users, Globe, TrendingUp, Sparkles, CheckCircle, Target } from "
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { motion } from "framer-motion";
 import { stats, companyData } from "@/lib/data";
-import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 export default function LightweightAboutSection() {
   const { language, t } = useLanguage();
@@ -52,41 +51,7 @@ export default function LightweightAboutSection() {
           </motion.p>
         </div>
 
-        {/* Premium Stats Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {currentStats.map((stat, index) => {
-            const statsDecorations = [
-              { color: "from-blue-500 to-blue-600" },
-              { color: "from-purple-500 to-purple-600" },
-              { color: "from-pink-500 to-pink-600" },
-              { color: "from-orange-500 to-orange-600" },
-            ];
-            const decoration = statsDecorations[index] || statsDecorations[0];
-            return (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              key={index}
-              className="group relative bg-white rounded-3xl p-8 border border-slate-200/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500"
-            >
-              {/* Gradient Border on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl"></div>
-              
-              <div className={`w-16 h-16 bg-gradient-to-br ${decoration.color} rounded-2xl flex items-center justify-center mb-6 shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ease-out`}>
-                <TrendingUp className="w-8 h-8 text-white" />
-              </div>
-              <div className="text-5xl font-extrabold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent mb-3 tracking-tight">
-                <AnimatedCounter value={stat.value} duration={2} />
-              </div>
-              <div className="text-base text-slate-500 font-semibold uppercase tracking-wider">
-                {stat.label}
-              </div>
-            </motion.div>
-          );
-          })}
-        </div>
+
 
         {/* Premium Key Strengths */}
         <div className="max-w-5xl mx-auto">

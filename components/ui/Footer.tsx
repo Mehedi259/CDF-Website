@@ -106,34 +106,34 @@ export default function Footer() {
             <h3 className="font-bold text-lg mb-6">Our Services</h3>
             <ul className="space-y-3">
               <li>
-                <a href="/services/apparel-manufacturing" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                <span className="text-slate-400">
                   Apparel Manufacturing
-                </a>
+                </span>
               </li>
               <li>
-                <a href="/services/fabric-sourcing" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                <span className="text-slate-400">
                   Fabric Sourcing
-                </a>
+                </span>
               </li>
               <li>
-                <a href="/services/sampling-prototyping" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                <span className="text-slate-400">
                   Sampling & Prototyping
-                </a>
+                </span>
               </li>
               <li>
-                <a href="/services/bulk-production" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                <span className="text-slate-400">
                   Bulk Production
-                </a>
+                </span>
               </li>
               <li>
-                <a href="/services/private-label-oem-odm" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                <span className="text-slate-400">
                   Private Label / OEM / ODM
-                </a>
+                </span>
               </li>
               <li>
-                <a href="/services/quality-control" className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                <span className="text-slate-400">
                   Quality Control
-                </a>
+                </span>
               </li>
             </ul>
           </div>
@@ -175,18 +175,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Certifications Bar */}
-        <div className="border-t border-slate-800 pt-8 mb-8">
-          <div className="flex flex-wrap justify-center gap-8 text-sm text-slate-400">
-            <span>ISO 9001:2015 Certified</span>
-            <span>•</span>
-            <span>WRAP Certified</span>
-            <span>•</span>
-            <span>GOTS Certified</span>
-            <span>•</span>
-            <span>Oeko-Tex Standard 100</span>
-          </div>
-        </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">

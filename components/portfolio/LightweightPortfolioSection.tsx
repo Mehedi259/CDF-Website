@@ -4,7 +4,6 @@ import { CheckCircle } from "lucide-react";
 import { portfolio } from "@/lib/data";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { motion } from "framer-motion";
-import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 export default function LightweightPortfolioSection() {
   const { language, t } = useLanguage();
@@ -71,43 +70,7 @@ export default function LightweightPortfolioSection() {
           ))}
         </div>
 
-        {/* Stats Bar */}
-        <div className="bg-slate-900 rounded-xl p-8 md:p-12">
-          <div className="grid md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2">
-                <AnimatedCounter value="200+" duration={2} />
-              </div>
-              <div className="text-slate-400">
-                Successful Projects
-              </div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2">
-                <AnimatedCounter value="98.5%" duration={2.5} />
-              </div>
-              <div className="text-slate-400">
-                On-Time Delivery
-              </div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2">
-                <AnimatedCounter value="150+" duration={2.2} />
-              </div>
-              <div className="text-slate-400">
-                Active Clients
-              </div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2">
-                <AnimatedCounter value="10M+" duration={3} />
-              </div>
-              <div className="text-slate-400">
-                Units Produced
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
   );

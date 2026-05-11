@@ -11,59 +11,24 @@ const slides = [
   {
     titleKey: "heroTitle1",
     subtitleKey: "heroSubtitle1",
-    image: "/hero/hero-1.webp",
+    image: "/hero/hero-1.jpg",
     alt: "Modern manufacturing facility",
-    founderIndex: 0, // Sarah Chen
+    founderIndex: 0, // Iris van Herpen
   },
   {
     titleKey: "heroTitle2",
     subtitleKey: "heroSubtitle2",
-    image: "/hero/hero-2.webp",
+    image: "/hero/hero-2.png",
     alt: "Production line",
-    founderIndex: 1, // Michael Rodriguez
+    founderIndex: 1, // Lidewij Edelkoort
   },
   {
     titleKey: "heroTitle3",
     subtitleKey: "heroSubtitle3",
-    image: "/hero/hero-3.webp",
+    image: "/hero/hero-3.png",
     alt: "Quality control",
-    founderIndex: 4, // Emma Thompson
-  },
-  {
-    titleKey: "heroTitle4",
-    subtitleKey: "heroSubtitle4",
-    image: "/hero/hero-4.webp",
-    alt: "Sustainable fashion",
-    founderIndex: 2, // Priya Sharma
-  },
-  {
-    titleKey: "heroTitle5",
-    subtitleKey: "heroSubtitle5",
-    image: "/hero/hero-5.webp",
-    alt: "Custom design",
-    founderIndex: 3, // David Kim
-  },
-  {
-    titleKey: "heroTitle6",
-    subtitleKey: "heroSubtitle6",
-    image: "/hero/hero-6.webp",
-    alt: "Fast production",
-    founderIndex: 5, // James Wilson
-  },
-  {
-    titleKey: "heroTitle7",
-    subtitleKey: "heroSubtitle7",
-    image: "/hero/hero-7.webp",
-    alt: "Global logistics",
-    founderIndex: 6, // Sofia Martinez
-  },
-  {
-    titleKey: "heroTitle8",
-    subtitleKey: "heroSubtitle8",
-    image: "/hero/hero-8.webp",
-    alt: "Competitive pricing",
-    founderIndex: 7, // Robert Chang
-  },
+    founderIndex: 2, // Viktor Horsting
+  }
 ];
 
 export default function OptimizedHeroSection() {
@@ -251,35 +216,6 @@ export default function OptimizedHeroSection() {
         </div>
       </div>
 
-      {/* Slide Navigation */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex items-center gap-4">
-        <button
-          onClick={prevSlide}
-          className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
-          aria-label="Previous slide"
-        >
-          ←
-        </button>
-        <div className="flex gap-2">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                currentSlide === index ? "w-8 bg-blue-500" : "w-2 bg-white/40"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-        <button
-          onClick={nextSlide}
-          className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
-          aria-label="Next slide"
-        >
-          →
-        </button>
-      </div>
 
       {/* Scroll Indicator */}
       <motion.div
