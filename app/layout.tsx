@@ -5,7 +5,7 @@ import LightweightNavbar from "@/components/ui/LightweightNavbar";
 import Footer from "@/components/ui/Footer";
 import { ThemeProvider } from "@/lib/context/ThemeContext";
 import { LanguageProvider } from "@/lib/context/LanguageContext";
-import CustomCursor from "@/components/ui/CustomCursor";
+
 
 const font = Plus_Jakarta_Sans({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700", "800"] });
 
@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={`${font.className} antialiased selection:bg-blue-600/30 selection:text-blue-900`}>
         <ThemeProvider>
           <LanguageProvider>
-            <CustomCursor />
+
             <LightweightNavbar />
             {children}
             <Footer />

@@ -1,207 +1,99 @@
-# Apex Manufacturing Co. - B2B Manufacturing Website
+# CDF Studio - Premium Manufacturing Website
 
-A complete, production-ready B2B manufacturing website built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.
+A high-performance, premium manufacturing company website built with modern web technologies including Next.js, React, Tailwind CSS, Framer Motion, and Three.js (React Three Fiber) for an immersive and aesthetically pleasing user experience.
 
-## 🎯 Overview
+## 🚀 Tech Stack
 
-This is a high-end corporate website designed for apparel manufacturing, garment sourcing, and textile production companies. The website is built to attract business clients, build trust, and convert visitors into qualified leads.
+- **Framework:** Next.js (App Router)
+- **Library:** React
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion
+- **3D Graphics:** Three.js / React Three Fiber / Drei
+- **Icons:** Lucide React
+- **Email Service:** EmailJS
+- **Deployment:** Vercel
 
-## 🚀 Features
+## 📂 Project Structure
 
-- **Modern Tech Stack**: Next.js 15 with App Router, TypeScript, Tailwind CSS
-- **Smooth Animations**: Framer Motion for professional micro-interactions
-- **Fully Responsive**: Mobile-first design that works on all devices
-- **SEO Optimized**: Comprehensive metadata and semantic HTML
-- **Performance Focused**: Optimized for fast loading and smooth scrolling
-- **B2B Focused**: Professional content and design for business clients
-
-## 📁 Project Structure
-
-```
+```text
 manufacturing-website/
-├── app/
-│   ├── layout.tsx          # Root layout with metadata
-│   ├── page.tsx             # Home page
-│   └── globals.css          # Global styles
-├── components/
-│   ├── hero/
-│   │   └── HeroSection.tsx  # Hero slider with CTAs
-│   ├── services/
-│   │   └── ServicesSection.tsx  # Services grid
-│   ├── about/
-│   │   └── AboutSection.tsx     # Company information
-│   ├── process/
-│   │   └── ProcessSection.tsx   # Manufacturing process
-│   ├── portfolio/
-│   │   └── PortfolioSection.tsx # Case studies
-│   ├── testimonials/
-│   │   └── TestimonialsSection.tsx # Client testimonials
-│   ├── contact/
-│   │   └── ContactSection.tsx   # Contact form
-│   └── ui/
-│       ├── Navbar.tsx       # Navigation bar
-│       └── Footer.tsx       # Footer
-├── lib/
-│   ├── data.ts              # All content data
-│   └── utils.ts             # Utility functions
-└── public/
-    ├── hero/                # Hero images
-    ├── portfolio/           # Portfolio images
-    └── logos/               # Client logos
+├── app/               # Next.js App Router (Pages, Layouts, API Routes)
+├── components/        # Reusable React components (UI, 3D elements, Layout)
+├── lib/               # Utility functions, helpers, and shared logic
+├── public/            # Static assets (images, fonts, 3D models)
+├── .env.local.example # Environment variable templates
+├── tailwind.config.ts # Tailwind CSS configuration
+├── next.config.ts     # Next.js configuration
+├── vercel.json        # Vercel deployment configuration
+└── package.json       # Dependencies and project scripts
 ```
 
-## 🎨 Sections
+## 🛠️ Getting Started
 
-### 1. Hero Section
-- Full-screen slider with 3 slides
-- Strong B2B headline and value proposition
-- Dual CTAs: "Request a Quote" and "View Capabilities"
-- Smooth animations and scroll indicator
+### Prerequisites
 
-### 2. Services Section
-- 6 comprehensive manufacturing services
-- Each service includes:
-  - Description
-  - Business benefit
-  - Real-world example
-- Professional icons and hover effects
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- npm, yarn, pnpm, or bun
 
-### 3. About Section
-- Company story and mission
-- Key statistics (500K+ units, 850+ employees, etc.)
-- International certifications (ISO, WRAP, GOTS, Oeko-Tex)
-- Trust-building content
+### Installation & Setup
 
-### 4. Process Section
-- 6-step manufacturing workflow
-- Timeline visualization
-- Duration for each step
-- Total project timeline (60-90 days)
+1. **Navigate to the project directory:**
+   ```bash
+   cd manufacturing-website
+   ```
 
-### 5. Portfolio Section
-- 4 case studies with real results
-- Category badges
-- Success metrics
-- Project statistics bar
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
 
-### 6. Testimonials Section
-- 4 client testimonials with ratings
-- Client logo showcase
-- Trust indicators
-- Satisfaction statistics
+3. **Set up environment variables:**
+   Copy the example environment file and update it with your actual credentials.
+   ```bash
+   cp .env.local.example .env.local
+   ```
+   *Note: You will need your EmailJS credentials (`SERVICE_ID`, `TEMPLATE_ID`, `PUBLIC_KEY`) to make the contact form fully functional.*
 
-### 7. Contact Section
-- Professional inquiry form
-- Contact information (email, phone, WhatsApp)
-- Business hours
-- Response time promise
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
 
-## 🛠️ Installation
+5. **View the website:**
+   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-# Navigate to project directory
-cd manufacturing-website
+## 🎨 Features & Highlights
 
-# Install dependencies
-npm install
+- **Immersive 3D Experiences:** Interactive 3D elements and hero sections powered by React Three Fiber & Drei.
+- **Dynamic Scroll Animations:** Smooth, engaging UI transitions and reveal animations using Framer Motion.
+- **Fully Responsive Design:** Pixel-perfect optimization for mobile, tablet, and desktop devices utilizing Tailwind CSS.
+- **Serverless Contact Form:** Fully working contact form integrated with EmailJS—no backend setup required.
+- **SEO Optimized:** Leverages Next.js metadata and semantic HTML best practices for superior search engine visibility.
 
-# Run development server
-npm run dev
-```
+## 📦 Deployment
 
-Open [http://localhost:3000](http://localhost:3000) to view the website.
+The project is optimized for deployment on [Vercel](https://vercel.com). A `vercel.json` file is already included for seamless configuration.
 
-## 📦 Dependencies
+1. Push your code to your preferred Git provider (GitHub, GitLab, BitBucket).
+2. Import the repository into Vercel.
+3. Ensure you add all required **Environment Variables** (from your `.env.local`) in the Vercel project settings.
+4. Deploy!
 
-- **next**: ^15.x - React framework
-- **react**: ^19.x - UI library
-- **typescript**: ^5.x - Type safety
-- **tailwindcss**: ^3.x - Utility-first CSS
-- **framer-motion**: ^11.x - Animation library
-- **lucide-react**: ^0.x - Icon library
-- **clsx**: ^2.x - Conditional classNames
-- **tailwind-merge**: ^2.x - Merge Tailwind classes
+## 📄 Available Scripts
 
-## 🎨 Customization
-
-### Update Company Information
-
-Edit `lib/data.ts` to customize:
-- Company name and details
-- Services offered
-- Process steps
-- Portfolio projects
-- Testimonials
-- Contact information
-
-### Change Colors
-
-Edit `tailwind.config.ts` and `app/globals.css` to modify:
-- Primary color (currently blue-600)
-- Background colors
-- Text colors
-- Accent colors
-
-### Add Images
-
-Place your images in the `public` directory:
-- `public/hero/` - Hero slider images (1920x1080px)
-- `public/portfolio/` - Portfolio images (800x600px)
-- `public/logos/` - Client logos (SVG or PNG)
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel
-```
-
-### Build for Production
-
-```bash
-# Create production build
-npm run build
-
-# Start production server
-npm start
-```
-
-## 📱 Responsive Design
-
-The website is fully responsive with breakpoints:
-- Mobile: < 768px
-- Tablet: 768px - 1024px
-- Desktop: > 1024px
-
-## ♿ Accessibility
-
-- Semantic HTML structure
-- ARIA labels for interactive elements
-- Keyboard navigation support
-- Focus visible states
-- Alt text for images (when added)
-
-## 🔍 SEO
-
-- Comprehensive metadata in `layout.tsx`
-- Semantic HTML structure
-- Optimized page titles and descriptions
-- Open Graph tags for social sharing
-- Fast loading times
-
-## 📄 License
-
-This project is created for demonstration purposes.
-
-## 🤝 Support
-
-For questions or support, contact the development team.
+- `npm run dev` - Starts the development server on `localhost:3000`.
+- `npm run build` - Creates an optimized production build.
+- `npm run start` - Starts the production server using the generated build.
+- `npm run lint` - Runs ESLint to check for code quality and issues.
+- `npm run vercel-build` - Custom build script used by Vercel deployment.
 
 ---
-
-Built with ❤️ using Next.js, TypeScript, and Tailwind CSS
+*Built for CDF Studio to deliver a premium digital experience.*
