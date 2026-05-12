@@ -111,12 +111,12 @@ export default function OptimizedHeroSection() {
                     </span>
                   </motion.div>
 
-                  <motion.h1
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
-                    className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]"
-                  >
+                    <motion.h1
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
+                      className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 leading-[1.1]"
+                    >
                     <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent drop-shadow-sm">
                       {t(slides[currentSlide].titleKey)}
                     </span>
@@ -126,7 +126,7 @@ export default function OptimizedHeroSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed"
+                    className="text-base sm:text-lg md:text-xl text-slate-300 mb-8 md:mb-10 leading-relaxed"
                   >
                     {t(slides[currentSlide].subtitleKey)}
                   </motion.p>
@@ -146,13 +146,6 @@ export default function OptimizedHeroSection() {
                         {t("requestQuote")}
                         <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </span>
-                    </a>
-                    <a
-                      href="#services"
-                      className="group inline-flex items-center justify-center px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full transition-all duration-300 backdrop-blur-md border border-white/10 hover:border-white/30"
-                    >
-                      {t("viewCapabilities")}
-                      <Play className="ml-2 w-5 h-5 group-hover:scale-110 transition-transform" />
                     </a>
                   </motion.div>
                 </motion.div>

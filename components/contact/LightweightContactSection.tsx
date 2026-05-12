@@ -1,7 +1,7 @@
 "use client";
 
 import { Mail, Phone, MapPin, Send, MessageSquare, Sparkles, Clock, CheckCircle, Globe } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { motion } from "framer-motion";
 
@@ -16,6 +16,22 @@ export default function LightweightContactSection() {
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const handleQuoteRequest = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      const productName = customEvent.detail;
+      if (productName) {
+        setFormData(prev => ({
+          ...prev,
+          requirements: `I am interested in getting a quote for: ${productName}\n\n${prev.requirements}`
+        }));
+      }
+    };
+
+    window.addEventListener('requestQuote', handleQuoteRequest);
+    return () => window.removeEventListener('requestQuote', handleQuoteRequest);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -97,14 +113,14 @@ This inquiry was submitted through the CDF Studio website contact form.
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
-            className="group relative"
+            className="group relative h-full flex flex-col"
           >
             {/* Gradient Border Effect */}
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></div>
             
-            <div className="relative bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-slate-100">
+            <div className="relative bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-slate-100 h-full flex flex-col">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
                   <Send className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
@@ -112,7 +128,7 @@ This inquiry was submitted through the CDF Studio website contact form.
                 </h3>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6 flex-grow flex flex-col">
                 <div>
                   <label htmlFor="name" className="block text-sm font-bold text-slate-700 mb-2">{t("fullName")}</label>
                   <input
@@ -186,17 +202,19 @@ This inquiry was submitted through the CDF Studio website contact form.
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="group/btn relative w-full"
-                >
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl blur opacity-30 group-hover/btn:opacity-50 transition-opacity"></div>
-                  <div className="relative flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
-                    {isSubmitting ? 'Sending...' : 'Send Inquiry'}
-                    <Send className="w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform" />
-                  </div>
-                </button>
+                <div className="mt-auto pt-4">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="group/btn relative w-full"
+                  >
+                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl blur opacity-30 group-hover/btn:opacity-50 transition-opacity"></div>
+                    <div className="relative flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+                      {isSubmitting ? 'Sending...' : 'Send Inquiry'}
+                      <Send className="w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform" />
+                    </div>
+                  </button>
+                </div>
               </form>
             </div>
           </motion.div>
@@ -207,7 +225,7 @@ This inquiry was submitted through the CDF Studio website contact form.
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.2, type: "spring", bounce: 0.3 }}
-            className="space-y-6"
+            className="flex flex-col h-full justify-between gap-6"
           >
             {/* Contact Cards */}
             <div className="relative group">

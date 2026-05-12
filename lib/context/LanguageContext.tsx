@@ -68,8 +68,8 @@ const translations: Record<Language, Record<string, string>> = {
     getQuote: "Get Quote",
     
     // Hero
-    heroTitle1: "Production support for startup fashion brands.",
-    heroSubtitle1: "We guide early-stage brands through the full manufacturing process — from fabric selection and sampling to quality control and delivery — with transparent communication at every step.",
+    heroTitle1: "Production for Startup Brands",
+    heroSubtitle1: "From sampling to delivery, we guide you through the manufacturing process with clear communication.",
     heroTitle2: "End-to-End Apparel Solutions",
     heroSubtitle2: "From fabric sourcing to final delivery - complete manufacturing partnership for brands of all sizes",
     heroTitle3: "Quality You Can Trust",
@@ -146,7 +146,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Portfolio
     caseStudies: "Who We Work With",
     successStories: "For founders building with intention.",
-    portfolioSubtitle: "We take on a small number of brands at a time so every project gets proper attention.",
+    portfolioSubtitle: "We work with a limited number of brands at a time to ensure every project receives the attention it deserves.",
     result: "Result",
 
     // Testimonials

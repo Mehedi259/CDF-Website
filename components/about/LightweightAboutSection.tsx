@@ -31,13 +31,13 @@ export default function LightweightAboutSection() {
             <Sparkles className="w-4 h-4 text-blue-600" />
             <span className="text-blue-700 tracking-wide uppercase">About CDF Studio</span>
           </motion.div>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-8 tracking-tight"
-          >
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 md:mb-8 tracking-tight"
+            >
             A manufacturing partner built around the needs of <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">early-stage brands.</span>
           </motion.h2>
           
@@ -46,7 +46,7 @@ export default function LightweightAboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-slate-600 leading-relaxed font-medium space-y-6 text-left md:text-center"
+            className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed font-medium space-y-4 md:space-y-6 text-left md:text-center"
           >
             <p>
               CDF Studio is a B2B clothing manufacturing partner for startup and early-stage fashion brands. We work with founders who are developing new collections and need a structured, dependable production process — not just a factory that processes an order.
