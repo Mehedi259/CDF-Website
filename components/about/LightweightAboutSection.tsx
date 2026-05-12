@@ -1,6 +1,6 @@
 "use client";
 
-import { Award, Users, Globe, TrendingUp, Sparkles, CheckCircle, Target } from "lucide-react";
+import { Award, Users, Globe, TrendingUp, Sparkles, CheckCircle, Target, Package, MessageSquare, Leaf } from "lucide-react";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { motion } from "framer-motion";
 import { stats, companyData } from "@/lib/data";
@@ -20,8 +20,8 @@ export default function LightweightAboutSection() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-24">
+        {/* Section Header & Main Text */}
+        <div className="max-w-4xl mx-auto text-center mb-20">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -29,83 +29,132 @@ export default function LightweightAboutSection() {
             className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-100 rounded-full text-sm font-semibold mb-6 shadow-sm"
           >
             <Sparkles className="w-4 h-4 text-blue-600" />
-            <span className="text-blue-700 tracking-wide uppercase">{t("aboutCdf")}</span>
+            <span className="text-blue-700 tracking-wide uppercase">About CDF Studio</span>
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 tracking-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-8 tracking-tight"
           >
-            {t("trustedPartner").split(" ").slice(0, 2).join(" ")} <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{t("trustedPartner").split(" ").slice(2).join(" ")}</span>
+            A manufacturing partner built around the needs of <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">early-stage brands.</span>
           </motion.h2>
-          <motion.p 
+          
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-medium"
+            className="text-lg md:text-xl text-slate-600 leading-relaxed font-medium space-y-6 text-left md:text-center"
           >
-            {t("aboutSubtitle")}
-          </motion.p>
+            <p>
+              CDF Studio is a B2B clothing manufacturing partner for startup and early-stage fashion brands. We work with founders who are developing new collections and need a structured, dependable production process — not just a factory that processes an order.
+            </p>
+            <p>
+              From fabric sourcing and sampling through production, quality control, and shipment coordination, we manage each stage with consistent communication, realistic timelines, and a focus on fit, finish, and repeatable quality.
+            </p>
+          </motion.div>
         </div>
 
-
-
-        {/* Premium Key Strengths */}
+        {/* Mission and Vision Grid */}
         <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: Award,
-                title: "Certified Quality",
-                description: "ISO 9001, WRAP, GOTS, and Oeko-Tex certified facility",
-                gradient: "from-blue-500 to-cyan-500",
-              },
-              {
-                icon: Users,
-                title: "Skilled Workforce",
-                description: "850+ trained professionals with average 8+ years experience",
-                gradient: "from-purple-500 to-pink-500",
-              },
-              {
-                icon: Target,
-                title: "Global Reach",
-                description: "Serving clients across North America, Europe, and Asia-Pacific",
-                gradient: "from-orange-500 to-red-500",
-              },
-            ].map((feature, index) => (
-              <motion.div
-              initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Mission Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.1, type: "spring", bounce: 0.3 }}
-              key={index}
-              className="group relative bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-transparent"
-              >
-                {/* Gradient Background on Hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                
-                <div className="relative z-10">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg transform group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300`}>
-                    <feature.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <h5 className="font-bold text-xl text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
-                    {feature.title}
-                  </h5>
-                  <p className="text-slate-600 leading-relaxed">
-                    {feature.description}
-                  </p>
-                  
-                  {/* Check Icon */}
-                  <div className="mt-4 flex items-center gap-2 text-green-600">
-                    <CheckCircle className="w-5 h-5" />
-                    <span className="text-sm font-semibold">Verified & Certified</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
+              className="group relative bg-white rounded-3xl p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-100 overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50/50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500"></div>
+              
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-8 shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <Target className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-3xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">Mission</h3>
+              <p className="text-slate-600 leading-relaxed text-lg font-medium">
+                Make clothing manufacturing more accessible, reliable, and responsible for startup fashion brands.
+              </p>
+            </motion.div>
+
+            {/* Vision Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1, type: "spring", bounce: 0.3 }}
+              className="group relative bg-white rounded-3xl p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-100 overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-50/50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500"></div>
+              
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-8 shadow-lg transform group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
+                <Globe className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-3xl font-bold text-slate-900 mb-4 group-hover:text-purple-600 transition-colors">Vision</h3>
+              <p className="text-slate-600 leading-relaxed text-lg font-medium">
+                Become a trusted long-term manufacturing partner for founders who value clarity, quality, and ethical production.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Core Values Grid */}
+        <div className="max-w-5xl mx-auto mt-12 md:mt-20">
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Value 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+            >
+              <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                <Package className="w-6 h-6" />
+              </div>
+              <h4 className="text-xl font-bold text-slate-900 mb-3">Low MOQ</h4>
+              <p className="text-slate-600 leading-relaxed">
+                We work with brands building carefully. Small, intentional production runs are where good collections start.
+              </p>
+            </motion.div>
+
+            {/* Value 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+            >
+              <div className="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
+                <MessageSquare className="w-6 h-6" />
+              </div>
+              <h4 className="text-xl font-bold text-slate-900 mb-3">Transparent Communication</h4>
+              <p className="text-slate-600 leading-relaxed">
+                You'll know where your order stands at every stage — clear updates, realistic timelines, no surprises.
+              </p>
+            </motion.div>
+
+            {/* Value 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+            >
+              <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                <Leaf className="w-6 h-6" />
+              </div>
+              <h4 className="text-xl font-bold text-slate-900 mb-3">Responsible Production</h4>
+              <p className="text-slate-600 leading-relaxed">
+                Ethical manufacturing practices are part of how we work, not something we add on as a marketing claim.
+              </p>
+            </motion.div>
           </div>
         </div>
 
